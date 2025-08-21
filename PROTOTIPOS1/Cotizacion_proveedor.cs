@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PROTOTIPOS1
+{
+    public partial class Cotizacion_proveedor : Form
+    {
+        public Cotizacion_proveedor()
+        {
+            InitializeComponent();
+            dataGridView1.CellClick += dataGridView1_CellClick;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            compacion_de_proveedores comparacion = new compacion_de_proveedores();
+            comparacion.ShowDialog();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PPrincipal pp = new PPrincipal();
+            pp.Show();
+            this.Hide();
+        }
+
+        private void Cotizacion_proveedor_Load(object sender, EventArgs e)
+        {
+            //Traer columnas de la base de datos
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "SELECT * FROM cot_proveedor";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    dataGridView1.DataSource = table;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
+            // boton de eliminar
+            DataGridViewButtonColumn bttnEliminar = new DataGridViewButtonColumn();
+            bttnEliminar.HeaderText = "Eliminar";
+            bttnEliminar.Name = "bttnEliminar";
+            bttnEliminar.Text = "X";
+            bttnEliminar.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(bttnEliminar);
+        }
+
+            private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "bttnEliminar")
+            {
+                DialogResult resultado = MessageBox.Show("¿Desea eliminar este producto?", "Confirmacion", MessageBoxButtons.YesNo);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    dataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+            }
+            
+        }
+        
+        }
+    }
