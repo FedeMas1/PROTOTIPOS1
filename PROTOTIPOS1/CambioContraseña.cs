@@ -74,6 +74,7 @@ namespace PROTOTIPOS1
                 MessageBox.Show("Las contraseñas coinciden");
             }
 
+            string contraseñaHasheada = Hasheo.generarHash(nContraseña);
             //conexion a la bdd
 
             string cadena_Conexion = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
@@ -92,7 +93,7 @@ namespace PROTOTIPOS1
 
                     string actualizar = @"UPDATE Usuarios SET contraseña = @nContraseña WHERE nombre_Usuario = @usuario AND email = @mail";
                     SqlCommand comando = new SqlCommand(actualizar, conexion);
-                    comando.Parameters.AddWithValue("@nContraseña", nContraseña);
+                    comando.Parameters.AddWithValue("@nContraseña", contraseñaHasheada);
                     comando.Parameters.AddWithValue("@usuario", usuario);
                     comando.Parameters.AddWithValue("@mail", mail);
 

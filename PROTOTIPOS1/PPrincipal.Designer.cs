@@ -54,7 +54,7 @@
             this.bttnCSesion.Name = "bttnCSesion";
             this.bttnCSesion.Size = new System.Drawing.Size(94, 39);
             this.bttnCSesion.TabIndex = 0;
-            this.bttnCSesion.Text = "Cerrar Sesion";
+            this.bttnCSesion.Text = "Back";
             this.bttnCSesion.UseVisualStyleBackColor = true;
             this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
             // 
@@ -234,6 +234,7 @@
             this.lblNivel.Size = new System.Drawing.Size(44, 17);
             this.lblNivel.TabIndex = 15;
             this.lblNivel.Text = "XXXX";
+            this.lblNivel.Click += new System.EventHandler(this.lblNivel_Click);
             // 
             // PPrincipal
             // 

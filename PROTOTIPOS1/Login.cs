@@ -23,6 +23,8 @@ namespace PROTOTIPOS1
             string correo = txtbCorreo.Text;
             string contraseña = txtbContraseña.Text;
 
+            string contraseñaHasheada = Hasheo.generarHash(contraseña);
+
             if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contraseña))
             {
                 MessageBox.Show("Faltan ingresar datos");
@@ -39,7 +41,7 @@ namespace PROTOTIPOS1
 
                     SqlCommand comando = new SqlCommand(consulta, conexion);
                     comando.Parameters.AddWithValue("@correo", correo);
-                    comando.Parameters.AddWithValue("@contraseña", contraseña);
+                    comando.Parameters.AddWithValue("@contraseña", contraseñaHasheada);
 
                     SqlDataReader reader = comando.ExecuteReader();
 
@@ -53,8 +55,8 @@ namespace PROTOTIPOS1
 
                         this.Hide();
 
-                        PPrincipal pp = new PPrincipal(nUsuario);
-                        pp.Show();
+                        Modulos mod = new Modulos(nUsuario);
+                        mod.Show();
                     }
                     else
                     {

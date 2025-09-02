@@ -107,17 +107,14 @@ namespace PROTOTIPOS1
 
         private void bttnCSesion_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión",
-               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            Modulos mod = new Modulos();
+            mod.Show();
+            this.Hide();
+        }
 
-            if (resultado == DialogResult.Yes)
-            {
+        private void lblNivel_Click(object sender, EventArgs e)
+        {
 
-
-                Login login = new Login();
-                login.Show();
-                Hide();
-            }
         }
     }
 }

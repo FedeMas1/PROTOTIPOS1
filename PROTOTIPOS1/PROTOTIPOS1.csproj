@@ -76,6 +76,7 @@
     <Compile Include="Factura_prov.Designer.cs">
       <DependentUpon>Factura_prov.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hasheo.cs" />
     <Compile Include="Informe_recepcion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,11 +101,29 @@
     <Compile Include="Materiales.Designer.cs">
       <DependentUpon>Materiales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos.Designer.cs">
+      <DependentUpon>Modulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Orden_de_compra.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Orden_de_compra.Designer.cs">
       <DependentUpon>Orden_de_compra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orden_de_Pago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orden_de_Pago.Designer.cs">
+      <DependentUpon>Orden_de_Pago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pago.Designer.cs">
+      <DependentUpon>Pago.cs</DependentUpon>
     </Compile>
     <Compile Include="Ped_cotizacion.cs">
       <SubType>Form</SubType>
@@ -117,6 +136,12 @@
     </Compile>
     <Compile Include="PPrincipal.Designer.cs">
       <DependentUpon>PPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PPrincipal_Pagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PPrincipal_Pagos.Designer.cs">
+      <DependentUpon>PPrincipal_Pagos.cs</DependentUpon>
     </Compile>
     <Compile Include="PR.cs">
       <SubType>Form</SubType>
@@ -177,14 +202,26 @@
     <EmbeddedResource Include="Materiales.resx">
       <DependentUpon>Materiales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos.resx">
+      <DependentUpon>Modulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Orden_de_compra.resx">
       <DependentUpon>Orden_de_compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orden_de_Pago.resx">
+      <DependentUpon>Orden_de_Pago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pago.resx">
+      <DependentUpon>Pago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ped_cotizacion.resx">
       <DependentUpon>Ped_cotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PPrincipal.resx">
       <DependentUpon>PPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PPrincipal_Pagos.resx">
+      <DependentUpon>PPrincipal_Pagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PR.resx">
       <DependentUpon>PR.cs</DependentUpon>

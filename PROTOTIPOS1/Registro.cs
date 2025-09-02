@@ -72,7 +72,7 @@ namespace PROTOTIPOS1
                 return;
             }
 
-            
+            string contraseñaHasheada = Hasheo.generarHash(contraseña);
 
             // conexion a sql
 
@@ -97,7 +97,7 @@ namespace PROTOTIPOS1
                     VALUES (@nombre_Usuario, @contraseña, @mail, @nombre, @apellido, @nivel)", conexion);
 
                     insertar.Parameters.AddWithValue("@nombre_usuario", nombre_usuario);
-                    insertar.Parameters.AddWithValue("@contraseña", contraseña);
+                    insertar.Parameters.AddWithValue("@contraseña", contraseñaHasheada);
                     insertar.Parameters.AddWithValue("@mail", mail);
                     insertar.Parameters.AddWithValue("@nombre", nombre);
                     insertar.Parameters.AddWithValue("@apellido", apellido);
