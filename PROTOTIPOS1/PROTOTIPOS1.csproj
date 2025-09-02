@@ -76,6 +76,7 @@
     <Compile Include="Factura_prov.Designer.cs">
       <DependentUpon>Factura_prov.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hasheo.cs" />
     <Compile Include="Informe_recepcion.cs">
       <SubType>Form</SubType>
     </Compile>
