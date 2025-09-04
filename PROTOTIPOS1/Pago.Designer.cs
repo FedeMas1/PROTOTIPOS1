@@ -58,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label1.Location = new System.Drawing.Point(388, 9);
+            this.label1.Location = new System.Drawing.Point(375, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 31);
             this.label1.TabIndex = 1;
@@ -106,9 +106,11 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(588, 48);
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dateTimePicker1.Location = new System.Drawing.Point(507, 14);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(281, 26);
             this.dateTimePicker1.TabIndex = 6;
             // 
             // label6
@@ -141,6 +143,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button1.Location = new System.Drawing.Point(82, 440);
             this.button1.Name = "button1";
@@ -151,6 +154,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button2.Location = new System.Drawing.Point(365, 440);
             this.button2.Name = "button2";
@@ -161,6 +165,7 @@
             // 
             // button3
             // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button3.Location = new System.Drawing.Point(625, 440);
             this.button3.Name = "button3";
@@ -172,7 +177,7 @@
             // bttnCSesion
             // 
             this.bttnCSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.bttnCSesion.Location = new System.Drawing.Point(2, 1);
             this.bttnCSesion.Name = "bttnCSesion";
             this.bttnCSesion.Size = new System.Drawing.Size(94, 39);

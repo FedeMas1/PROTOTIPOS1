@@ -37,5 +37,12 @@ namespace PROTOTIPOS1
             pago.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Recibo rec = new Recibo();
+            rec.Show();
+            this.Hide();
+        }
     }
 }

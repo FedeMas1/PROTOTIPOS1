@@ -125,9 +125,10 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(588, 12);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dateTimePicker1.Location = new System.Drawing.Point(516, 17);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(282, 26);
             this.dateTimePicker1.TabIndex = 10;
             // 
             // label6
@@ -250,7 +251,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label9.Location = new System.Drawing.Point(298, 12);
+            this.label9.Location = new System.Drawing.Point(298, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 31);
             this.label9.TabIndex = 23;
@@ -307,7 +308,7 @@
             // bttnCSesion
             // 
             this.bttnCSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.bttnCSesion.Location = new System.Drawing.Point(2, 4);
             this.bttnCSesion.Name = "bttnCSesion";
             this.bttnCSesion.Size = new System.Drawing.Size(94, 39);
