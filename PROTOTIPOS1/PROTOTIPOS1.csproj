@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador.Designer.cs">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="CambioContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,12 +181,16 @@
     <Compile Include="SC.Designer.cs">
       <DependentUpon>SC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sesion.cs" />
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Stock.Designer.cs">
       <DependentUpon>Stock.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administrador.resx">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CambioContraseña.resx">
       <DependentUpon>CambioContraseña.cs</DependentUpon>
     </EmbeddedResource>

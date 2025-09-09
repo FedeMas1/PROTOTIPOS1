@@ -42,6 +42,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bttnCSesion = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,12 +188,35 @@
             this.bttnCSesion.UseVisualStyleBackColor = true;
             this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
             // 
+            // button4
+            // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button4.Location = new System.Drawing.Point(625, 297);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(118, 36);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Seleccionar";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label8.Location = new System.Drawing.Point(437, 325);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 25);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "XXXX";
+            // 
             // Pago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -230,5 +255,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bttnCSesion;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label8;
     }
 }

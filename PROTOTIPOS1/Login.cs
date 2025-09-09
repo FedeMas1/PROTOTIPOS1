@@ -37,7 +37,7 @@ namespace PROTOTIPOS1
                 try
                 {
                     conexion.Open();
-                    string consulta = @"SELECT nivel FROM Usuarios WHERE email = @correo AND contraseña = @contraseña";
+                    string consulta = @"SELECT id_Usuario, email, nivel FROM Usuarios WHERE email = @correo AND contraseña = @contraseña";
 
                     SqlCommand comando = new SqlCommand(consulta, conexion);
                     comando.Parameters.AddWithValue("@correo", correo);
@@ -47,16 +47,15 @@ namespace PROTOTIPOS1
 
                     if (reader.Read())
                     {
+                        int id_Usuario = Convert.ToInt32(reader["id_Usuario"]);
+                        string email = reader["email"].ToString();
                         int nivel = Convert.ToInt32(reader["nivel"]);
-                        string nUsuario = " ";
-                        if (nivel == 1) nUsuario = "empleado"; 
-                        if (nivel == 2) nUsuario = "encargado";
-                        if (nivel == 3) nUsuario = "administrador";
 
-                        this.Hide();
+                        Sesion.CargarSesion(id_Usuario, email, nivel);
 
-                        Modulos mod = new Modulos(nUsuario);
+                        Modulos mod = new Modulos();
                         mod.Show();
+                        Hide();
                     }
                     else
                     {

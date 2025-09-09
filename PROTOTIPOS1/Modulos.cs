@@ -50,5 +50,24 @@ namespace PROTOTIPOS1
                 Hide();
             }
         }
+
+        private void bttnAdministrador_Click(object sender, EventArgs e)
+        {
+            Administrador admin = new Administrador();
+            admin.Show();
+            Hide();
+        }
+
+        private void Modulos_Load(object sender, EventArgs e)
+        {
+            if(Sesion.nivel == 3)
+            {
+                bttnAdministrador.Visible = true;
+            }
+            else
+            {
+                bttnAdministrador.Visible = false; 
+            }
+        }
     }
 }

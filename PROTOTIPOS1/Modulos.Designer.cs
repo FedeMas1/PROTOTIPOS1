@@ -36,6 +36,7 @@
             this.bttnCSesion = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNivel = new System.Windows.Forms.Label();
+            this.bttnAdministrador = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -50,6 +51,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.button1.Location = new System.Drawing.Point(168, 111);
             this.button1.Name = "button1";
@@ -61,6 +63,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.button2.Location = new System.Drawing.Point(168, 249);
             this.button2.Name = "button2";
@@ -72,6 +75,7 @@
             // 
             // button3
             // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.button3.Location = new System.Drawing.Point(484, 111);
             this.button3.Name = "button3";
@@ -82,6 +86,7 @@
             // 
             // button4
             // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.button4.Location = new System.Drawing.Point(484, 250);
             this.button4.Name = "button4";
@@ -122,12 +127,25 @@
             this.lblNivel.TabIndex = 7;
             this.lblNivel.Text = "XXXX";
             // 
+            // bttnAdministrador
+            // 
+            this.bttnAdministrador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.bttnAdministrador.Location = new System.Drawing.Point(309, 357);
+            this.bttnAdministrador.Name = "bttnAdministrador";
+            this.bttnAdministrador.Size = new System.Drawing.Size(232, 55);
+            this.bttnAdministrador.TabIndex = 9;
+            this.bttnAdministrador.Text = "Administrador";
+            this.bttnAdministrador.UseVisualStyleBackColor = true;
+            this.bttnAdministrador.Click += new System.EventHandler(this.bttnAdministrador_Click);
+            // 
             // Modulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttnAdministrador);
             this.Controls.Add(this.lblNivel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bttnCSesion);
@@ -138,6 +156,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Modulos";
             this.Text = "Modulos";
+            this.Load += new System.EventHandler(this.Modulos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +172,6 @@
         private System.Windows.Forms.Button bttnCSesion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNivel;
+        private System.Windows.Forms.Button bttnAdministrador;
     }
 }

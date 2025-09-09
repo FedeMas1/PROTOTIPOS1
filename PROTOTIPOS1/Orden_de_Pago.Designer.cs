@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,6 +54,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.bttnCSesion = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -114,14 +115,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(136, 26);
             this.textBox2.TabIndex = 6;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox3.Location = new System.Drawing.Point(231, 154);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(136, 26);
-            this.textBox3.TabIndex = 7;
             // 
             // dateTimePicker1
             // 
@@ -325,12 +318,34 @@
             this.textBox4.Size = new System.Drawing.Size(136, 26);
             this.textBox4.TabIndex = 31;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label14.Location = new System.Drawing.Point(232, 164);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 25);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "________";
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button4.Location = new System.Drawing.Point(410, 102);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(81, 27);
+            this.button4.TabIndex = 33;
+            this.button4.Text = "Buscar";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // Orden_de_Pago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.label13);
@@ -351,7 +366,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -373,7 +387,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -394,5 +407,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button bttnCSesion;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button4;
     }
 }
