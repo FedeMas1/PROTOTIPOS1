@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bttnBack = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblNombreUsuario = new System.Windows.Forms.Label();
+            this.lblMail = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblContraseña = new System.Windows.Forms.Label();
+            this.lblApellido = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblRepetirContraseña = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblParametros = new System.Windows.Forms.Label();
+            this.lblArroba = new System.Windows.Forms.Label();
+            this.bttnTraducir = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // bttnBack
@@ -59,55 +62,55 @@
             this.bttnBack.UseVisualStyleBackColor = true;
             this.bttnBack.Click += new System.EventHandler(this.bttnBack_Click);
             // 
-            // label1
+            // lblNombreUsuario
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label1.Location = new System.Drawing.Point(335, 180);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nombre de usuario";
+            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(335, 180);
+            this.lblNombreUsuario.Name = "lblNombreUsuario";
+            this.lblNombreUsuario.Size = new System.Drawing.Size(177, 25);
+            this.lblNombreUsuario.TabIndex = 1;
+            this.lblNombreUsuario.Text = "Nombre de usuario";
             // 
-            // label2
+            // lblMail
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.Location = new System.Drawing.Point(393, 240);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Mail";
+            this.lblMail.AutoSize = true;
+            this.lblMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblMail.Location = new System.Drawing.Point(393, 240);
+            this.lblMail.Name = "lblMail";
+            this.lblMail.Size = new System.Drawing.Size(48, 25);
+            this.lblMail.TabIndex = 2;
+            this.lblMail.Text = "Mail";
             // 
-            // label3
+            // lblNombre
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label3.Location = new System.Drawing.Point(377, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 25);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Nombre";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblNombre.Location = new System.Drawing.Point(377, 56);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(81, 25);
+            this.lblNombre.TabIndex = 3;
+            this.lblNombre.Text = "Nombre";
             // 
-            // label4
+            // lblContraseña
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.Location = new System.Drawing.Point(364, 301);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 25);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Contraseña";
+            this.lblContraseña.AutoSize = true;
+            this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblContraseña.Location = new System.Drawing.Point(364, 301);
+            this.lblContraseña.Name = "lblContraseña";
+            this.lblContraseña.Size = new System.Drawing.Size(114, 25);
+            this.lblContraseña.TabIndex = 4;
+            this.lblContraseña.Text = "Contraseña";
             // 
-            // label5
+            // lblApellido
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.Location = new System.Drawing.Point(376, 114);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 25);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Apellido";
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblApellido.Location = new System.Drawing.Point(376, 114);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(82, 25);
+            this.lblApellido.TabIndex = 5;
+            this.lblApellido.Text = "Apellido";
             // 
             // textBox1
             // 
@@ -157,15 +160,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label6
+            // lblRepetirContraseña
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label6.Location = new System.Drawing.Point(335, 364);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(175, 25);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Repetir contraseña";
+            this.lblRepetirContraseña.AutoSize = true;
+            this.lblRepetirContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblRepetirContraseña.Location = new System.Drawing.Point(335, 364);
+            this.lblRepetirContraseña.Name = "lblRepetirContraseña";
+            this.lblRepetirContraseña.Size = new System.Drawing.Size(175, 25);
+            this.lblRepetirContraseña.TabIndex = 12;
+            this.lblRepetirContraseña.Text = "Repetir contraseña";
             // 
             // textBox6
             // 
@@ -175,56 +178,73 @@
             this.textBox6.TabIndex = 13;
             this.textBox6.UseSystemPasswordChar = true;
             // 
-            // label7
+            // lblTitulo
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(270, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(312, 39);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Registro de usuario";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(270, 9);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(312, 39);
+            this.lblTitulo.TabIndex = 14;
+            this.lblTitulo.Text = "Registro de usuario";
             // 
-            // label8
+            // lblParametros
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(56, 332);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(268, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Por lo menos 8 caracteres, una mayuscula y un numero";
+            this.lblParametros.AutoSize = true;
+            this.lblParametros.Location = new System.Drawing.Point(516, 332);
+            this.lblParametros.Name = "lblParametros";
+            this.lblParametros.Size = new System.Drawing.Size(341, 13);
+            this.lblParametros.TabIndex = 15;
+            this.lblParametros.Text = "Debe contener por lo menos 8 caracteres, una mayuscula y un numero";
             // 
-            // label9
+            // lblArroba
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(185, 275);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(126, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Debe contener un arroba";
+            this.lblArroba.AutoSize = true;
+            this.lblArroba.Location = new System.Drawing.Point(516, 271);
+            this.lblArroba.Name = "lblArroba";
+            this.lblArroba.Size = new System.Drawing.Size(107, 13);
+            this.lblArroba.TabIndex = 16;
+            this.lblArroba.Text = "Debe contener un @";
+            // 
+            // bttnTraducir
+            // 
+            this.bttnTraducir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnTraducir.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnTraducir.Location = new System.Drawing.Point(704, 70);
+            this.bttnTraducir.Name = "bttnTraducir";
+            this.bttnTraducir.Size = new System.Drawing.Size(143, 34);
+            this.bttnTraducir.TabIndex = 17;
+            this.bttnTraducir.Text = "Traducir";
+            this.bttnTraducir.UseVisualStyleBackColor = true;
+            this.bttnTraducir.Click += new System.EventHandler(this.bttnTraducir_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
-            this.ClientSize = new System.Drawing.Size(800, 470);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(859, 470);
+            this.Controls.Add(this.bttnTraducir);
+            this.Controls.Add(this.lblArroba);
+            this.Controls.Add(this.lblParametros);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblRepetirContraseña);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblApellido);
+            this.Controls.Add(this.lblContraseña);
+            this.Controls.Add(this.lblNombre);
+            this.Controls.Add(this.lblMail);
+            this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.bttnBack);
             this.Name = "Registro";
             this.Text = "Registro";
@@ -236,21 +256,23 @@
         #endregion
 
         private System.Windows.Forms.Button bttnBack;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.Label lblMail;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblContraseña;
+        private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblRepetirContraseña;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblParametros;
+        private System.Windows.Forms.Label lblArroba;
+        private System.Windows.Forms.Button bttnTraducir;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

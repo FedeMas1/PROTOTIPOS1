@@ -75,6 +75,11 @@ namespace PROTOTIPOS1
             cmbDescripcion.Text = "";
             cmbRubros.SelectedIndex = -1;
             txtbMarca.Clear();
+            txtbCProveedor.Clear();
+            txtBCantidadA.Clear();
+            txtBPPedido.Clear();
+            txtbCantidadM.Clear();
+            dtpFechaIngreso.Value = DateTime.Now;
             checkbActivo.Checked = false;
         }
 
@@ -142,7 +147,166 @@ namespace PROTOTIPOS1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
 
+            string descripcion = cmbDescripcion.Text.Trim();
+            int? idRubro = cmbRubros.SelectedValue != null ? Convert.ToInt32(cmbRubros.SelectedValue) : (int?)null;
+            string marca = txtbMarca.Text.Trim();
+            string codProveedor = txtbCProveedor.Text.Trim();
+            decimal precioCompra = 0;
+            int cantidad = 0, puntoPedido = 0, cantidadMaxima = 0;
+            DateTime fechaIngreso = dtpFechaIngreso.Value;
+            bool activo = checkbActivo.Checked;
+
+            // Intentar convertir los campos numéricos (si no se cargaron, usar 0)
+            decimal.TryParse(lblPCompra.Text, out precioCompra);
+            int.TryParse(txtBCantidadA.Text, out cantidad);
+            int.TryParse(txtBPPedido.Text, out puntoPedido);
+            int.TryParse(txtbCantidadM.Text, out cantidadMaxima);
+
+            if (string.IsNullOrEmpty(descripcion) || idRubro == null || string.IsNullOrEmpty(marca))
+            {
+                MessageBox.Show("Los campos Descripción, Rubro, y Marca son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                conexion.Open();
+
+
+                string queryExistencia = "SELECT COUNT(*) FROM Inventario WHERE Descripcion = @Descripcion";
+                SqlCommand cmdExistencia = new SqlCommand(queryExistencia, conexion);
+                cmdExistencia.Parameters.AddWithValue("@Descripcion", descripcion);
+                int existe = (int)cmdExistencia.ExecuteScalar();
+
+                string query;
+
+                if (existe > 0)
+                {
+                    // Modificar
+                    query = @"UPDATE Stock SET 
+                        id_Rubro = @idRubro,
+                        cod_proveedor = @CodProveedor,
+                        cantidad = @Cantidad,
+                        precio_compra = @PrecioCompra,
+                        marca = @Marca,
+                        fecha_ingreso = @FechaIngreso,
+                        punto_pedido = @PuntoPedido,
+                        cantidad_maxima = @CantidadMaxima,
+                        activo = @Activo
+                      WHERE Descripcion = @Descripcion";
+
+                    MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Guardar
+                    query = @"INSERT INTO Inventario 
+                    (Descripcion, id_Rubro, cod_proveedor, cantidad, precio_compra, marca, fecha_ingreso, punto_pedido, cantidad_maxima, activo)
+                    VALUES
+                    (@Descripcion, @idRubro, @CodProveedor, @Cantidad, @PrecioCompra, @Marca, @FechaIngreso, @PuntoPedido, @CantidadMaxima, @Activo)";
+
+                    MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@idRubro", idRubro);
+                    cmd.Parameters.AddWithValue("@CodProveedor", (object)codProveedor ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);  
+                    cmd.Parameters.AddWithValue("@PrecioCompra", precioCompra);
+                    cmd.Parameters.AddWithValue("@Marca", marca);
+                    cmd.Parameters.AddWithValue("@FechaIngreso", fechaIngreso);
+                    cmd.Parameters.AddWithValue("@PuntoPedido", puntoPedido);
+                    cmd.Parameters.AddWithValue("@CantidadMaxima", cantidadMaxima);
+                    cmd.Parameters.AddWithValue("@Activo", activo);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            limpiarValores();
+
+        }
+
+        private bool esModificacion = false;
+        private int idProductoActual = -1;
+        private void bttnModificar_Click(object sender, EventArgs e)
+        {
+            string productoBuscado = Microsoft.VisualBasic.Interaction.InputBox(
+                "Ingrese la descripcion del producto", "Buscar producto", "");
+
+            if (string.IsNullOrEmpty(productoBuscado)) return;
+
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "SELECT * FROM Inventario WHERE Descripcion = @Descripcion";
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                conexion.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@Descripcion", productoBuscado);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        idProductoActual = Convert.ToInt32(reader["cod_Producto"]);
+                        esModificacion = true;
+
+                        cmbDescripcion.Text = reader["Descripcion"].ToString();
+                        cmbRubros.SelectedValue = reader["id_Rubro"];
+                        txtbMarca.Text = reader["marca"].ToString();
+                        txtBCantidadA.Text = reader["cantidad"].ToString();
+                        lblCProducto.Text = reader["cod_Producto"].ToString();
+                        txtbCProveedor.Text = reader["cod_proveedor"].ToString();
+                        txtBCantidadA.Text = reader["cantidad"].ToString();
+                        txtBPPedido.Text = reader["punto_pedido"].ToString();
+                        txtbCantidadM.Text = reader["cantidad_maxima"].ToString();
+                        checkbActivo.Checked = Convert.ToBoolean(reader["activo"]);
+
+                        if (reader["fecha_ingreso"] != DBNull.Value)
+                        {
+                            dtpFechaIngreso.Value = Convert.ToDateTime(reader["fecha_ingreso"]);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró un producto con esa descripcion");
+                    }
+                }
+            }
+        }
+
+        private void bttnEliminar_Click(object sender, EventArgs e)
+        {
+            if (!esModificacion || idProductoActual <= 0)
+            {
+                MessageBox.Show("Primero cargue un producto");
+                return;
+            }
+            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar este producto?", "Confirmar", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+                using (SqlConnection conexion = new SqlConnection(connectionString))
+                {
+                    conexion.Open();
+                    string delete = "DELETE FROM Inventario WHERE cod_Producto = @id";
+                    using (SqlCommand command = new SqlCommand(delete, conexion))
+                    {
+                        command.Parameters.AddWithValue("@id", idProductoActual);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Producto eliminado correctamente");
+                limpiarValores();
+                esModificacion = false;
+                idProductoActual = -1;
+            }
         }
     }
 }

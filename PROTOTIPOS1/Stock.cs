@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace PROTOTIPOS1
 {
@@ -78,9 +79,80 @@ namespace PROTOTIPOS1
             cmbRubros.SelectedIndex = -1;
             txtbMarca.Clear();
             txtbUMVenta.Clear();
+            txtbUMVenta.Clear();
+            txtBCuit.Clear();
+            txtbCantidad.Clear();
+            txtBPVenta.Clear();
+            txtbMarca.Clear();
+            txtBPPedido.Clear();
+            txtBCMaxima.Clear();
+            txtBEProducto.Clear();
+            dtpFIngreso.Value = DateTime.Now;
+            dtpFVencimiento.Value = DateTime.Now;
             checkbActivo.Checked = false;
         }
 
+        private bool esModificacion = false;
+        private int idProductoActual = -1;
+
+        private void bttnModificar_Click(object sender, EventArgs e)
+        {
+            string productoBuscado = Microsoft.VisualBasic.Interaction.InputBox(
+                "Ingrese la descripcion del producto", "Buscar producto", "");
+
+            if (string.IsNullOrEmpty(productoBuscado)) return;
+
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "SELECT * FROM Stock WHERE Descripcion = @Descripcion";
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                conexion.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@Descripcion", productoBuscado);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        idProductoActual = Convert.ToInt32(reader["cod_Producto"]);
+                        esModificacion = true;
+
+                        cmbDescripcion.Text = reader["Descripcion"].ToString();
+                        cmbRubros.SelectedValue = reader["id_Rubro"];
+                        lblCProducto.Text = reader["cod_Producto"].ToString();
+                        txtbUMVenta.Text = reader["UM_venta"].ToString();
+                        txtBUMCompra.Text = reader["UM_compra"].ToString();
+                        txtBCuit.Text = reader["cod_Proveedor"].ToString();
+                        txtbCantidad.Text = reader["cantidad"].ToString();
+                        txtBPVenta.Text = reader["precio_venta"].ToString();
+                        txtBPVenta.Text = reader["precio_compra"].ToString();
+                        txtbMarca.Text = reader["marca"].ToString();
+                        txtBPPedido.Text = reader["punto_pedido"].ToString();
+                        txtBCMaxima.Text = reader["cantidad_maxima"].ToString();
+                        txtBEProducto.Text = reader["estado"].ToString();
+                        checkbActivo.Checked = Convert.ToBoolean(reader["activo"]);
+
+                        if (reader["fecha_ingreso"]!= DBNull.Value)
+                        {
+                            dtpFIngreso.Value = Convert.ToDateTime(reader["fecha_ingreso"]);
+                        }
+
+                        if (reader["fecha_vencimiento"] != DBNull.Value)
+                        {
+                            dtpFVencimiento.Value = Convert.ToDateTime(reader["fecha_vencimiento"]);
+                        }
+                        MessageBox.Show("No se encontró un producto con esa descripcion");
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró un producto con esa descripcion");
+                    }
+                }
+            }
+        }
 
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
@@ -103,7 +175,7 @@ namespace PROTOTIPOS1
                 if (item.ToString().Trim().ToLower() == nuevoProducto.ToLower())
                 {
                     existe = true;
-                    break;
+                    return;
                 }
             }
 
@@ -136,13 +208,144 @@ namespace PROTOTIPOS1
 
 
                         limpiarValores();
-                     } catch (SqlException ex)
+                     } 
+                    catch (SqlException ex)
                     {
                         if (ex.Number == 2627) MessageBox.Show("Ya existe un producto con ese nombre");
                         else MessageBox.Show("Error: " + ex.Message);
                     }
                 }
             }
+        }
+
+        private void bttnGuardar_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+
+            string descripcion = cmbDescripcion.Text.Trim();
+            int? idRubro = cmbRubros.SelectedValue != null ? Convert.ToInt32(cmbRubros.SelectedValue) : (int?)null;
+            string umCompra = txtBUMCompra.Text.Trim();
+            string umVenta = txtbUMVenta.Text.Trim();
+            string marca = txtbMarca.Text.Trim();
+            string codProveedor = txtBCuit.Text.Trim();
+            string estado = txtBEProducto.Text.Trim();
+            decimal precioCompra = 0, precioVenta = 0;
+            int cantidad = 0, puntoPedido = 0, cantidadMaxima = 0;
+            DateTime fechaIngreso = dtpFIngreso.Value;
+            DateTime fechaVencimiento = dtpFVencimiento.Value;
+            bool activo = checkbActivo.Checked;
+
+            // Intentar convertir los campos numéricos (si no se cargaron, usar 0)
+            decimal.TryParse(lblPCompra.Text, out precioCompra);
+            decimal.TryParse(txtBPVenta.Text, out precioVenta);
+            int.TryParse(txtbCantidad.Text, out cantidad);
+            int.TryParse(txtBPPedido.Text, out puntoPedido);
+            int.TryParse(txtBCMaxima.Text, out cantidadMaxima);
+
+            if (string.IsNullOrEmpty(descripcion) || idRubro == null || string.IsNullOrEmpty(umVenta) || string.IsNullOrEmpty(marca))
+            {
+                MessageBox.Show("Los campos Descripción, Rubro, Unidad de Medida de Venta y Marca son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                conexion.Open();
+
+                
+                string queryExistencia = "SELECT COUNT(*) FROM Stock WHERE Descripcion = @Descripcion";
+                SqlCommand cmdExistencia = new SqlCommand(queryExistencia, conexion);
+                cmdExistencia.Parameters.AddWithValue("@Descripcion", descripcion);
+                int existe = (int)cmdExistencia.ExecuteScalar();
+
+                string query;
+
+                if (existe > 0)
+                {
+                    // Modificar
+                    query = @"UPDATE Stock SET 
+                        id_Rubro = @idRubro,
+                        UM_compra = @UMCompra,
+                        UM_venta = @UMVenta,
+                        cod_proveedor = @CodProveedor,
+                        cantidad = @Cantidad,
+                        precio_venta = @PrecioVenta,
+                        precio_compra = @PrecioCompra,
+                        marca = @Marca,
+                        fecha_ingreso = @FechaIngreso,
+                        fecha_vencimiento = @FechaVencimiento,
+                        punto_pedido = @PuntoPedido,
+                        cantidad_maxima = @CantidadMaxima,
+                        estado = @Estado,
+                        activo = @Activo
+                      WHERE Descripcion = @Descripcion";
+
+                    MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Guardar
+                    query = @"INSERT INTO Stock 
+                    (Descripcion, id_Rubro, UM_compra, UM_venta, cod_proveedor, cantidad, precio_venta, precio_compra, marca, fecha_ingreso, fecha_vencimiento, punto_pedido, cantidad_maxima, estado, activo)
+                    VALUES
+                    (@Descripcion, @idRubro, @UMCompra, @UMVenta, @CodProveedor, @Cantidad, @PrecioVenta, @PrecioCompra, @Marca, @FechaIngreso, @FechaVencimiento, @PuntoPedido, @CantidadMaxima, @Estado, @Activo)";
+
+                    MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@idRubro", idRubro);
+                    cmd.Parameters.AddWithValue("@UMCompra", (object)umCompra ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@UMVenta", umVenta);
+                    cmd.Parameters.AddWithValue("@CodProveedor", (object)codProveedor ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    cmd.Parameters.AddWithValue("@PrecioVenta", precioVenta);
+                    cmd.Parameters.AddWithValue("@PrecioCompra", precioCompra);
+                    cmd.Parameters.AddWithValue("@Marca", marca);
+                    cmd.Parameters.AddWithValue("@FechaIngreso", fechaIngreso);
+                    cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
+                    cmd.Parameters.AddWithValue("@PuntoPedido", puntoPedido);
+                    cmd.Parameters.AddWithValue("@CantidadMaxima", cantidadMaxima);
+                    cmd.Parameters.AddWithValue("@Estado", estado);
+                    cmd.Parameters.AddWithValue("@Activo", activo);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            limpiarValores();
+
+        }
+
+        private void bttnEliminar_Click(object sender, EventArgs e)
+        {
+            if(!esModificacion || idProductoActual <= 0)
+            {
+                MessageBox.Show("Primero cargue un producto");
+                return;
+            }
+            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar este producto?", "Confirmar", MessageBoxButtons.YesNo);
+            if(result == DialogResult.Yes)
+            {
+                string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+                using (SqlConnection conexion = new SqlConnection(connectionString))
+                {
+                    conexion.Open();
+                    string delete = "DELETE FROM Stock WHERE cod_Producto = @id";
+                    using (SqlCommand command = new SqlCommand(delete, conexion))
+                    {
+                        command.Parameters.AddWithValue("@id", idProductoActual);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Producto eliminado correctamente");
+                limpiarValores();
+                esModificacion = false;
+                idProductoActual = -1;
+            }
+
         }
     }
 }

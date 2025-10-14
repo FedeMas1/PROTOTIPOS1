@@ -73,8 +73,20 @@ namespace PROTOTIPOS1
             cmbRubros.SelectedIndex = -1;
             txtbMarca.Clear();
             txtbMedicion.Clear();
+            txtBUMCompra.Clear();
+            txtBCCompra.Clear();
+            txtBCProduccion.Clear();
+            txtBCProveedor.Clear();
+            txtbMarca.Clear();
+            txtBPPedido.Clear();
+            txtBCMaxima.Clear();
+            dtpFIngreso.Value = DateTime.Now;
+            dtpFVencimiento.Value = DateTime.Now;
             checkbActivo.Checked = false;
         }
+
+        private bool esModificacion = false;
+        private int idProductoActual = -1;
 
         private void bttnAgregar_Click(object sender, EventArgs e)
         {
@@ -138,6 +150,188 @@ namespace PROTOTIPOS1
                         else MessageBox.Show("Error: " + ex.Message);
                     }
                 }
+            }
+        }
+
+        private void bttnGuardar_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+
+            string descripcion = cmbDescripcion.Text.Trim();
+            int? idRubro = cmbRubros.SelectedValue != null ? Convert.ToInt32(cmbRubros.SelectedValue) : (int?)null;
+            string umCompra = txtBUMCompra.Text.Trim();
+            string medicion = txtbMedicion.Text.Trim();
+            string marca = txtbMarca.Text.Trim();
+            string codProveedor = txtBCProveedor.Text.Trim();
+            decimal precioCompra = 0;
+            int cCompra = 0, cProduccion = 0, puntoPedido = 0, cantidadMaxima = 0;
+            DateTime fechaCompra = dtpFIngreso.Value;
+            DateTime fechaVencimiento = dtpFVencimiento.Value;
+            bool activo = checkbActivo.Checked;
+
+            // Intentar convertir los campos numéricos (si no se cargaron, usar 0)
+            decimal.TryParse(lblPCompra.Text, out precioCompra);
+            int.TryParse(txtBCCompra.Text, out cCompra);
+            int.TryParse(txtBCProduccion.Text, out cProduccion);
+            int.TryParse(txtBPPedido.Text, out puntoPedido);
+            int.TryParse(txtBCMaxima.Text, out cantidadMaxima);
+
+            if (string.IsNullOrEmpty(descripcion) || idRubro == null || string.IsNullOrEmpty(medicion) || string.IsNullOrEmpty(marca))
+            {
+                MessageBox.Show("Los campos Descripción, Rubro, Medicion y Marca son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                conexion.Open();
+
+
+                string queryExistencia = "SELECT COUNT(*) FROM Stock WHERE Descripcion = @Descripcion";
+                SqlCommand cmdExistencia = new SqlCommand(queryExistencia, conexion);
+                cmdExistencia.Parameters.AddWithValue("@Descripcion", descripcion);
+                int existe = (int)cmdExistencia.ExecuteScalar();
+
+                string query;
+
+                if (existe > 0)
+                {
+                    // Modificar
+                    query = @"UPDATE Materiales SET 
+                        id_Rubro = @idRubro,
+                        UM_compra = @UMCompra,
+                        Medicion = @Medicion,
+                        cod_proveedor = @CodProveedor,
+                        cantidad_compra = @CantidadCompra,
+                        cantidad_produccion = @CantidadProduccion,
+                        precio_compra = @PrecioCompra,
+                        marca = @Marca,
+                        fecha_ingreso = @FechaIngreso,
+                        fecha_vencimiento = @FechaVencimiento,
+                        punto_pedido = @PuntoPedido,
+                        cantidad_maxima = @CantidadMaxima,
+                        activo = @Activo
+                      WHERE Descripcion = @Descripcion";
+
+                    MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Guardar
+                    query = @"INSERT INTO Materiales 
+                    (Descripcion, id_Rubro, UM_compra, Medicion, cod_proveedor, cantidad_compra, cantidad_produccion, precio_compra, marca, fecha_compra, fecha_vencimiento, punto_pedido, cantidad_maxima, activo)
+                    VALUES
+                    (@Descripcion, @idRubro, @UMCompra, @Medicion, @CodProveedor, @CantidadCompra, @CantidadProduccion, @PrecioCompra, @Marca, @FechaCompra, @FechaVencimiento, @PuntoPedido, @CantidadMaxima, @Activo)";
+
+                    MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+                    cmd.Parameters.AddWithValue("@idRubro", idRubro);
+                    cmd.Parameters.AddWithValue("@UMCompra", (object)umCompra ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Medicion", medicion);
+                    cmd.Parameters.AddWithValue("@CodProveedor", (object)codProveedor ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@CantidadCompra", cCompra);
+                    cmd.Parameters.AddWithValue("@CantidadProduccion", cProduccion);
+                    cmd.Parameters.AddWithValue("@PrecioCompra", precioCompra);
+                    cmd.Parameters.AddWithValue("@Marca", marca);
+                    cmd.Parameters.AddWithValue("@FechaCompra", fechaCompra);
+                    cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
+                    cmd.Parameters.AddWithValue("@PuntoPedido", puntoPedido);
+                    cmd.Parameters.AddWithValue("@CantidadMaxima", cantidadMaxima);
+                    cmd.Parameters.AddWithValue("@Activo", activo);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            limpiarValores();
+        }
+
+        private void bttnModificar_Click(object sender, EventArgs e)
+        {
+            string productoBuscado = Microsoft.VisualBasic.Interaction.InputBox(
+                "Ingrese la descripcion del producto", "Buscar producto", "");
+
+            if (string.IsNullOrEmpty(productoBuscado)) return;
+
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "SELECT * FROM Materiales WHERE Descripcion = @Descripcion";
+
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                conexion.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@Descripcion", productoBuscado);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        idProductoActual = Convert.ToInt32(reader["cod_Producto"]);
+                        esModificacion = true;
+
+                        cmbDescripcion.Text = reader["Descripcion"].ToString();
+                        cmbRubros.SelectedValue = reader["id_Rubro"];
+                        txtbMedicion.Text = reader["Medicion"].ToString();
+                        txtbMarca.Text = reader["marca"].ToString();
+                        lblCProducto.Text = reader["cod_Producto"].ToString();
+                        txtBUMCompra.Text = reader["UM_compra"].ToString();
+                        txtBCProduccion.Text = reader["cantidad_produccion"].ToString();
+                        txtBCProveedor.Text = reader["cod_proveedor"].ToString();
+                        txtBCCompra.Text = reader["cantidad_compra"].ToString();
+                        txtBPPedido.Text = reader["punto_pedido"].ToString();
+                        txtBCMaxima.Text = reader["cantidad_maxima"].ToString();
+                        checkbActivo.Checked = Convert.ToBoolean(reader["activo"]);
+
+                        if (reader["fecha_compra"] != DBNull.Value)
+                        {
+                            dtpFIngreso.Value = Convert.ToDateTime(reader["fecha_compra"]);
+                        }
+
+                        if (reader["fecha_vencimiento"] != DBNull.Value)
+                        {
+                            dtpFVencimiento.Value = Convert.ToDateTime(reader["fecha_vencimiento"]);
+                        }
+                        MessageBox.Show("No se encontró un producto con esa descripcion");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró un producto con esa descripcion");
+                    }
+                }
+            }
+        }
+
+        private void bttnEliminar_Click(object sender, EventArgs e)
+        {
+            if (!esModificacion || idProductoActual <= 0)
+            {
+                MessageBox.Show("Primero cargue un producto");
+                return;
+            }
+            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar este producto?", "Confirmar", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+                using (SqlConnection conexion = new SqlConnection(connectionString))
+                {
+                    conexion.Open();
+                    string delete = "DELETE FROM Materiales WHERE cod_Producto = @id";
+                    using (SqlCommand command = new SqlCommand(delete, conexion))
+                    {
+                        command.Parameters.AddWithValue("@id", idProductoActual);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Producto eliminado correctamente");
+                limpiarValores();
+                esModificacion = false;
+                idProductoActual = -1;
             }
         }
     }

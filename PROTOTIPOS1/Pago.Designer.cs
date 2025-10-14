@@ -147,7 +147,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button1.Location = new System.Drawing.Point(82, 440);
+            this.button1.Location = new System.Drawing.Point(349, 440);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 36);
             this.button1.TabIndex = 10;
@@ -158,7 +158,7 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button2.Location = new System.Drawing.Point(365, 440);
+            this.button2.Location = new System.Drawing.Point(82, 440);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(118, 36);
             this.button2.TabIndex = 11;

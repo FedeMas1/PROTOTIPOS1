@@ -41,11 +41,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtbCProveedor = new System.Windows.Forms.TextBox();
             this.txtBCantidadA = new System.Windows.Forms.TextBox();
-            this.txtBPrecioCompra = new System.Windows.Forms.TextBox();
             this.txtbCantidadM = new System.Windows.Forms.TextBox();
             this.txtBPPedido = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bttnEliminar = new System.Windows.Forms.Button();
+            this.bttnModificar = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -61,7 +60,8 @@
             this.cmbDescripcion = new System.Windows.Forms.ComboBox();
             this.txtbMarca = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblCProducto = new System.Windows.Forms.Label();
+            this.lblPCompra = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -194,13 +194,6 @@
             this.txtBCantidadA.Size = new System.Drawing.Size(100, 20);
             this.txtBCantidadA.TabIndex = 17;
             // 
-            // txtBPrecioCompra
-            // 
-            this.txtBPrecioCompra.Location = new System.Drawing.Point(679, 140);
-            this.txtBPrecioCompra.Name = "txtBPrecioCompra";
-            this.txtBPrecioCompra.Size = new System.Drawing.Size(100, 20);
-            this.txtBPrecioCompra.TabIndex = 18;
-            // 
             // txtbCantidadM
             // 
             this.txtbCantidadM.Location = new System.Drawing.Point(679, 233);
@@ -215,29 +208,31 @@
             this.txtBPPedido.Size = new System.Drawing.Size(100, 20);
             this.txtBPPedido.TabIndex = 21;
             // 
-            // button2
+            // bttnEliminar
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button2.Location = new System.Drawing.Point(379, 371);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 38);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bttnEliminar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnEliminar.Location = new System.Drawing.Point(379, 371);
+            this.bttnEliminar.Name = "bttnEliminar";
+            this.bttnEliminar.Size = new System.Drawing.Size(106, 38);
+            this.bttnEliminar.TabIndex = 22;
+            this.bttnEliminar.Text = "Eliminar";
+            this.bttnEliminar.UseVisualStyleBackColor = false;
+            this.bttnEliminar.Click += new System.EventHandler(this.bttnEliminar_Click);
             // 
-            // button3
+            // bttnModificar
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button3.Location = new System.Drawing.Point(34, 371);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 38);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = false;
+            this.bttnModificar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnModificar.Location = new System.Drawing.Point(34, 371);
+            this.bttnModificar.Name = "bttnModificar";
+            this.bttnModificar.Size = new System.Drawing.Size(106, 38);
+            this.bttnModificar.TabIndex = 23;
+            this.bttnModificar.Text = "Modificar";
+            this.bttnModificar.UseVisualStyleBackColor = false;
+            this.bttnModificar.Click += new System.EventHandler(this.bttnModificar_Click);
             // 
             // button5
             // 
@@ -386,15 +381,25 @@
             this.label4.TabIndex = 55;
             this.label4.Text = "Marca";
             // 
-            // label13
+            // lblCProducto
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label13.Location = new System.Drawing.Point(188, 154);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 20);
-            this.label13.TabIndex = 57;
-            this.label13.Text = "XXXX";
+            this.lblCProducto.AutoSize = true;
+            this.lblCProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblCProducto.Location = new System.Drawing.Point(188, 154);
+            this.lblCProducto.Name = "lblCProducto";
+            this.lblCProducto.Size = new System.Drawing.Size(53, 20);
+            this.lblCProducto.TabIndex = 57;
+            this.lblCProducto.Text = "XXXX";
+            // 
+            // lblPCompra
+            // 
+            this.lblPCompra.AutoSize = true;
+            this.lblPCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lblPCompra.Location = new System.Drawing.Point(689, 142);
+            this.lblPCompra.Name = "lblPCompra";
+            this.lblPCompra.Size = new System.Drawing.Size(48, 18);
+            this.lblPCompra.TabIndex = 58;
+            this.lblPCompra.Text = "XXXX";
             // 
             // Inventario
             // 
@@ -402,7 +407,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(902, 438);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblPCompra);
+            this.Controls.Add(this.lblCProducto);
             this.Controls.Add(this.txtbMarca);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbDescripcion);
@@ -418,11 +424,10 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bttnModificar);
+            this.Controls.Add(this.bttnEliminar);
             this.Controls.Add(this.txtBPPedido);
             this.Controls.Add(this.txtbCantidadM);
-            this.Controls.Add(this.txtBPrecioCompra);
             this.Controls.Add(this.txtBCantidadA);
             this.Controls.Add(this.txtbCProveedor);
             this.Controls.Add(this.label10);
@@ -459,11 +464,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtbCProveedor;
         private System.Windows.Forms.TextBox txtBCantidadA;
-        private System.Windows.Forms.TextBox txtBPrecioCompra;
         private System.Windows.Forms.TextBox txtbCantidadM;
         private System.Windows.Forms.TextBox txtBPPedido;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bttnEliminar;
+        private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -479,6 +483,7 @@
         private System.Windows.Forms.ComboBox cmbDescripcion;
         private System.Windows.Forms.TextBox txtbMarca;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblCProducto;
+        private System.Windows.Forms.Label lblPCompra;
     }
 }

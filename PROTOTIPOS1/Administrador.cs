@@ -18,6 +18,7 @@ namespace PROTOTIPOS1
         {
             InitializeComponent();
             dgvUsuarios.CellEndEdit += dgvUsuarios_CellEndEdit;
+            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,6 +46,16 @@ namespace PROTOTIPOS1
                     adapter.Fill(dt);
                     dgvUsuarios.DataSource = dt;
 
+                    if (!dgvUsuarios.Columns.Contains("Eliminar"))
+                    {
+                        DataGridViewButtonColumn bttnEliminar = new DataGridViewButtonColumn();
+                        bttnEliminar.Name = "Eliminar";
+                        bttnEliminar.HeaderText = "Eliminar";
+                        bttnEliminar.Text = "Eliminar";
+                        bttnEliminar.UseColumnTextForButtonValue = true;
+                        dgvUsuarios.Columns.Add(bttnEliminar);
+                    }
+
                     // nivel
                     foreach(DataGridViewColumn columna in dgvUsuarios.Columns)
                     {
@@ -68,7 +79,7 @@ namespace PROTOTIPOS1
             {
                 MessageBox.Show("Error al cargar " + ex.Message);
             }
-    }
+        }
 
         private void dgvUsuarios_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -107,5 +118,42 @@ namespace PROTOTIPOS1
                 MessageBox.Show("Error al actualizar el nivel" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+       
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 && dgvUsuarios.Columns[e.ColumnIndex].Name == "Eliminar")
+            {
+                int idUsuario = Convert.ToInt32(dgvUsuarios.Rows[e.RowIndex].Cells["id_Usuario"].Value);
+                string nombre = dgvUsuarios.Rows[e.RowIndex].Cells["nombre_Usuario"].Value.ToString();
+                
+                DialogResult confirmar = MessageBox.Show(
+           $"¿Seguro que desea eliminar el usuario '{nombre}'?",
+           "Confirmar eliminación",
+           MessageBoxButtons.YesNo,
+           MessageBoxIcon.Question
+       );
+                if(confirmar == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using(SqlConnection conn = new SqlConnection(cadena_Conexion))
+                        {
+                            conn.Open();
+                            string consulta = "DELETE FROM Usuarios WHERE id_Usuario = @id";
+                            SqlCommand comando = new SqlCommand(consulta, conn);
+                            comando.Parameters.AddWithValue("@id", idUsuario);
+                            comando.ExecuteNonQuery();
+                        }
+                        MessageBox.Show("Usuario eliminado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarUsuarios();
+                    }catch(Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+            }
+        }
+
     }
 }

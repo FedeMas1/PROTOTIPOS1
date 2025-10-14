@@ -14,6 +14,7 @@ namespace PROTOTIPOS1
 {
     public partial class Registro : Form
     {
+        string idioma = "Español";
         public Registro()
         {
             InitializeComponent();
@@ -133,6 +134,54 @@ namespace PROTOTIPOS1
             textBox4.Clear();
             textBox5.Clear();
             textBox6.Clear();
+        }
+
+        private void bttnTraducir_Click(object sender, EventArgs e)
+        {
+            
+
+            if (idioma == "Español")
+            {
+
+                bttnBack.Text = "Back";
+                lblNombre.Text = "Name";
+                lblApellido.Text = "Surname";
+                lblNombreUsuario.Text = "User name";
+                lblMail.Text = "Email";
+                lblContraseña.Text = "Password";
+                lblRepetirContraseña.Text = "Repeat password";
+                button1.Text = "Sign up";
+                lblTitulo.Text = "User Registration";
+                lblArroba.Text = "Must contain a @";
+                lblParametros.Text = "Must contain at least 8 characters, a capital letter and a number";
+                bttnTraducir.Text = "Translate";
+
+                idioma = "Ingles";
+            }
+            else
+            {
+                bttnBack.Text = "Volver";
+                lblNombre.Text = "Nombre";
+                lblApellido.Text = "Apellido";
+                lblNombreUsuario.Text = "Nombre de usuario";
+                lblMail.Text = "Mail";
+                lblContraseña.Text = "Contraseña";
+                lblRepetirContraseña.Text = "Repetir contraseña";
+                button1.Text = "Registrarse";
+                lblTitulo.Text = "Registro de Usuario";
+                lblArroba.Text = "Debe contener un @";
+                lblParametros.Text = "Debe contener al menos 8 caracteres, una mayuscula y un numero";
+                bttnTraducir.Text = "Traducir";
+
+                idioma = "Español";
+            }
+
+          
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }

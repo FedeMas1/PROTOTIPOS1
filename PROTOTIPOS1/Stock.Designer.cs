@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.checkbActivo = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,21 +44,21 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBUMCompra = new System.Windows.Forms.TextBox();
             this.txtbUMVenta = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtBCuit = new System.Windows.Forms.TextBox();
+            this.txtbCantidad = new System.Windows.Forms.TextBox();
+            this.txtBPVenta = new System.Windows.Forms.TextBox();
             this.txtbMarca = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtBPPedido = new System.Windows.Forms.TextBox();
+            this.txtBCMaxima = new System.Windows.Forms.TextBox();
+            this.txtBEProducto = new System.Windows.Forms.TextBox();
+            this.bttnEliminar = new System.Windows.Forms.Button();
+            this.bttnModificar = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFVencimiento = new System.Windows.Forms.DateTimePicker();
+            this.dtpFIngreso = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -70,25 +70,26 @@
             this.label25 = new System.Windows.Forms.Label();
             this.cmbRubros = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lblPCompra = new System.Windows.Forms.Label();
             this.bttnAgregar = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.cmbDescripcion = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
+            this.lblCProducto = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // bttnGuardar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(841, 453);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bttnGuardar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.bttnGuardar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bttnGuardar.Location = new System.Drawing.Point(841, 453);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(85, 40);
+            this.bttnGuardar.TabIndex = 0;
+            this.bttnGuardar.Text = "Guardar";
+            this.bttnGuardar.UseVisualStyleBackColor = false;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // label1
             // 
@@ -244,12 +245,12 @@
             this.label14.TabIndex = 16;
             this.label14.Text = "Estado del producto";
             // 
-            // textBox3
+            // txtBUMCompra
             // 
-            this.textBox3.Location = new System.Drawing.Point(283, 189);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 18;
+            this.txtBUMCompra.Location = new System.Drawing.Point(283, 189);
+            this.txtBUMCompra.Name = "txtBUMCompra";
+            this.txtBUMCompra.Size = new System.Drawing.Size(100, 20);
+            this.txtBUMCompra.TabIndex = 18;
             // 
             // txtbUMVenta
             // 
@@ -258,26 +259,26 @@
             this.txtbUMVenta.Size = new System.Drawing.Size(100, 20);
             this.txtbUMVenta.TabIndex = 19;
             // 
-            // textBox5
+            // txtBCuit
             // 
-            this.textBox5.Location = new System.Drawing.Point(92, 271);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 20;
+            this.txtBCuit.Location = new System.Drawing.Point(92, 271);
+            this.txtBCuit.Name = "txtBCuit";
+            this.txtBCuit.Size = new System.Drawing.Size(100, 20);
+            this.txtBCuit.TabIndex = 20;
             // 
-            // textBox6
+            // txtbCantidad
             // 
-            this.textBox6.Location = new System.Drawing.Point(101, 313);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 21;
+            this.txtbCantidad.Location = new System.Drawing.Point(101, 313);
+            this.txtbCantidad.Name = "txtbCantidad";
+            this.txtbCantidad.Size = new System.Drawing.Size(100, 20);
+            this.txtbCantidad.TabIndex = 21;
             // 
-            // textBox8
+            // txtBPVenta
             // 
-            this.textBox8.Location = new System.Drawing.Point(691, 67);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 23;
+            this.txtBPVenta.Location = new System.Drawing.Point(691, 67);
+            this.txtBPVenta.Name = "txtBPVenta";
+            this.txtBPVenta.Size = new System.Drawing.Size(100, 20);
+            this.txtBPVenta.TabIndex = 23;
             // 
             // txtbMarca
             // 
@@ -286,50 +287,52 @@
             this.txtbMarca.Size = new System.Drawing.Size(100, 20);
             this.txtbMarca.TabIndex = 24;
             // 
-            // textBox12
+            // txtBPPedido
             // 
-            this.textBox12.Location = new System.Drawing.Point(702, 277);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 27;
+            this.txtBPPedido.Location = new System.Drawing.Point(702, 277);
+            this.txtBPPedido.Name = "txtBPPedido";
+            this.txtBPPedido.Size = new System.Drawing.Size(100, 20);
+            this.txtBPPedido.TabIndex = 27;
             // 
-            // textBox13
+            // txtBCMaxima
             // 
-            this.textBox13.Location = new System.Drawing.Point(708, 319);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 28;
+            this.txtBCMaxima.Location = new System.Drawing.Point(708, 319);
+            this.txtBCMaxima.Name = "txtBCMaxima";
+            this.txtBCMaxima.Size = new System.Drawing.Size(100, 20);
+            this.txtBCMaxima.TabIndex = 28;
             // 
-            // textBox14
+            // txtBEProducto
             // 
-            this.textBox14.Location = new System.Drawing.Point(726, 366);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 29;
+            this.txtBEProducto.Location = new System.Drawing.Point(726, 366);
+            this.txtBEProducto.Name = "txtBEProducto";
+            this.txtBEProducto.Size = new System.Drawing.Size(100, 20);
+            this.txtBEProducto.TabIndex = 29;
             // 
-            // button2
+            // bttnEliminar
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.button2.Location = new System.Drawing.Point(412, 453);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 40);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bttnEliminar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.bttnEliminar.Location = new System.Drawing.Point(412, 453);
+            this.bttnEliminar.Name = "bttnEliminar";
+            this.bttnEliminar.Size = new System.Drawing.Size(91, 40);
+            this.bttnEliminar.TabIndex = 30;
+            this.bttnEliminar.Text = "Eliminar";
+            this.bttnEliminar.UseVisualStyleBackColor = false;
+            this.bttnEliminar.Click += new System.EventHandler(this.bttnEliminar_Click);
             // 
-            // button3
+            // bttnModificar
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.button3.Location = new System.Drawing.Point(15, 453);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 40);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = false;
+            this.bttnModificar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.bttnModificar.Location = new System.Drawing.Point(15, 453);
+            this.bttnModificar.Name = "bttnModificar";
+            this.bttnModificar.Size = new System.Drawing.Size(98, 40);
+            this.bttnModificar.TabIndex = 31;
+            this.bttnModificar.Text = "Modificar";
+            this.bttnModificar.UseVisualStyleBackColor = false;
+            this.bttnModificar.Click += new System.EventHandler(this.bttnModificar_Click);
             // 
             // label15
             // 
@@ -354,21 +357,21 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // dateTimePicker1
+            // dtpFVencimiento
             // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker1.Location = new System.Drawing.Point(740, 236);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 36;
+            this.dtpFVencimiento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpFVencimiento.Location = new System.Drawing.Point(740, 236);
+            this.dtpFVencimiento.Name = "dtpFVencimiento";
+            this.dtpFVencimiento.Size = new System.Drawing.Size(200, 20);
+            this.dtpFVencimiento.TabIndex = 36;
             // 
-            // dateTimePicker2
+            // dtpFIngreso
             // 
-            this.dateTimePicker2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker2.Location = new System.Drawing.Point(702, 189);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 37;
+            this.dtpFIngreso.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpFIngreso.Location = new System.Drawing.Point(702, 189);
+            this.dtpFIngreso.Name = "dtpFIngreso";
+            this.dtpFIngreso.Size = new System.Drawing.Size(200, 20);
+            this.dtpFIngreso.TabIndex = 37;
             // 
             // label16
             // 
@@ -478,15 +481,15 @@
             this.label26.TabIndex = 49;
             this.label26.Text = "* No es necesario completar";
             // 
-            // label19
+            // lblPCompra
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label19.Location = new System.Drawing.Point(703, 103);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 25);
-            this.label19.TabIndex = 50;
-            this.label19.Text = "XXXX";
+            this.lblPCompra.AutoSize = true;
+            this.lblPCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblPCompra.Location = new System.Drawing.Point(703, 103);
+            this.lblPCompra.Name = "lblPCompra";
+            this.lblPCompra.Size = new System.Drawing.Size(68, 25);
+            this.lblPCompra.TabIndex = 50;
+            this.lblPCompra.Text = "XXXX";
             // 
             // bttnAgregar
             // 
@@ -519,15 +522,15 @@
             this.cmbDescripcion.Size = new System.Drawing.Size(275, 21);
             this.cmbDescripcion.TabIndex = 54;
             // 
-            // label28
+            // lblCProducto
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label28.Location = new System.Drawing.Point(174, 108);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(53, 20);
-            this.label28.TabIndex = 55;
-            this.label28.Text = "XXXX";
+            this.lblCProducto.AutoSize = true;
+            this.lblCProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblCProducto.Location = new System.Drawing.Point(174, 108);
+            this.lblCProducto.Name = "lblCProducto";
+            this.lblCProducto.Size = new System.Drawing.Size(53, 20);
+            this.lblCProducto.TabIndex = 55;
+            this.lblCProducto.Text = "XXXX";
             // 
             // Stock
             // 
@@ -535,11 +538,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(969, 505);
-            this.Controls.Add(this.label28);
+            this.Controls.Add(this.lblCProducto);
             this.Controls.Add(this.cmbDescripcion);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.bttnAgregar);
-            this.Controls.Add(this.label19);
+            this.Controls.Add(this.lblPCompra);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.cmbRubros);
             this.Controls.Add(this.label25);
@@ -551,21 +554,21 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpFIngreso);
+            this.Controls.Add(this.dtpFVencimiento);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.bttnModificar);
+            this.Controls.Add(this.bttnEliminar);
+            this.Controls.Add(this.txtBEProducto);
+            this.Controls.Add(this.txtBCMaxima);
+            this.Controls.Add(this.txtBPPedido);
             this.Controls.Add(this.txtbMarca);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtBPVenta);
+            this.Controls.Add(this.txtbCantidad);
+            this.Controls.Add(this.txtBCuit);
             this.Controls.Add(this.txtbUMVenta);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtBUMCompra);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -581,7 +584,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkbActivo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bttnGuardar);
             this.Name = "Stock";
             this.Text = "Stock";
             this.Load += new System.EventHandler(this.Stock_Load);
@@ -592,7 +595,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkbActivo;
         private System.Windows.Forms.Label label2;
@@ -608,21 +611,21 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtBUMCompra;
         private System.Windows.Forms.TextBox txtbUMVenta;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtBCuit;
+        private System.Windows.Forms.TextBox txtbCantidad;
+        private System.Windows.Forms.TextBox txtBPVenta;
         private System.Windows.Forms.TextBox txtbMarca;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtBPPedido;
+        private System.Windows.Forms.TextBox txtBCMaxima;
+        private System.Windows.Forms.TextBox txtBEProducto;
+        private System.Windows.Forms.Button bttnEliminar;
+        private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpFVencimiento;
+        private System.Windows.Forms.DateTimePicker dtpFIngreso;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -634,10 +637,10 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cmbRubros;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblPCompra;
         private System.Windows.Forms.Button bttnAgregar;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox cmbDescripcion;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label lblCProducto;
     }
 }
