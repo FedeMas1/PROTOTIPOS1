@@ -57,8 +57,8 @@
             this.cbEstado = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.bttnEliminar = new System.Windows.Forms.Button();
+            this.bttnModificar = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.bttnBuscar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -327,28 +327,30 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // bttnEliminar
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button2.Location = new System.Drawing.Point(388, 410);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 43);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bttnEliminar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnEliminar.Location = new System.Drawing.Point(388, 410);
+            this.bttnEliminar.Name = "bttnEliminar";
+            this.bttnEliminar.Size = new System.Drawing.Size(117, 43);
+            this.bttnEliminar.TabIndex = 31;
+            this.bttnEliminar.Text = "Eliminar";
+            this.bttnEliminar.UseVisualStyleBackColor = false;
+            this.bttnEliminar.Click += new System.EventHandler(this.bttnEliminar_Click);
             // 
-            // button5
+            // bttnModificar
             // 
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button5.Location = new System.Drawing.Point(56, 410);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(117, 43);
-            this.button5.TabIndex = 34;
-            this.button5.Text = "Modificar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnModificar.Location = new System.Drawing.Point(56, 410);
+            this.bttnModificar.Name = "bttnModificar";
+            this.bttnModificar.Size = new System.Drawing.Size(117, 43);
+            this.bttnModificar.TabIndex = 34;
+            this.bttnModificar.Text = "Modificar";
+            this.bttnModificar.UseVisualStyleBackColor = true;
+            this.bttnModificar.Click += new System.EventHandler(this.bttnModificar_Click);
             // 
             // button6
             // 
@@ -432,15 +434,16 @@
             this.label21.TabIndex = 42;
             this.label21.Text = "* No es necesario completar";
             // 
-            // button7
+            // bttnBuscar
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button7.Location = new System.Drawing.Point(261, 72);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(89, 30);
-            this.button7.TabIndex = 43;
-            this.button7.Text = "Buscar";
-            this.button7.UseVisualStyleBackColor = true;
+            this.bttnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnBuscar.Location = new System.Drawing.Point(261, 72);
+            this.bttnBuscar.Name = "bttnBuscar";
+            this.bttnBuscar.Size = new System.Drawing.Size(89, 30);
+            this.bttnBuscar.TabIndex = 43;
+            this.bttnBuscar.Text = "Buscar";
+            this.bttnBuscar.UseVisualStyleBackColor = true;
+            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click);
             // 
             // Proveedores
             // 
@@ -448,7 +451,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(900, 474);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.bttnBuscar);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
@@ -457,8 +460,8 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bttnModificar);
+            this.Controls.Add(this.bttnEliminar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cbEstado);
@@ -527,8 +530,8 @@
         private System.Windows.Forms.CheckBox cbEstado;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button bttnEliminar;
+        private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -537,6 +540,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button bttnBuscar;
     }
 }
