@@ -77,9 +77,10 @@ namespace PROTOTIPOS1
         {
             cmbDescripcion.Text = "";
             cmbRubros.SelectedIndex = -1;
+            lblCProducto.Text = "XXXX";
             txtbMarca.Clear();
             txtbUMVenta.Clear();
-            txtbUMVenta.Clear();
+            txtBUMCompra.Clear();
             txtBCuit.Clear();
             txtbCantidad.Clear();
             txtBPVenta.Clear();
@@ -143,7 +144,6 @@ namespace PROTOTIPOS1
                         {
                             dtpFVencimiento.Value = Convert.ToDateTime(reader["fecha_vencimiento"]);
                         }
-                        MessageBox.Show("No se encontró un producto con esa descripcion");
                         
                     }
                     else
@@ -346,6 +346,23 @@ namespace PROTOTIPOS1
                 idProductoActual = -1;
             }
 
+        }
+
+        private void bttnCSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+
+                Sesion.CerrarSesion();
+
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+
+            }
         }
     }
 }

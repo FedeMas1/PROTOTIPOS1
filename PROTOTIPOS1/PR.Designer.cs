@@ -44,6 +44,7 @@
             this.bttnCargar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNPedido = new System.Windows.Forms.Label();
+            this.bttnCSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -195,7 +196,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker1.Location = new System.Drawing.Point(769, 43);
+            this.dateTimePicker1.Location = new System.Drawing.Point(726, 79);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 14;
@@ -231,12 +232,25 @@
             this.lblNPedido.TabIndex = 19;
             this.lblNPedido.Text = "XXXX";
             // 
+            // bttnCSesion
+            // 
+            this.bttnCSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.bttnCSesion.Location = new System.Drawing.Point(811, 17);
+            this.bttnCSesion.Name = "bttnCSesion";
+            this.bttnCSesion.Size = new System.Drawing.Size(94, 39);
+            this.bttnCSesion.TabIndex = 20;
+            this.bttnCSesion.Text = "Cerrar Sesion";
+            this.bttnCSesion.UseVisualStyleBackColor = true;
+            this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
+            // 
             // PR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(981, 499);
+            this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.lblNPedido);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bttnCargar);
@@ -281,5 +295,6 @@
         private System.Windows.Forms.Button bttnCargar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblNPedido;
+        private System.Windows.Forms.Button bttnCSesion;
     }
 }

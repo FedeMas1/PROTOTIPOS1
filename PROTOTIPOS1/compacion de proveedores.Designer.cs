@@ -41,6 +41,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.bttnCSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,12 +183,25 @@
             this.button6.Text = "Buscar";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // bttnCSesion
+            // 
+            this.bttnCSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.bttnCSesion.Location = new System.Drawing.Point(765, 21);
+            this.bttnCSesion.Name = "bttnCSesion";
+            this.bttnCSesion.Size = new System.Drawing.Size(94, 39);
+            this.bttnCSesion.TabIndex = 38;
+            this.bttnCSesion.Text = "Cerrar Sesion";
+            this.bttnCSesion.UseVisualStyleBackColor = true;
+            this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
+            // 
             // compacion_de_proveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(894, 453);
+            this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button5);
@@ -225,5 +239,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button bttnCSesion;
     }
 }

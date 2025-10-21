@@ -308,5 +308,22 @@ namespace PROTOTIPOS1
                 idProductoActual = -1;
             }
         }
+
+        private void bttnCSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión",
+             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+
+                Sesion.CerrarSesion();
+
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +25,9 @@ namespace PROTOTIPOS1
         {
             CargarRubros();
             lblNSolicitud.Text = "XXXX";
+
+            dgvProductos.AllowUserToAddRows = false;
+            dgvProductos.CellContentClick += dgvProductos_CellContentClick;
         }
 
         private void CargarRubros()
@@ -71,13 +75,23 @@ namespace PROTOTIPOS1
             }
         }
 
-        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvProductos.Columns["Eliminar"].Index && e.RowIndex >= 0)
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            if (dgvProductos.Columns[e.ColumnIndex].Name == "Eliminar")
             {
-                dgvProductos.Rows.RemoveAt(e.RowIndex);
-            }
+                if(e.RowIndex >= 0 && e.RowIndex < dgvProductos.Rows.Count && !dgvProductos.Rows[e.RowIndex].IsNewRow)
+                {
+                    DialogResult confirm = MessageBox.Show("¿Desea eliminar este producto?", "Confirmar eliminacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if(confirm == DialogResult.Yes)
+                    {
+                        dgvProductos.Rows.RemoveAt(e.RowIndex);
+                    }
+                }
+            }                  
         }
+
 
         private void bttnCargar_Click(object sender, EventArgs e)
         {
@@ -99,76 +113,130 @@ namespace PROTOTIPOS1
                 return;
             }
 
+            DialogResult confirm = MessageBox.Show("¿Desea guardar la solicitud de compra?", "Confirmar guardado", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.No) return;
+
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
 
-                if (idScActual == 0)
+                try
                 {
-                    // GUARDAR 
-                    foreach (DataGridViewRow row in dgvProductos.Rows)
-                    {
-                        if (row.IsNewRow) continue;
-
-                        string query = "INSERT INTO SC (fecha, codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca, rubro, estado) " +
-                                       "VALUES (@Fecha, @Codigo, @Descripcion, @Cantidad, @Marca, @Rubro, @Estado)";
-
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                    int nuevoIdSc = 0;
+                    if (idScActual == 0)
+                    {                        // Agregar en Sc_Master
+                        string insertMaster = "INSERT INTO Sc_Master (fecha, rubro, estado) " +
+                            "VALUES (@Fecha, @Rubro, @Estado); " +
+                            "SELECT SCOPE_IDENTITY();";
+                        using (SqlCommand cmd = new SqlCommand(insertMaster, conn, transaction))
                         {
                             cmd.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
-                            cmd.Parameters.AddWithValue("@Codigo", row.Cells["codigo_bien_de_uso"].Value);
-                            cmd.Parameters.AddWithValue("@Descripcion", row.Cells["Descripcion"].Value);
-                            cmd.Parameters.AddWithValue("@Cantidad", row.Cells["cantidad_a_pedir"].Value);
-                            cmd.Parameters.AddWithValue("@Marca", row.Cells["marca"].Value);
-                            cmd.Parameters.AddWithValue("@Rubro", row.Cells["id_Rubro"].Value);
+                            cmd.Parameters.AddWithValue("@Rubro", cmbRubros.SelectedValue);
                             cmd.Parameters.AddWithValue("@Estado", "Solicitado");
-
-                            cmd.ExecuteNonQuery();
+                            nuevoIdSc = Convert.ToInt32(cmd.ExecuteScalar());
                         }
                     }
 
-                    MessageBox.Show("Solicitud de compra guardada correctamente.");
-                }
-                else
-                {
-                    // MODIFICAR 
-                    foreach (DataGridViewRow row in dgvProductos.Rows)
+
+                    if (idScActual == 0)
                     {
-                        if (row.IsNewRow) continue;
+                        // GUARDAR en Sc_Detalle
+                        foreach (DataGridViewRow row in dgvProductos.Rows)
+                        {
+                            if (row.IsNewRow) continue;
 
-                        string query = "UPDATE SC SET fecha=@Fecha, codigo_bien_de_uso=@Codigo, descripcion=@Descripcion, cantidad_a_pedir=@Cantidad, marca=@Marca, rubro=@Rubro, estado=@Estado WHERE id_Sc=@Id";
+                            string queryDetalle = "INSERT INTO Sc_Detalle (id_Sc, codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca) " +
+                                           "VALUES (@IdSc, @Fecha, @Codigo, @Descripcion, @Cantidad, @Marca)";
 
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                            using (SqlCommand cmd = new SqlCommand(queryDetalle, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@IdSc", nuevoIdSc);
+                                cmd.Parameters.AddWithValue("@Codigo", row.Cells["codigo_bien_de_uso"].Value);
+                                cmd.Parameters.AddWithValue("@Descripcion", row.Cells["Descripcion"].Value);
+                                cmd.Parameters.AddWithValue("@Cantidad", row.Cells["cantidad_a_pedir"].Value);
+                                cmd.Parameters.AddWithValue("@Marca", row.Cells["marca"].Value);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaction.Commit();
+                        MessageBox.Show("Solicitud de compra guardada correctamente.");
+                    }
+                    else
+                    {
+                        // MODIFICAR 
+
+
+                        string query = "UPDATE Sc_Master SET fecha=@Fecha, rubro=@Rubro, estado=@Estado WHERE id_Sc=@Id";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn, transaction))
                         {
                             cmd.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
-                            cmd.Parameters.AddWithValue("@Codigo", row.Cells["codigo_bien_de_uso"].Value);
-                            cmd.Parameters.AddWithValue("@Descripcion", row.Cells["Descripcion"].Value);
-                            cmd.Parameters.AddWithValue("@Cantidad", row.Cells["cantidad_a_pedir"].Value);
-                            cmd.Parameters.AddWithValue("@Marca", row.Cells["marca"].Value);
-                            cmd.Parameters.AddWithValue("@Rubro", row.Cells["id_Rubro"].Value);
+                            cmd.Parameters.AddWithValue("@Rubro", cmbRubros.SelectedValue);
                             cmd.Parameters.AddWithValue("@Estado", "Solicitado");
                             cmd.Parameters.AddWithValue("@Id", idScActual);
 
                             cmd.ExecuteNonQuery();
                         }
+
+                        using (SqlCommand cmdDetalle = new SqlCommand("DELETE FROM SC_Detalle WHERE id_Sc=@Id", conn, transaction))
+                        {
+                            cmdDetalle.Parameters.AddWithValue("@Id", idScActual);
+                            cmdDetalle.ExecuteNonQuery();
+                        }
+
+                        foreach (DataGridViewRow row in dgvProductos.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+
+                            string insertDetalle = "INSERT INTO Sc_Detalle (id_Sc, codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca) " +
+                                "VALUES (@Id, @Codigo, @Descripcion, @Cantidad, @Marca)";
+                            using (SqlCommand cmdDet = new SqlCommand(insertDetalle, conn, transaction))
+                            {
+                                cmdDet.Parameters.AddWithValue("@IdSc", idScActual);
+                                cmdDet.Parameters.AddWithValue("@Codigo", row.Cells["codigo_bien_de_uso"].Value);
+                                cmdDet.Parameters.AddWithValue("@Descripcion", row.Cells["Descripcion"].Value);
+                                cmdDet.Parameters.AddWithValue("@Cantidad", row.Cells["cantidad_a_pedir"].Value);
+                                cmdDet.Parameters.AddWithValue("@Marca", row.Cells["marca"].Value);
+                                cmdDet.ExecuteNonQuery();
+                            }
+
+                        }
+                        transaction.Commit();
+                        MessageBox.Show("Solicitud de compra modificada correctamente.");
                     }
 
-                    MessageBox.Show("Solicitud de compra modificada correctamente.");
+                    LimpiarFormulario();
+                }
+
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Error al guardar: " + ex.Message);
                 }
             }
+        }
 
+
+
+        private void LimpiarFormulario()
+        {
             lblNSolicitud.Text = "XXXX";
             idScActual = 0;
             dgvProductos.DataSource = null;
-      }
+            cmbRubros.SelectedIndex = -1;
+        }
 
         private void bttnBuscar_Click(object sender, EventArgs e)
         {
             string input = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el número de Solicitud de Compra a cargar:", "Buscar SC", "");
             if (string.IsNullOrWhiteSpace(input)) return;
 
-            int idBuscado;
-            if (!int.TryParse(input, out idBuscado))
+           
+            if (!int.TryParse(input, out int idBuscado))
             {
                 MessageBox.Show("Número de SC inválido.");
                 return;
@@ -178,8 +246,8 @@ namespace PROTOTIPOS1
             {
                 conn.Open();
 
-                string query = "SELECT * FROM SC WHERE id_Sc = @Id";
-                SqlCommand cmd = new SqlCommand(query, conn);
+                string queryMaster = "SELECT * FROM SC WHERE id_Sc = @Id";
+                SqlCommand cmd = new SqlCommand(queryMaster, conn);
                 cmd.Parameters.AddWithValue("@Id", idBuscado);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -196,14 +264,13 @@ namespace PROTOTIPOS1
                 dateTimePicker1.Value = Convert.ToDateTime(dt.Rows[0]["fecha"]);
                 cmbRubros.SelectedValue = Convert.ToInt32(dt.Rows[0]["rubro"]);
 
-                // cargar productos del SC
-                string queryProductos = "SELECT codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca, rubro AS id_Rubro FROM SC WHERE id_Sc = @Id";
-                SqlCommand cmdProductos = new SqlCommand(queryProductos, conn);
-                cmdProductos.Parameters.AddWithValue("@Id", idBuscado);
-                SqlDataAdapter daProd = new SqlDataAdapter(cmdProductos);
-                DataTable dtProd = new DataTable();
-                daProd.Fill(dtProd);
-                dgvProductos.DataSource = dtProd;
+                // cargar detalle del SC
+                string queryProductos = "SELECT codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca FROM SC WHERE id_Sc = @Id";
+                SqlDataAdapter daDet = new SqlDataAdapter(queryProductos, conn);
+                daDet.SelectCommand.Parameters.AddWithValue("@Id", idBuscado);
+                DataTable dtDet = new DataTable();
+                daDet.Fill(dtDet);
+                dgvProductos.DataSource = dtDet;
 
                 if (!dgvProductos.Columns.Contains("Eliminar"))
                 {
@@ -230,18 +297,32 @@ namespace PROTOTIPOS1
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "DELETE FROM SC WHERE id_Sc = @Id";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Id", idScActual);
-                cmd.ExecuteNonQuery();
+                SqlTransaction transaction = conn.BeginTransaction();
+
+                try
+                {
+                    using(SqlCommand cmd1 = new SqlCommand("DELETE FROM SC_Detalle WHERE id_Sc=@Id", conn, transaction))
+                    {
+                        cmd1.Parameters.AddWithValue("@Id", idScActual);
+                        cmd1.ExecuteNonQuery();
+                    }
+
+                    using(SqlCommand cmd2 = new SqlCommand("DELETE FROM SC_Master WHERE id_Sc = @Id", conn, transaction))
+                    {
+                        cmd2.Parameters.AddWithValue("@Id", idScActual);
+                        cmd2.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("Solicitud eliminada correctamente");
+                    LimpiarFormulario();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Error al eliminar solicitud: " + ex.Message);
+                }
             }
-
-            MessageBox.Show("Solicitud de compra eliminada correctamente.");
-
-            idScActual = 0;
-            lblNSolicitud.Text = "XXXX";
-            dgvProductos.DataSource = null;
-            cmbRubros.SelectedIndex = -1;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -249,6 +330,23 @@ namespace PROTOTIPOS1
             PPrincipal pp = new PPrincipal();
             pp.Show();
             this.Hide();
+        }
+
+        private void bttnCSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+
+                Sesion.CerrarSesion();
+
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+
+            }
         }
     }
 }

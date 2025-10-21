@@ -75,6 +75,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.cmbDescripcion = new System.Windows.Forms.ComboBox();
             this.lblCProducto = new System.Windows.Forms.Label();
+            this.bttnCSesion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bttnGuardar
@@ -532,12 +533,25 @@
             this.lblCProducto.TabIndex = 55;
             this.lblCProducto.Text = "XXXX";
             // 
+            // bttnCSesion
+            // 
+            this.bttnCSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.bttnCSesion.Location = new System.Drawing.Point(753, 12);
+            this.bttnCSesion.Name = "bttnCSesion";
+            this.bttnCSesion.Size = new System.Drawing.Size(94, 39);
+            this.bttnCSesion.TabIndex = 56;
+            this.bttnCSesion.Text = "Cerrar Sesion";
+            this.bttnCSesion.UseVisualStyleBackColor = true;
+            this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
+            // 
             // Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(969, 505);
+            this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.lblCProducto);
             this.Controls.Add(this.cmbDescripcion);
             this.Controls.Add(this.label27);
@@ -642,5 +656,6 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox cmbDescripcion;
         private System.Windows.Forms.Label lblCProducto;
+        private System.Windows.Forms.Button bttnCSesion;
     }
 }

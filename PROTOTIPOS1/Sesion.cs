@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,8 @@ namespace PROTOTIPOS1
             id_Usuario = 0;
             email = string.Empty;
             nivel = 0;
+
+            
         }
     }
 }

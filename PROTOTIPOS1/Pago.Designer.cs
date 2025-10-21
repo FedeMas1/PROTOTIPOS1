@@ -44,6 +44,7 @@
             this.bttnCSesion = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +111,7 @@
             // 
             this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(507, 14);
+            this.dateTimePicker1.Location = new System.Drawing.Point(507, 62);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(281, 26);
             this.dateTimePicker1.TabIndex = 6;
@@ -209,12 +210,25 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "XXXX";
             // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.button5.Location = new System.Drawing.Point(678, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(94, 39);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "Cerrar Sesion";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Pago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.bttnCSesion);
@@ -257,5 +271,6 @@
         private System.Windows.Forms.Button bttnCSesion;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button5;
     }
 }

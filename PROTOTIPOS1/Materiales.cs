@@ -296,7 +296,6 @@ namespace PROTOTIPOS1
                         {
                             dtpFVencimiento.Value = Convert.ToDateTime(reader["fecha_vencimiento"]);
                         }
-                        MessageBox.Show("No se encontró un producto con esa descripcion");
 
                     }
                     else
@@ -332,6 +331,23 @@ namespace PROTOTIPOS1
                 limpiarValores();
                 esModificacion = false;
                 idProductoActual = -1;
+            }
+        }
+
+        private void bttnCSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión",
+             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+
+                Sesion.CerrarSesion();
+
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+
             }
         }
     }

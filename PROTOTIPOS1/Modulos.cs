@@ -44,10 +44,12 @@ namespace PROTOTIPOS1
             if (resultado == DialogResult.Yes)
             {
 
+                Sesion.CerrarSesion();
 
                 Login login = new Login();
                 login.Show();
-                Hide();
+                this.Hide();
+
             }
         }
 

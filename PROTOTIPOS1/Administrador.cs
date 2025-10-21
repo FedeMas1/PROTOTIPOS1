@@ -155,5 +155,97 @@ namespace PROTOTIPOS1
             }
         }
 
+        
+
+        private void btnbackup_Click_1(object sender, EventArgs e)
+        {
+            /*string connectionString = @"Data Source=DESKTOP-1N5CLIH\MSQLSERVER2022;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";*/
+            string nombre_BD = "Panaderia";
+            string backupPath = @"C:\Backups\panaderia.bak";
+
+            string query = $@"
+            BACKUP DATABASE [{nombre_BD}]
+            TO DISK = N'{backupPath}'
+            WITH INIT, NAME = N'Full Backup of {nombre_BD}';
+            ";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(cadena_Conexion))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Backup completado correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al hacer el backup" + ex.Message);
+
+            }
+        }
+
+        private void btnrestore_Click_1(object sender, EventArgs e)
+        {
+            /*string connectionString = $@"Data Source=DESKTOP-1N5CLIH\MSQLSERVER2022;Initial Catalog=master;Integrated Security=True;TrustServerCertificate=True;";*/
+
+            string nombre_BD = "Panaderia";
+            string backup = @"C:\Backups\panaderia.bak";
+
+
+            string query = $@"
+            USE master;
+            ALTER DATABASE [{nombre_BD}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+            RESTORE DATABASE [{nombre_BD}]
+            FROM DISK = N'{backup}'
+            WITH REPLACE;
+            ALTER DATABASE [{nombre_BD}] SET MULTI_USER;
+            ";
+
+            try
+            {
+
+
+                using (SqlConnection connection = new SqlConnection(cadena_Conexion))
+
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+
+
+                MessageBox.Show(" Restauración completada correctamente.", "Éxito");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Error al restaurar la base de datos:" + ex.Message);
+            }
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void bttnCSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión",
+             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+
+                Sesion.CerrarSesion();
+
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+
+            }
+        }
     }
+
 }
+
