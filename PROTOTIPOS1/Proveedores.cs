@@ -32,7 +32,7 @@ namespace PROTOTIPOS1
             cbEstado.Checked = true;
         }
 
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -42,26 +42,58 @@ namespace PROTOTIPOS1
                 return;
             }
 
-            DialogResult confirm = MessageBox.Show("¿Desea guardar los datosdel proveedor?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirm == DialogResult.No) return;
-            if (ProveedorExiste(txtBCUIT.Text)) ActualizarProveedor();
-            else GuardarProveedor();
+
+            string duplicado = ProveedorExiste(txtBCUIT.Text, txtBRazonS.Text);
+
+            if (duplicado == "CUIT")
+            {
+                DialogResult actualizar = MessageBox.Show("Ya existe un proveedor con este CUIT. ¿Desea actualizar sus datos?", "Proveedor existente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (actualizar == DialogResult.Yes)
+                {
+                    ActualizarProveedor();
+                    return;
+                }
+                else return;
+            }
+            else
+            {
+                DialogResult confirmar = MessageBox.Show("¿Desea guardar el nuevo proveedor?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmar == DialogResult.Yes)
+                {
+                    GuardarProveedor();
+                }
+            }
         }
 
 
-        private bool ProveedorExiste(string cuit)
+        private string ProveedorExiste(string cuit, string razonSocial)
         {
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 conexion.Open();
-                string query = "SELECT COUNT (*) FROM Proveedores WHERE CUIT = @CUIT";
+                string query = "SELECT CUIT, Razon_Social FROM Proveedores WHERE CUIT = @CUIT OR Razon_Social = @Razon_Social";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
                     cmd.Parameters.AddWithValue("@CUIT", cuit);
-                    int count = (int)cmd.ExecuteScalar();
-                    return count > 0;
+                    cmd.Parameters.AddWithValue("@Razon_Social", razonSocial);
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            string cuitExistente = dr["CUIT"].ToString();
+                            string razonExistente = dr["Razon_Social"].ToString();
+
+                            if (cuitExistente == cuit) return "CUIT";
+                            else if (razonExistente.Equals(razonSocial, StringComparison.OrdinalIgnoreCase))
+                            {
+                                return "RazonSocial";
+                            }
+                        }
+                    }
                 }
             }
+            return null;
         }
 
         private void GuardarProveedor()
@@ -89,7 +121,7 @@ namespace PROTOTIPOS1
             {
                 conexion.Open();
                 string query = "UPDATE Proveedores SET" +
-                    " Razon_Social = @RazonSocial, Contacto = @Contacto, Nro_Telefono = @NroTelefono, Calle = @Calle, Nro_Calle = @NroCalle, Codigo_Postal = @CodigoPostal, Provincia= @Provincia , Localidad = @Localidad, Piso = @Piso, Departamento = @Departamento , Rubros = @Rubros, Marcas = @Marcas, Estado = @Estado" +
+                    " Razon_Social = @RazonSocial, Contacto = @Contacto, Nro_Telefono = @NroTelefono, Calle = @Calle, Nro_Calle = @NroCalle, Codigo_Postal = @CodigoPostal, Provincia= @Provincia , Localidad = @Localidad, Piso = @Piso, Departamento = @Departamento , Rubros = @Rubros, Marcas = @Marcas, Estado = @Estado " +
                     "WHERE CUIT = @CUIT";
 
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
@@ -99,6 +131,7 @@ namespace PROTOTIPOS1
                 }
                 MessageBox.Show("Proveedor modificado correctamente");
                 LimpiarCampos();
+                cbEstado.Checked = false;
             }
         }
 
@@ -148,20 +181,25 @@ namespace PROTOTIPOS1
 
         private void bttnModificar_Click(object sender, EventArgs e)
         {
-            string cuit = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el CUIT del proveedor que desea modificar", "Modificar proveedor", "");
-            if (string.IsNullOrEmpty(cuit)) return;
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el CUIT del proveedor que desea modificar", "Modificar proveedor", "");
+            if (string.IsNullOrEmpty(input))
+            {
+                MessageBox.Show("No se ingresó ningun numero");
+                return;
+            }
 
-            using (SqlConnection conexion = new SqlConnection())
+            using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 conexion.Open();
                 string query = "SELECT * FROM Proveedores WHERE CUIT = @CUIT";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
-                    cmd.Parameters.AddWithValue("@CUIT", txtBCUIT.Text.Trim());
+                    cmd.Parameters.AddWithValue("@CUIT", input);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())
                     {
+                        txtBCUIT.Text = reader["CUIT"].ToString();
                         txtBRazonS.Text = reader["Razon_Social"].ToString();
                         txtBContacto.Text = reader["Contacto"].ToString();
                         txtBNumeroT.Text = reader["Nro_Telefono"].ToString();
@@ -199,7 +237,7 @@ namespace PROTOTIPOS1
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 conexion.Open();
-                string query = "DELETE * FROM Proveedores WHERE CUIT = @CUIT";
+                string query = "DELETE FROM Proveedores WHERE CUIT = @CUIT";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
                     cmd.Parameters.AddWithValue("@CUIT", txtBCUIT.Text.Trim());
@@ -213,19 +251,19 @@ namespace PROTOTIPOS1
         private void AsignarValores(SqlCommand cmd)
         {
             cmd.Parameters.AddWithValue("@CUIT", txtBCUIT.Text.Trim());
-            cmd.Parameters.AddWithValue("RazonSocial", txtBRazonS.Text.Trim());
+            cmd.Parameters.AddWithValue("@RazonSocial", txtBRazonS.Text.Trim());
             cmd.Parameters.AddWithValue("@Contacto", string.IsNullOrWhiteSpace(txtBContacto.Text) ? (object)DBNull.Value : txtBContacto.Text.Trim());
-            cmd.Parameters.AddWithValue("NroTelefono", string.IsNullOrWhiteSpace(txtBNumeroT.Text) ? (object)DBNull.Value : txtBNumeroT.Text.Trim());
-            cmd.Parameters.AddWithValue("Calle", txtBNCalle.Text.Trim());
-            cmd.Parameters.AddWithValue("NroCalle", int.Parse(txtBNCalle.Text.Trim()));
+            cmd.Parameters.AddWithValue("@NroTelefono", string.IsNullOrWhiteSpace(txtBNumeroT.Text) ? (object)DBNull.Value : txtBNumeroT.Text.Trim());
+            cmd.Parameters.AddWithValue("@Calle", txtBCalle.Text.Trim());
+            cmd.Parameters.AddWithValue("@NroCalle", int.Parse(txtBNCalle.Text.Trim()));
             cmd.Parameters.AddWithValue("@CodigoPostal", string.IsNullOrWhiteSpace(txtBCPostal.Text) ? (object)DBNull.Value : txtBCPostal.Text.Trim());
-            cmd.Parameters.AddWithValue("Provincia", txtBProvincia.Text.Trim());
-            cmd.Parameters.AddWithValue("Localidad", txtBLocalidad.Text.Trim());
+            cmd.Parameters.AddWithValue("@Provincia", txtBProvincia.Text.Trim());
+            cmd.Parameters.AddWithValue("@Localidad", txtBLocalidad.Text.Trim());
             cmd.Parameters.AddWithValue("@Piso", string.IsNullOrWhiteSpace(txtBPiso.Text) ? (object)DBNull.Value : txtBPiso.Text.Trim());
             cmd.Parameters.AddWithValue("@Departamento", string.IsNullOrWhiteSpace(txtBDepartamento.Text) ? (object)DBNull.Value : txtBDepartamento.Text.Trim());
-            cmd.Parameters.AddWithValue("Rubros", txtBRubros.Text.Trim());
-            cmd.Parameters.AddWithValue("Marcas", string.IsNullOrWhiteSpace(txtBMarcas.Text) ? (object)DBNull.Value : txtBMarcas.Text.Trim());
-            cmd.Parameters.AddWithValue("Estado", cbEstado.Checked ? 1 : 0);
+            cmd.Parameters.AddWithValue("@Rubros", txtBRubros.Text.Trim());
+            cmd.Parameters.AddWithValue("@Marcas", string.IsNullOrWhiteSpace(txtBMarcas.Text) ? (object)DBNull.Value : txtBMarcas.Text.Trim());
+            cmd.Parameters.AddWithValue("@Estado", cbEstado.Checked ? 1 : 0);
         }
 
         private void LimpiarCampos()

@@ -200,11 +200,12 @@
             // lblArroba
             // 
             this.lblArroba.AutoSize = true;
-            this.lblArroba.Location = new System.Drawing.Point(516, 271);
+            this.lblArroba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblArroba.Location = new System.Drawing.Point(518, 273);
             this.lblArroba.Name = "lblArroba";
-            this.lblArroba.Size = new System.Drawing.Size(107, 13);
+            this.lblArroba.Size = new System.Drawing.Size(293, 13);
             this.lblArroba.TabIndex = 16;
-            this.lblArroba.Text = "Debe contener un @";
+            this.lblArroba.Text = "Debe contener @gmail.com, @hotmail.com o @outlook.com";
             // 
             // bttnTraducir
             // 

@@ -81,6 +81,7 @@ namespace PROTOTIPOS1
             txtbCantidadM.Clear();
             dtpFechaIngreso.Value = DateTime.Now;
             checkbActivo.Checked = false;
+            lblCProducto.Text = "XXXX";
         }
 
         private void bttnAgregar_Click(object sender, EventArgs e)
@@ -185,7 +186,7 @@ namespace PROTOTIPOS1
                 if (existe > 0)
                 {
                     // Modificar
-                    query = @"UPDATE Stock SET 
+                    query = @"UPDATE Inventario SET 
                         id_Rubro = @idRubro,
                         cod_proveedor = @CodProveedor,
                         cantidad = @Cantidad,

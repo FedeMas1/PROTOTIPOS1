@@ -83,6 +83,7 @@ namespace PROTOTIPOS1
             dtpFIngreso.Value = DateTime.Now;
             dtpFVencimiento.Value = DateTime.Now;
             checkbActivo.Checked = false;
+            lblCProducto.Text = "XXXX";
         }
 
         private bool esModificacion = false;
@@ -182,19 +183,29 @@ namespace PROTOTIPOS1
                 return;
             }
 
+            
+
+
+
             using (SqlConnection conexion = new SqlConnection(connectionString))
             {
                 conexion.Open();
 
-
-                string queryExistencia = "SELECT COUNT(*) FROM Stock WHERE Descripcion = @Descripcion";
+               
+                string queryExistencia = "SELECT COUNT(*) FROM Materiales WHERE Descripcion = @Descripcion";
                 SqlCommand cmdExistencia = new SqlCommand(queryExistencia, conexion);
                 cmdExistencia.Parameters.AddWithValue("@Descripcion", descripcion);
                 int existe = (int)cmdExistencia.ExecuteScalar();
 
+                if (!esModificacion && existe > 0)
+                {
+                    MessageBox.Show("Ya existe un producto con esa descripción. No se pueden duplicar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 string query;
 
-                if (existe > 0)
+                if (esModificacion)
                 {
                     // Modificar
                     query = @"UPDATE Materiales SET 
@@ -206,7 +217,7 @@ namespace PROTOTIPOS1
                         cantidad_produccion = @CantidadProduccion,
                         precio_compra = @PrecioCompra,
                         marca = @Marca,
-                        fecha_ingreso = @FechaIngreso,
+                        fecha_compra = @FechaCompra,
                         fecha_vencimiento = @FechaVencimiento,
                         punto_pedido = @PuntoPedido,
                         cantidad_maxima = @CantidadMaxima,
@@ -271,14 +282,14 @@ namespace PROTOTIPOS1
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        idProductoActual = Convert.ToInt32(reader["cod_Producto"]);
+                        idProductoActual = Convert.ToInt32(reader["codigo_Producto"]);
                         esModificacion = true;
 
                         cmbDescripcion.Text = reader["Descripcion"].ToString();
                         cmbRubros.SelectedValue = reader["id_Rubro"];
                         txtbMedicion.Text = reader["Medicion"].ToString();
                         txtbMarca.Text = reader["marca"].ToString();
-                        lblCProducto.Text = reader["cod_Producto"].ToString();
+                        lblCProducto.Text = reader["codigo_Producto"].ToString();
                         txtBUMCompra.Text = reader["UM_compra"].ToString();
                         txtBCProduccion.Text = reader["cantidad_produccion"].ToString();
                         txtBCProveedor.Text = reader["cod_proveedor"].ToString();
@@ -320,7 +331,7 @@ namespace PROTOTIPOS1
                 using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
                     conexion.Open();
-                    string delete = "DELETE FROM Materiales WHERE cod_Producto = @id";
+                    string delete = "DELETE FROM Materiales WHERE codigo_Producto = @id";
                     using (SqlCommand command = new SqlCommand(delete, conexion))
                     {
                         command.Parameters.AddWithValue("@id", idProductoActual);

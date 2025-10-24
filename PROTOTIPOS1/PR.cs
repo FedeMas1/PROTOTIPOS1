@@ -60,6 +60,15 @@ namespace PROTOTIPOS1
             dgvProductos.CellContentClick += dataGridView1_CellContentClick;
         }
 
+        private void Limpiar()
+        {
+            lblNPedido.Text = "XXXX";
+            dateTimePicker1.Value = DateTime.Now;
+            cbSolicitado.Checked = false;
+            cbDenegado.Checked = false;
+            cbAprobado.Checked = false;
+            cbCotizado.Checked = false;
+        }
         private void CargarRubros()
         {
             string consulta = "SELECT id_Rubro, Descripcion FROM Rubros";
@@ -128,7 +137,7 @@ namespace PROTOTIPOS1
             {
                 conn.Open();
                 string queryMaster = @"INSERT INTO PR_Master (fecha, rubro,estado) " +
-                "OUTPUT INSERTED.id_PR " +                                        // OUTPUT INSERTED.id_Pr hace que SQL devuelva el valor autogenerado del campo id_Pr.
+                "OUTPUT INSERTED.id_PR " +                                             // OUTPUT INSERTED.id_Pr hace que SQL devuelva el valor autogenerado del campo id_Pr.               
                 "VALUES (@Fecha, @Rubro,@Estado)";
 
                 using (SqlCommand cmd = new SqlCommand(queryMaster, conn))
@@ -137,12 +146,14 @@ namespace PROTOTIPOS1
                   cmd.Parameters.AddWithValue(@"Rubro", cmbRubros.SelectedValue);
                   cmd.Parameters.AddWithValue("@Estado", "Solicitado");
 
-                  int idPrgenerado = Convert.ToInt32(cmd.ExecuteScalar());
+                  idPrGenerado = Convert.ToInt32(cmd.ExecuteScalar());
                 }          
             }
             return idPrGenerado;
         }
-    
+
+        
+
         private void GuardarProductos(int idPr)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -170,6 +181,7 @@ namespace PROTOTIPOS1
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                conn.Open();
                 string UpdateMaster = "UPDATE PR_Master SET fecha = @Fecha, rubro = @Rubro WHERE id_Pr = @Id";
                 using (SqlCommand cmd = new SqlCommand(UpdateMaster, conn))
                 {
@@ -190,7 +202,7 @@ namespace PROTOTIPOS1
                     if (row.IsNewRow) continue;
 
                     string queryDetalle = @"INSERT INTO PR_Detalle (id_Pr, codigo_producto, descripcion, cantidad_a_pedir, marca) 
-                                            VALUES (@idPr, @Codigo, @Descripcion, @Cantidad, @Marca";
+                                            VALUES (@idPr, @Codigo, @Descripcion, @Cantidad, @Marca)";
 
                     using (SqlCommand cmd = new SqlCommand(queryDetalle, conn))
                     {
@@ -246,10 +258,18 @@ namespace PROTOTIPOS1
                 lblNPedido.Text = idPrActual.ToString();
                 MessageBox.Show("Pedido guardado correctamente");
             }
+            else
+            {
+                ActualizarPedido();
+                lblNPedido.Text = idPrActual.ToString();
+                MessageBox.Show("Pedido modificado correctamente");
+                
+            }
 
             dgvProductos.DataSource = null;
             dgvProductos.Columns.Clear();
             cmbRubros.SelectedIndex = -1;
+            Limpiar();
         }    
         
 
@@ -286,7 +306,13 @@ namespace PROTOTIPOS1
                 dateTimePicker1.Value = Convert.ToDateTime(dt.Rows[0]["fecha"]);
                 cmbRubros.SelectedValue = Convert.ToInt32(dt.Rows[0]["rubro"]);
 
-                string queryDetalle = "SELECT codigo_producto, descripcion, cantidad_a_pedir, marca, rubro AS id_Rubro FROM PR_Detalle WHERE id_Pr = @id";
+                string estado = dt.Rows[0]["estado"].ToString();
+                cbSolicitado.Checked = estado == "Solicitado";
+                cbAprobado.Checked = estado == "Aprobado";
+                cbDenegado.Checked = estado == "Denegado";
+                cbCotizado.Checked = estado == "Cotizado";
+
+                string queryDetalle = "SELECT codigo_producto, descripcion, cantidad_a_pedir, marca FROM PR_Detalle WHERE id_Pr = @id";
                 SqlCommand cmdProductos = new SqlCommand(queryDetalle, conn);
                 cmdProductos.Parameters.AddWithValue("@Id", idBuscado);
                 SqlDataAdapter daProd = new SqlDataAdapter(cmdProductos);
@@ -303,7 +329,6 @@ namespace PROTOTIPOS1
                     dgvProductos.Columns.Add(btnEliminar);
                 }
             }
-            
         }
 
         private void bttnEliminar_Click(object sender, EventArgs e)
@@ -337,6 +362,7 @@ namespace PROTOTIPOS1
             dgvProductos.DataSource = null;
             dgvProductos.Columns.Clear();
             cmbRubros.SelectedIndex = -1;
+            Limpiar();
         }
 
         private void button5_Click(object sender, EventArgs e)

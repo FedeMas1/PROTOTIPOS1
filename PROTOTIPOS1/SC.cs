@@ -148,9 +148,9 @@ namespace PROTOTIPOS1
                             if (row.IsNewRow) continue;
 
                             string queryDetalle = "INSERT INTO Sc_Detalle (id_Sc, codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca) " +
-                                           "VALUES (@IdSc, @Fecha, @Codigo, @Descripcion, @Cantidad, @Marca)";
+                                           "VALUES (@IdSc, @Codigo, @Descripcion, @Cantidad, @Marca)";
 
-                            using (SqlCommand cmd = new SqlCommand(queryDetalle, conn))
+                            using (SqlCommand cmd = new SqlCommand(queryDetalle, conn, transaction))
                             {
                                 cmd.Parameters.AddWithValue("@IdSc", nuevoIdSc);
                                 cmd.Parameters.AddWithValue("@Codigo", row.Cells["codigo_bien_de_uso"].Value);
@@ -170,7 +170,7 @@ namespace PROTOTIPOS1
                         // MODIFICAR 
 
 
-                        string query = "UPDATE Sc_Master SET fecha=@Fecha, rubro=@Rubro, estado=@Estado WHERE id_Sc=@Id";
+                        string query = "UPDATE Sc_Master SET fecha=@Fecha, rubro=@Rubro, estado=@Estado WHERE id_Sc = @Id";
 
                         using (SqlCommand cmd = new SqlCommand(query, conn, transaction))
                         {
@@ -193,7 +193,7 @@ namespace PROTOTIPOS1
                             if (row.IsNewRow) continue;
 
                             string insertDetalle = "INSERT INTO Sc_Detalle (id_Sc, codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca) " +
-                                "VALUES (@Id, @Codigo, @Descripcion, @Cantidad, @Marca)";
+                                "VALUES (@IdSc, @Codigo, @Descripcion, @Cantidad, @Marca)";
                             using (SqlCommand cmdDet = new SqlCommand(insertDetalle, conn, transaction))
                             {
                                 cmdDet.Parameters.AddWithValue("@IdSc", idScActual);
@@ -210,6 +210,9 @@ namespace PROTOTIPOS1
                     }
 
                     LimpiarFormulario();
+                    dgvProductos.DataSource = null;
+                    dgvProductos.Columns.Clear();
+                    cmbRubros.SelectedIndex = -1;
                 }
 
                 catch (Exception ex)
@@ -246,7 +249,7 @@ namespace PROTOTIPOS1
             {
                 conn.Open();
 
-                string queryMaster = "SELECT * FROM SC WHERE id_Sc = @Id";
+                string queryMaster = "SELECT * FROM Sc_Master WHERE id_Sc = @Id";
                 SqlCommand cmd = new SqlCommand(queryMaster, conn);
                 cmd.Parameters.AddWithValue("@Id", idBuscado);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -264,8 +267,15 @@ namespace PROTOTIPOS1
                 dateTimePicker1.Value = Convert.ToDateTime(dt.Rows[0]["fecha"]);
                 cmbRubros.SelectedValue = Convert.ToInt32(dt.Rows[0]["rubro"]);
 
+                string estado = dt.Rows[0]["estado"].ToString();
+
+                cbSolicitado.Checked = estado == "Solicitado";
+                cbAprobado.Checked = estado == "Aprobado";
+                cbDenegado.Checked = estado == "Denegado";
+                cbCotizado.Checked = estado == "Cotizado";
+
                 // cargar detalle del SC
-                string queryProductos = "SELECT codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca FROM SC WHERE id_Sc = @Id";
+                string queryProductos = "SELECT codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca FROM Sc_Detalle WHERE id_Sc = @Id";
                 SqlDataAdapter daDet = new SqlDataAdapter(queryProductos, conn);
                 daDet.SelectCommand.Parameters.AddWithValue("@Id", idBuscado);
                 DataTable dtDet = new DataTable();
