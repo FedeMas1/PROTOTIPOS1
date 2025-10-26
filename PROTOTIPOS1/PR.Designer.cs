@@ -102,6 +102,7 @@
             this.cbSolicitado.TabIndex = 5;
             this.cbSolicitado.Text = "Solicitado";
             this.cbSolicitado.UseVisualStyleBackColor = false;
+            this.cbSolicitado.CheckedChanged += new System.EventHandler(this.cbSolicitado_CheckedChanged);
             // 
             // cbAprobado
             // 
@@ -115,6 +116,7 @@
             this.cbAprobado.TabIndex = 6;
             this.cbAprobado.Text = "Aprobado";
             this.cbAprobado.UseVisualStyleBackColor = false;
+            this.cbAprobado.CheckedChanged += new System.EventHandler(this.cbAprobado_CheckedChanged);
             // 
             // cbDenegado
             // 
@@ -128,6 +130,7 @@
             this.cbDenegado.TabIndex = 7;
             this.cbDenegado.Text = "Denegado";
             this.cbDenegado.UseVisualStyleBackColor = false;
+            this.cbDenegado.CheckedChanged += new System.EventHandler(this.cbDenegado_CheckedChanged);
             // 
             // bttnEliminar
             // 
@@ -192,6 +195,7 @@
             this.cbCotizado.TabIndex = 13;
             this.cbCotizado.Text = "Cotizado";
             this.cbCotizado.UseVisualStyleBackColor = false;
+            this.cbCotizado.CheckedChanged += new System.EventHandler(this.cbCotizado_CheckedChanged);
             // 
             // dateTimePicker1
             // 

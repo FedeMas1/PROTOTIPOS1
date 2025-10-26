@@ -92,6 +92,7 @@
             this.cbSolicitado.TabIndex = 3;
             this.cbSolicitado.Text = "Solicitado";
             this.cbSolicitado.UseVisualStyleBackColor = false;
+            this.cbSolicitado.CheckedChanged += new System.EventHandler(this.cbSolicitado_CheckedChanged);
             // 
             // cbAprobado
             // 
@@ -105,6 +106,7 @@
             this.cbAprobado.TabIndex = 4;
             this.cbAprobado.Text = "Aprobado";
             this.cbAprobado.UseVisualStyleBackColor = false;
+            this.cbAprobado.CheckedChanged += new System.EventHandler(this.cbAprobado_CheckedChanged);
             // 
             // cbDenegado
             // 
@@ -118,6 +120,7 @@
             this.cbDenegado.TabIndex = 5;
             this.cbDenegado.Text = "Denegado";
             this.cbDenegado.UseVisualStyleBackColor = false;
+            this.cbDenegado.CheckedChanged += new System.EventHandler(this.cbDenegado_CheckedChanged);
             // 
             // bttnBuscar
             // 
@@ -169,6 +172,7 @@
             this.cbCotizado.TabIndex = 11;
             this.cbCotizado.Text = "Cotizado";
             this.cbCotizado.UseVisualStyleBackColor = false;
+            this.cbCotizado.CheckedChanged += new System.EventHandler(this.cbCotizado_CheckedChanged);
             // 
             // label3
             // 

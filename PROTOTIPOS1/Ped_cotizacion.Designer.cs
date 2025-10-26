@@ -30,26 +30,27 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbRubros = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.dgvPCot = new System.Windows.Forms.DataGridView();
+            this.cbSolicitado = new System.Windows.Forms.CheckBox();
+            this.cbAprobado = new System.Windows.Forms.CheckBox();
+            this.cbDeenegado = new System.Windows.Forms.CheckBox();
+            this.bttnEliminar = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
+            this.bttnBuscar = new System.Windows.Forms.Button();
+            this.bttnModificar = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvTemporal = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.cbCotizado = new System.Windows.Forms.CheckBox();
             this.bttnCSesion = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.bttnCargar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPCot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTemporal)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -75,14 +76,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nro pedido de cotizacion:";
             // 
-            // comboBox1
+            // cmbRubros
             // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(200, 119);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cmbRubros.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbRubros.FormattingEnabled = true;
+            this.cmbRubros.Location = new System.Drawing.Point(200, 119);
+            this.cmbRubros.Name = "cmbRubros";
+            this.cmbRubros.Size = new System.Drawing.Size(121, 21);
+            this.cmbRubros.TabIndex = 2;
             // 
             // label2
             // 
@@ -104,101 +105,109 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Estado:";
             // 
-            // dataGridView1
+            // dgvPCot
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(127, 327);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(702, 150);
-            this.dataGridView1.TabIndex = 8;
+            this.dgvPCot.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
+            this.dgvPCot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPCot.Location = new System.Drawing.Point(127, 327);
+            this.dgvPCot.Name = "dgvPCot";
+            this.dgvPCot.Size = new System.Drawing.Size(702, 150);
+            this.dgvPCot.TabIndex = 8;
+            this.dgvPCot.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPCot_CellContentClick);
             // 
-            // checkBox1
+            // cbSolicitado
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Aqua;
-            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.checkBox1.Location = new System.Drawing.Point(209, 487);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(116, 29);
-            this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "Solicitado";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.cbSolicitado.AutoSize = true;
+            this.cbSolicitado.BackColor = System.Drawing.Color.Aqua;
+            this.cbSolicitado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbSolicitado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbSolicitado.Location = new System.Drawing.Point(209, 487);
+            this.cbSolicitado.Name = "cbSolicitado";
+            this.cbSolicitado.Size = new System.Drawing.Size(116, 29);
+            this.cbSolicitado.TabIndex = 10;
+            this.cbSolicitado.Text = "Solicitado";
+            this.cbSolicitado.UseVisualStyleBackColor = false;
+            this.cbSolicitado.CheckedChanged += new System.EventHandler(this.cbSolicitado_CheckedChanged);
             // 
-            // checkBox2
+            // cbAprobado
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.Color.Aqua;
-            this.checkBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.checkBox2.Location = new System.Drawing.Point(367, 483);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(117, 29);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "Aprobado";
-            this.checkBox2.UseVisualStyleBackColor = false;
+            this.cbAprobado.AutoSize = true;
+            this.cbAprobado.BackColor = System.Drawing.Color.Aqua;
+            this.cbAprobado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbAprobado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbAprobado.Location = new System.Drawing.Point(367, 483);
+            this.cbAprobado.Name = "cbAprobado";
+            this.cbAprobado.Size = new System.Drawing.Size(117, 29);
+            this.cbAprobado.TabIndex = 11;
+            this.cbAprobado.Text = "Aprobado";
+            this.cbAprobado.UseVisualStyleBackColor = false;
+            this.cbAprobado.CheckedChanged += new System.EventHandler(this.cbAprobado_CheckedChanged);
             // 
-            // checkBox3
+            // cbDeenegado
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.BackColor = System.Drawing.Color.Aqua;
-            this.checkBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.checkBox3.Location = new System.Drawing.Point(516, 483);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(122, 29);
-            this.checkBox3.TabIndex = 12;
-            this.checkBox3.Text = "Denegado";
-            this.checkBox3.UseVisualStyleBackColor = false;
+            this.cbDeenegado.AutoSize = true;
+            this.cbDeenegado.BackColor = System.Drawing.Color.Aqua;
+            this.cbDeenegado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbDeenegado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbDeenegado.Location = new System.Drawing.Point(516, 483);
+            this.cbDeenegado.Name = "cbDeenegado";
+            this.cbDeenegado.Size = new System.Drawing.Size(122, 29);
+            this.cbDeenegado.TabIndex = 12;
+            this.cbDeenegado.Text = "Denegado";
+            this.cbDeenegado.UseVisualStyleBackColor = false;
+            this.cbDeenegado.CheckedChanged += new System.EventHandler(this.cbDeenegado_CheckedChanged);
             // 
-            // button2
+            // bttnEliminar
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button2.Location = new System.Drawing.Point(538, 525);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 40);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bttnEliminar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnEliminar.Location = new System.Drawing.Point(538, 525);
+            this.bttnEliminar.Name = "bttnEliminar";
+            this.bttnEliminar.Size = new System.Drawing.Size(100, 40);
+            this.bttnEliminar.TabIndex = 13;
+            this.bttnEliminar.Text = "Eliminar";
+            this.bttnEliminar.UseVisualStyleBackColor = false;
+            this.bttnEliminar.Click += new System.EventHandler(this.bttnEliminar_Click);
             // 
-            // button3
+            // bttnGuardar
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button3.Location = new System.Drawing.Point(721, 523);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 40);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Enviar";
-            this.button3.UseVisualStyleBackColor = false;
+            this.bttnGuardar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnGuardar.Location = new System.Drawing.Point(721, 523);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(110, 40);
+            this.bttnGuardar.TabIndex = 14;
+            this.bttnGuardar.Text = "Guardar";
+            this.bttnGuardar.UseVisualStyleBackColor = false;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
-            // button5
+            // bttnBuscar
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button5.Location = new System.Drawing.Point(129, 525);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 38);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "Buscar";
-            this.button5.UseVisualStyleBackColor = false;
+            this.bttnBuscar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnBuscar.Location = new System.Drawing.Point(129, 525);
+            this.bttnBuscar.Name = "bttnBuscar";
+            this.bttnBuscar.Size = new System.Drawing.Size(100, 38);
+            this.bttnBuscar.TabIndex = 16;
+            this.bttnBuscar.Text = "Buscar";
+            this.bttnBuscar.UseVisualStyleBackColor = false;
+            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click);
             // 
-            // button6
+            // bttnModificar
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button6.Location = new System.Drawing.Point(320, 525);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(110, 38);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Modificar";
-            this.button6.UseVisualStyleBackColor = false;
+            this.bttnModificar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnModificar.Location = new System.Drawing.Point(320, 525);
+            this.bttnModificar.Name = "bttnModificar";
+            this.bttnModificar.Size = new System.Drawing.Size(110, 38);
+            this.bttnModificar.TabIndex = 17;
+            this.bttnModificar.Text = "Modificar";
+            this.bttnModificar.UseVisualStyleBackColor = false;
+            this.bttnModificar.Click += new System.EventHandler(this.bttnModificar_Click);
             // 
             // dateTimePicker1
             // 
@@ -218,14 +227,15 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "ABM de Pedido de cotizacion";
             // 
-            // dataGridView2
+            // dgvTemporal
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(127, 196);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(702, 116);
-            this.dataGridView2.TabIndex = 20;
+            this.dgvTemporal.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvTemporal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTemporal.Location = new System.Drawing.Point(127, 196);
+            this.dgvTemporal.Name = "dgvTemporal";
+            this.dgvTemporal.Size = new System.Drawing.Size(702, 116);
+            this.dgvTemporal.TabIndex = 20;
+            this.dgvTemporal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTemporal_CellContentClick);
             // 
             // label3
             // 
@@ -247,18 +257,19 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "XXXX";
             // 
-            // checkBox4
+            // cbCotizado
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.BackColor = System.Drawing.Color.Aqua;
-            this.checkBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.checkBox4.Location = new System.Drawing.Point(671, 483);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(109, 29);
-            this.checkBox4.TabIndex = 23;
-            this.checkBox4.Text = "Cotizado";
-            this.checkBox4.UseVisualStyleBackColor = false;
+            this.cbCotizado.AutoSize = true;
+            this.cbCotizado.BackColor = System.Drawing.Color.Aqua;
+            this.cbCotizado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbCotizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbCotizado.Location = new System.Drawing.Point(671, 483);
+            this.cbCotizado.Name = "cbCotizado";
+            this.cbCotizado.Size = new System.Drawing.Size(109, 29);
+            this.cbCotizado.TabIndex = 23;
+            this.cbCotizado.Text = "Cotizado";
+            this.cbCotizado.UseVisualStyleBackColor = false;
+            this.cbCotizado.CheckedChanged += new System.EventHandler(this.cbCotizado_CheckedChanged);
             // 
             // bttnCSesion
             // 
@@ -272,37 +283,49 @@
             this.bttnCSesion.UseVisualStyleBackColor = true;
             this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
             // 
+            // bttnCargar
+            // 
+            this.bttnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnCargar.Location = new System.Drawing.Point(340, 113);
+            this.bttnCargar.Name = "bttnCargar";
+            this.bttnCargar.Size = new System.Drawing.Size(127, 33);
+            this.bttnCargar.TabIndex = 25;
+            this.bttnCargar.Text = "Cargar";
+            this.bttnCargar.UseVisualStyleBackColor = true;
+            this.bttnCargar.Click += new System.EventHandler(this.bttnCargar_Click);
+            // 
             // Ped_cotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(950, 574);
+            this.Controls.Add(this.bttnCargar);
             this.Controls.Add(this.bttnCSesion);
-            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.cbCotizado);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dgvTemporal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.bttnModificar);
+            this.Controls.Add(this.bttnBuscar);
+            this.Controls.Add(this.bttnGuardar);
+            this.Controls.Add(this.bttnEliminar);
+            this.Controls.Add(this.cbDeenegado);
+            this.Controls.Add(this.cbAprobado);
+            this.Controls.Add(this.cbSolicitado);
+            this.Controls.Add(this.dgvPCot);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbRubros);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Ped_cotizacion";
             this.Text = "Ped_cotizacion";
             this.Load += new System.EventHandler(this.Ped_cotizacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPCot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTemporal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,23 +335,24 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbRubros;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.DataGridView dgvPCot;
+        private System.Windows.Forms.CheckBox cbSolicitado;
+        private System.Windows.Forms.CheckBox cbAprobado;
+        private System.Windows.Forms.CheckBox cbDeenegado;
+        private System.Windows.Forms.Button bttnEliminar;
+        private System.Windows.Forms.Button bttnGuardar;
+        private System.Windows.Forms.Button bttnBuscar;
+        private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvTemporal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox cbCotizado;
         private System.Windows.Forms.Button bttnCSesion;
+        private System.Windows.Forms.Button bttnCargar;
     }
 }

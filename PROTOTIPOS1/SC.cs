@@ -105,6 +105,18 @@ namespace PROTOTIPOS1
             CargarProductos(rubroSeleccionado);
         }
 
+        private string ObtenerEstado()
+        {
+            if (cbAprobado.Checked)
+                return "Aprobado";
+            else if (cbDenegado.Checked)
+                return "Denegado";
+            else if (cbCotizado.Checked)
+                return "Cotizado";
+            else
+                return "Solicitado"; // valor por defecto
+        }
+
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
             if (dgvProductos.Rows.Count == 0)
@@ -134,7 +146,7 @@ namespace PROTOTIPOS1
                         {
                             cmd.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
                             cmd.Parameters.AddWithValue("@Rubro", cmbRubros.SelectedValue);
-                            cmd.Parameters.AddWithValue("@Estado", "Solicitado");
+                            cmd.Parameters.AddWithValue("@Estado", ObtenerEstado());
                             nuevoIdSc = Convert.ToInt32(cmd.ExecuteScalar());
                         }
                     }
@@ -176,7 +188,7 @@ namespace PROTOTIPOS1
                         {
                             cmd.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
                             cmd.Parameters.AddWithValue("@Rubro", cmbRubros.SelectedValue);
-                            cmd.Parameters.AddWithValue("@Estado", "Solicitado");
+                            cmd.Parameters.AddWithValue("@Estado", ObtenerEstado());
                             cmd.Parameters.AddWithValue("@Id", idScActual);
 
                             cmd.ExecuteNonQuery();
@@ -231,6 +243,12 @@ namespace PROTOTIPOS1
             idScActual = 0;
             dgvProductos.DataSource = null;
             cmbRubros.SelectedIndex = -1;
+
+            dateTimePicker1.Value = DateTime.Now;
+            cbSolicitado.Checked = false;
+            cbDenegado.Checked = false;
+            cbAprobado.Checked = false;
+            cbCotizado.Checked = false;
         }
 
         private void bttnBuscar_Click(object sender, EventArgs e)
@@ -356,6 +374,46 @@ namespace PROTOTIPOS1
                 login.Show();
                 this.Hide();
 
+            }
+        }
+
+        private void cbSolicitado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSolicitado.Checked) 
+            {
+                cbAprobado.Checked = true;
+                cbDenegado.Checked = true;
+                cbCotizado.Checked = true;
+            }
+        }
+
+        private void cbAprobado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAprobado.Checked) 
+            {
+                cbSolicitado.Checked = false;
+                cbDenegado.Checked = false;
+                cbCotizado.Checked = false;
+            }
+        }
+
+        private void cbDenegado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDenegado.Checked)
+            {
+                cbSolicitado.Checked = false;
+                cbCotizado.Checked = false;
+                cbAprobado.Checked = false;
+            }
+        }
+
+        private void cbCotizado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCotizado.Checked)
+            {
+                cbSolicitado.Checked = false;
+                cbDenegado.Checked = false;
+                cbAprobado.Checked = false;
             }
         }
     }

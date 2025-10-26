@@ -62,6 +62,9 @@ namespace PROTOTIPOS1
 
         private void Limpiar()
         {
+            dgvProductos.DataSource = null;
+            cmbRubros.SelectedIndex = -1;
+
             lblNPedido.Text = "XXXX";
             dateTimePicker1.Value = DateTime.Now;
             cbSolicitado.Checked = false;
@@ -129,6 +132,17 @@ namespace PROTOTIPOS1
             CargarProductos(rubroSeleccionado);
         }
 
+        private string ObtenerEstado()
+        {
+            if (cbAprobado.Checked)
+                return "Aprobado";
+            else if (cbDenegado.Checked)
+                return "Denegado";
+            else if (cbCotizado.Checked)
+                return "Cotizado";
+            else
+                return "Solicitado"; // valor por defecto
+        }
         private int GuardarPedido()
         {
             int idPrGenerado = 0;
@@ -144,7 +158,7 @@ namespace PROTOTIPOS1
                 {
                   cmd.Parameters.AddWithValue(@"Fecha", dateTimePicker1.Value);
                   cmd.Parameters.AddWithValue(@"Rubro", cmbRubros.SelectedValue);
-                  cmd.Parameters.AddWithValue("@Estado", "Solicitado");
+                  cmd.Parameters.AddWithValue("@Estado", ObtenerEstado());
 
                   idPrGenerado = Convert.ToInt32(cmd.ExecuteScalar());
                 }          
@@ -182,11 +196,12 @@ namespace PROTOTIPOS1
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string UpdateMaster = "UPDATE PR_Master SET fecha = @Fecha, rubro = @Rubro WHERE id_Pr = @Id";
+                string UpdateMaster = "UPDATE PR_Master SET fecha = @Fecha, rubro = @Rubro, estado = @Estado WHERE id_Pr = @Id";
                 using (SqlCommand cmd = new SqlCommand(UpdateMaster, conn))
                 {
                     cmd.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
                     cmd.Parameters.AddWithValue("@Rubro", cmbRubros.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Estado", ObtenerEstado());
                     cmd.Parameters.AddWithValue("@Id", idPrActual);
                     cmd.ExecuteNonQuery();
                 }
@@ -386,6 +401,46 @@ namespace PROTOTIPOS1
                 login.Show();
                 this.Hide();
 
+            }
+        }
+
+        private void cbSolicitado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSolicitado.Checked)
+            {
+                cbAprobado.Checked = false;
+                cbDenegado.Checked = false;
+                cbCotizado.Checked = false;
+            }
+        }
+
+        private void cbAprobado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAprobado.Checked)
+            {
+                cbSolicitado.Checked = false;
+                cbDenegado.Checked = false;
+                cbCotizado.Checked = false;
+            }
+        }
+
+        private void cbDenegado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDenegado.Checked)
+            {
+                cbSolicitado.Checked = false;
+                cbAprobado.Checked = false;
+                cbCotizado.Checked = false;
+            }
+        }
+
+        private void cbCotizado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCotizado.Checked)
+            {
+                cbSolicitado.Checked = false;
+                cbAprobado.Checked = false;
+                cbDenegado.Checked = false;
             }
         }
     }
