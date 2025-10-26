@@ -18,6 +18,14 @@ namespace PROTOTIPOS1
         public Proveedores()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(bttnEliminar, "Eliminar un proveedor.");
+            toolTip.SetToolTip(bttnModificar, "Modificar un proveedor.");
+            toolTip.SetToolTip(bttnBuscar, "Buscar Proovedor.");
+            toolTip.SetToolTip(button1, "Guardar un proveedor.");
+            toolTip.SetToolTip(button6, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void button6_Click(object sender, EventArgs e)

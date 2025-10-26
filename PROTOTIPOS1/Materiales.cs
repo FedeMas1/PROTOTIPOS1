@@ -16,6 +16,13 @@ namespace PROTOTIPOS1
         public Materiales()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(bttnEliminar, "Eliminar un material.");
+            toolTip.SetToolTip(bttnModificar, "Modificar un material.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar un material.");
+            toolTip.SetToolTip(button5, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void button5_Click(object sender, EventArgs e)

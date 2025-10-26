@@ -16,6 +16,12 @@ namespace PROTOTIPOS1
         public CambioContraseña()
         {
             InitializeComponent();
+
+            ToolTip tooltip = new ToolTip();
+
+            
+            tooltip.SetToolTip(button1, "Guardar el cambio de la contraseña");
+            tooltip.SetToolTip(bttnBack, "Ir al formulario anterior");
         }
 
         private void bttnBack_Click(object sender, EventArgs e)

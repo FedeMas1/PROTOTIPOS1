@@ -17,6 +17,16 @@ namespace PROTOTIPOS1
         {
             InitializeComponent();
             dataGridView1.CellClick += dataGridView1_CellClick;
+
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(button5, "Eliminar cotizacion.");
+            toolTip.SetToolTip(button6, "Modificar cotizacion.");
+            toolTip.SetToolTip(button2, "Buscar prdido de cotizacion.");
+            toolTip.SetToolTip(button10, "Guardar un proveedor.");
+            toolTip.SetToolTip(button9, "Comparar proveedores.");
+            toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void button9_Click(object sender, EventArgs e)

@@ -15,6 +15,14 @@ namespace PROTOTIPOS1
         public Orden_de_Pago()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(button1, "Eliminar una Orden de Pago.");
+            toolTip.SetToolTip(button2, "Modificar una Orden de Pago.");
+            toolTip.SetToolTip(button3, "Guardar una Orden de Pago.");
+            toolTip.SetToolTip(button4, "Buscar numero de Factura.");
+            toolTip.SetToolTip(button5, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
+            toolTip.SetToolTip(bttnCSesion, "Vuelve al formulario anterior.");
         }
 
         private void label6_Click(object sender, EventArgs e)

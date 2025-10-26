@@ -16,6 +16,12 @@ namespace PROTOTIPOS1
         public Login()
         {
             InitializeComponent();
+            ToolTip tooltip = new ToolTip();
+
+            tooltip.SetToolTip(linkLabel1, "Haz clic aquí para restablecer tu contraseña.");
+            tooltip.SetToolTip(Registrarse, "Crea una cuenta nueva.");
+            tooltip.SetToolTip(button1, "Haz clic para ingresar a tu cuenta.");
+            tooltip.SetToolTip(txtbCorreo, "Ej: emanuel@gmail.com");
         }
 
         private void button1_Click(object sender, EventArgs e)

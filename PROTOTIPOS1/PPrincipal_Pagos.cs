@@ -15,6 +15,12 @@ namespace PROTOTIPOS1
         public PPrincipal_Pagos()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(button1, "Gestiona órdenes de pago: agregar nuevas, modificar o eliminar registros de pago.");
+            toolTip.SetToolTip(button2, "Administra pagos: registrar nuevos, modificar o eliminar pagos realizados.");
+            toolTip.SetToolTip(button4, "Gestiona recibos: registrar, modificar o eliminar recibos de clientes o proveedores.");
+            toolTip.SetToolTip(button3, "Vuelve al formulario anterior.");
         }
 
         private void button3_Click(object sender, EventArgs e)

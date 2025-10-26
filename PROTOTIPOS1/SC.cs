@@ -19,6 +19,13 @@ namespace PROTOTIPOS1
         public SC()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(bttnEliminar, "Eliminar una solicitud de compra.");
+            toolTip.SetToolTip(bttnBuscar, "Buscar una solicitud de compra.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar una solicitud de compra.");
+            toolTip.SetToolTip(button6, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void SC_Load(object sender, EventArgs e)

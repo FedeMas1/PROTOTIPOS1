@@ -15,6 +15,16 @@ namespace PROTOTIPOS1
         public Modulos()
         {
             InitializeComponent();
+
+            ToolTip tooltip = new ToolTip();
+
+
+            tooltip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
+            tooltip.SetToolTip(bttnAdministrador, "Accede a las funciones administrativas y de configuración del sistema.");
+            tooltip.SetToolTip(button1, "Administra las compras: agregar nuevas, modificar o eliminar compras registradas.");
+            tooltip.SetToolTip(button3, "Administra las ventas realizadas a clientes: registrar nuevas, modificar o eliminar ventas.");
+            tooltip.SetToolTip(button2, "Gestiona los pagos a proveedores: agregar, modificar o eliminar registros de pago.");
+            tooltip.SetToolTip(button4, "Gestiona los cobros de clientes: agregar, modificar o eliminar registros de cobro.");
         }
         public Modulos(string nUsuario)
         {

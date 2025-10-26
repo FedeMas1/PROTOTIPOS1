@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PROTOTIPOS1
 {
@@ -19,6 +20,13 @@ namespace PROTOTIPOS1
             InitializeComponent();
             dgvUsuarios.CellEndEdit += dgvUsuarios_CellEndEdit;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
+
+            System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
+
+            toolTip.SetToolTip(btnrestore, "Restaurar la Base de Datos.");
+            toolTip.SetToolTip(btnbackup, "Respaldar la Base de Datos.");
+            toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void button1_Click(object sender, EventArgs e)

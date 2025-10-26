@@ -14,7 +14,23 @@ namespace PROTOTIPOS1
     {
         public PPrincipal(){
             InitializeComponent();
-            }
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(bttnStock, "Gestiona el stock: agregar, modificar o eliminar registros de productos disponibles.");
+            toolTip.SetToolTip(bttnMateriales, "Administra los materiales: registrar nuevos, modificar o eliminar materiales existentes.");
+            toolTip.SetToolTip(bttnInventario, "Gestiona el inventario: registrar, actualizar o eliminar entradas y salidas de productos.");
+            toolTip.SetToolTip(bttnPR, "Administra pedidos de reaprovisionamiento: agregar, modificar o eliminar solicitudes de stock.");
+            toolTip.SetToolTip(bttnSC, "Gestiona solicitudes de compra: registrar nuevas, modificar o eliminar solicitudes existentes.");
+            toolTip.SetToolTip(bttnPCot, "Administra pedidos de cotización: crear, modificar o eliminar solicitudes a proveedores.");
+            toolTip.SetToolTip(bttnProveedores, "Gestiona proveedores: agregar, modificar o eliminar información de proveedores.");
+            toolTip.SetToolTip(bttnCotizacion, "Administra cotizaciones recibidas: registrar, modificar o eliminar cotizaciones.");
+            toolTip.SetToolTip(bttnOC, "Gestiona órdenes de compra: crear nuevas, modificar o eliminar órdenes existentes.");
+            toolTip.SetToolTip(bttnIRM, "Registra y administra informes de recepción de mercadería: agregar, modificar o eliminar.");
+            toolTip.SetToolTip(bttnFP, "Gestiona facturas de proveedores: registrar nuevas, modificar o eliminar facturas.");
+            toolTip.SetToolTip(bttnDevoluciones, "Administra devoluciones: registrar, modificar o eliminar devoluciones de productos.");
+            toolTip.SetToolTip(bttnCSesion, "Vuelve al formulario anterior.");
+
+        }
         public PPrincipal(string nUsuario)
         {
             InitializeComponent();

@@ -16,6 +16,14 @@ namespace PROTOTIPOS1
         public Orden_de_compra()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(button4, "Eliminar una orden de compra.");
+            toolTip.SetToolTip(button3, "Modificar una orden de compra.");
+            toolTip.SetToolTip(button6, "Buscar una orden de compra.");
+            toolTip.SetToolTip(button2, "Guardar una orden de compra.");
+            toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void Orden_de_compra_Load(object sender, EventArgs e)

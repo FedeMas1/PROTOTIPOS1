@@ -18,7 +18,14 @@ namespace PROTOTIPOS1
         public Ped_cotizacion()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
 
+            toolTip.SetToolTip(bttnEliminar, "Eliminar una solicitud de compra.");
+            toolTip.SetToolTip(bttnBuscar, "Buscar una solicitud de compra.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar una solicitud de compra.");
+            toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
+            toolTip.SetToolTip(bttnCargar, "Carga en el dgv solicitudes de compra y pedidos de reaprovisionamiento existemtes y de estado aprobado");
         }
 
         private void Ped_cotizacion_Load(object sender, EventArgs e)

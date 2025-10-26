@@ -15,6 +15,14 @@ namespace PROTOTIPOS1
         public Pago()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(button1, "Eliminar un Pago.");
+            toolTip.SetToolTip(button2, "Modificar un Pago.");
+            toolTip.SetToolTip(button3, "Realizar un pago.");
+            toolTip.SetToolTip(button4, "Seleccionar una Orden de Pago.");
+            toolTip.SetToolTip(button5, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
+            toolTip.SetToolTip(bttnCSesion, "Vuelve al formulario anterior.");
         }
 
         private void bttnCSesion_Click(object sender, EventArgs e)

@@ -17,6 +17,14 @@ namespace PROTOTIPOS1
         public Stock()
         {
             InitializeComponent();
+
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(bttnAgregar, "Buscar un producto de rubros a traves de su descripcion en el textbox");
+            toolTip.SetToolTip(bttnModificar, "Buscar un producto por la descripcion, permitira modificar y eliminar el producto");
+            toolTip.SetToolTip(bttnEliminar, "Elimina un producto de la base de datos, siempre y cuando el producto ya este cargado en el formulario");
+            toolTip.SetToolTip(bttnGuardar, "Guarda el producto en la base de datos, y guarda las modificaciones de ese producto");
+            toolTip.SetToolTip(bttnCSesion, "Cierra la sesion del usuario logueado actualmente");
         }
 
         private void label1_Click(object sender, EventArgs e)

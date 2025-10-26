@@ -18,6 +18,13 @@ namespace PROTOTIPOS1
         public PR()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+            toolTip.SetToolTip(bttnEliminar, "Eliminar un bien de uso.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar pedido de reaprovisionamiento.");
+            toolTip.SetToolTip(bttnBuscar, "Buscar pedido de reaprovisionamiento.");
+            toolTip.SetToolTip(button5, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

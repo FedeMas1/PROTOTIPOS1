@@ -16,6 +16,14 @@ namespace PROTOTIPOS1
         public Factura_prov()
         {
             InitializeComponent();
+            ToolTip toolTip = new ToolTip();
+
+
+            toolTip.SetToolTip(button2, "Buscar orden de compra.");
+            toolTip.SetToolTip(button3, "Modificar una factura.");
+            toolTip.SetToolTip(button5, "Guardar una factura.");
+            toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
+            toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void Factura_prov_Load(object sender, EventArgs e)
