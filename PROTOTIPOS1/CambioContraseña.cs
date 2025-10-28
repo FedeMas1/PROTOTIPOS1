@@ -13,6 +13,7 @@ namespace PROTOTIPOS1
 {
     public partial class CambioContraseña : Form
     {
+        private string ver = "Oculto";
         public CambioContraseña()
         {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace PROTOTIPOS1
             
             tooltip.SetToolTip(button1, "Guardar el cambio de la contraseña");
             tooltip.SetToolTip(bttnBack, "Ir al formulario anterior");
+            tooltip.SetToolTip(bttnVNContraseña, "Ver la contraseña oculta");
+            tooltip.SetToolTip(bttnVRContraseña, "Ver la contraseña oculta");
         }
 
         private void bttnBack_Click(object sender, EventArgs e)
@@ -119,6 +122,34 @@ namespace PROTOTIPOS1
                 }
             }
 
+        }
+
+        private void bttnVNContraseña_Click(object sender, EventArgs e)
+        {
+            if (ver == "Oculto")
+            {
+                txtBNContraseña.UseSystemPasswordChar = false;
+                ver = "Mostrar";
+            }
+            else
+            {
+                txtBNContraseña.UseSystemPasswordChar = true;
+                ver = "Oculto";
+            }
+        }
+
+        private void bttnVRContraseña_Click(object sender, EventArgs e)
+        {
+            if (ver == "Oculto")
+            {
+                txtBRContraseña.UseSystemPasswordChar = false;
+                ver = "Mostrar";
+            }
+            else
+            {
+                txtBRContraseña.UseSystemPasswordChar = true;
+                ver = "Oculto";
+            }
         }
     }
 }

@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -52,6 +55,12 @@
     </Compile>
     <Compile Include="Administrador.Designer.cs">
       <DependentUpon>Administrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backup.Designer.cs">
+      <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
     <Compile Include="CambioContraseña.cs">
       <SubType>Form</SubType>
@@ -96,6 +105,12 @@
     <Compile Include="Inventario.Designer.cs">
       <DependentUpon>Inventario.cs</DependentUpon>
     </Compile>
+    <Compile Include="LandingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LandingPage.Designer.cs">
+      <DependentUpon>LandingPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +140,12 @@
     </Compile>
     <Compile Include="Orden_de_Pago.Designer.cs">
       <DependentUpon>Orden_de_Pago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaginaAdministrador.Designer.cs">
+      <DependentUpon>PaginaAdministrador.cs</DependentUpon>
     </Compile>
     <Compile Include="Pago.cs">
       <SubType>Form</SubType>
@@ -192,6 +213,9 @@
     <EmbeddedResource Include="Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Backup.resx">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CambioContraseña.resx">
       <DependentUpon>CambioContraseña.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +237,9 @@
     <EmbeddedResource Include="Inventario.resx">
       <DependentUpon>Inventario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LandingPage.resx">
+      <DependentUpon>LandingPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Orden_de_Pago.resx">
       <DependentUpon>Orden_de_Pago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaginaAdministrador.resx">
+      <DependentUpon>PaginaAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pago.resx">
       <DependentUpon>Pago.cs</DependentUpon>
@@ -251,6 +281,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Proveedores.resx">
       <DependentUpon>Proveedores.cs</DependentUpon>
@@ -279,6 +310,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Imagen_Login.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 28 oct 2025, 14_09_29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gemini_Generated_Image_gga20pgga20pgga2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

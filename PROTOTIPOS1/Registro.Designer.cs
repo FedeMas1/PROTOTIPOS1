@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.bttnBack = new System.Windows.Forms.Button();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.lblMail = new System.Windows.Forms.Label();
@@ -47,7 +46,8 @@
             this.lblParametros = new System.Windows.Forms.Label();
             this.lblArroba = new System.Windows.Forms.Label();
             this.bttnTraducir = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.bttnVContraseña = new System.Windows.Forms.Button();
+            this.bttnVRContraseña = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bttnBack
@@ -66,7 +66,7 @@
             // 
             this.lblNombreUsuario.AutoSize = true;
             this.lblNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblNombreUsuario.Location = new System.Drawing.Point(335, 180);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(325, 180);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
             this.lblNombreUsuario.Size = new System.Drawing.Size(177, 25);
             this.lblNombreUsuario.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             this.lblMail.AutoSize = true;
             this.lblMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblMail.Location = new System.Drawing.Point(393, 240);
+            this.lblMail.Location = new System.Drawing.Point(325, 240);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(48, 25);
             this.lblMail.TabIndex = 2;
@@ -86,7 +86,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblNombre.Location = new System.Drawing.Point(377, 56);
+            this.lblNombre.Location = new System.Drawing.Point(325, 56);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(81, 25);
             this.lblNombre.TabIndex = 3;
@@ -96,7 +96,7 @@
             // 
             this.lblContraseña.AutoSize = true;
             this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblContraseña.Location = new System.Drawing.Point(364, 301);
+            this.lblContraseña.Location = new System.Drawing.Point(325, 301);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(114, 25);
             this.lblContraseña.TabIndex = 4;
@@ -106,7 +106,7 @@
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblApellido.Location = new System.Drawing.Point(376, 114);
+            this.lblApellido.Location = new System.Drawing.Point(325, 114);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(82, 25);
             this.lblApellido.TabIndex = 5;
@@ -152,7 +152,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button1.Location = new System.Drawing.Point(353, 426);
+            this.button1.Location = new System.Drawing.Point(341, 423);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 35);
             this.button1.TabIndex = 11;
@@ -164,7 +164,7 @@
             // 
             this.lblRepetirContraseña.AutoSize = true;
             this.lblRepetirContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.lblRepetirContraseña.Location = new System.Drawing.Point(335, 364);
+            this.lblRepetirContraseña.Location = new System.Drawing.Point(327, 364);
             this.lblRepetirContraseña.Name = "lblRepetirContraseña";
             this.lblRepetirContraseña.Size = new System.Drawing.Size(175, 25);
             this.lblRepetirContraseña.TabIndex = 12;
@@ -182,7 +182,7 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(270, 9);
+            this.lblTitulo.Location = new System.Drawing.Point(274, 2);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(312, 39);
             this.lblTitulo.TabIndex = 14;
@@ -219,9 +219,27 @@
             this.bttnTraducir.UseVisualStyleBackColor = true;
             this.bttnTraducir.Click += new System.EventHandler(this.bttnTraducir_Click);
             // 
-            // toolTip1
+            // bttnVContraseña
             // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            this.bttnVContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnVContraseña.Location = new System.Drawing.Point(217, 323);
+            this.bttnVContraseña.Name = "bttnVContraseña";
+            this.bttnVContraseña.Size = new System.Drawing.Size(63, 30);
+            this.bttnVContraseña.TabIndex = 18;
+            this.bttnVContraseña.Text = "Ver";
+            this.bttnVContraseña.UseVisualStyleBackColor = true;
+            this.bttnVContraseña.Click += new System.EventHandler(this.bttnVContraseña_Click);
+            // 
+            // bttnVRContraseña
+            // 
+            this.bttnVRContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnVRContraseña.Location = new System.Drawing.Point(217, 386);
+            this.bttnVRContraseña.Name = "bttnVRContraseña";
+            this.bttnVRContraseña.Size = new System.Drawing.Size(63, 30);
+            this.bttnVRContraseña.TabIndex = 19;
+            this.bttnVRContraseña.Text = "Ver";
+            this.bttnVRContraseña.UseVisualStyleBackColor = true;
+            this.bttnVRContraseña.Click += new System.EventHandler(this.bttnVRContraseña_Click);
             // 
             // Registro
             // 
@@ -229,6 +247,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(859, 470);
+            this.Controls.Add(this.bttnVRContraseña);
+            this.Controls.Add(this.bttnVContraseña);
             this.Controls.Add(this.bttnTraducir);
             this.Controls.Add(this.lblArroba);
             this.Controls.Add(this.lblParametros);
@@ -274,6 +294,7 @@
         private System.Windows.Forms.Label lblParametros;
         private System.Windows.Forms.Label lblArroba;
         private System.Windows.Forms.Button bttnTraducir;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button bttnVContraseña;
+        private System.Windows.Forms.Button bttnVRContraseña;
     }
 }

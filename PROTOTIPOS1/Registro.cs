@@ -16,6 +16,7 @@ namespace PROTOTIPOS1
     public partial class Registro : Form
     {
         string idioma = "Español";
+        private string ver = "Oculto";
         public Registro()
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace PROTOTIPOS1
             toolTip.SetToolTip(button1, "Registrar nueva cuenta.");
             toolTip.SetToolTip(bttnBack, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(textBox4, "Ej: emanuel@gmail.com.");
+            toolTip.SetToolTip(bttnVContraseña, "Ver la contraseña oculta");
+            toolTip.SetToolTip(bttnVRContraseña, "Ver la contraseña oculta");
         }
 
         private void bttnBack_Click(object sender, EventArgs e)
@@ -207,6 +210,8 @@ namespace PROTOTIPOS1
                 lblArroba.Text = "Must contain a @gmail.com, @hotmail.com or @outlook.com";
                 lblParametros.Text = "Must contain at least 8 characters, a capital letter and a number";
                 bttnTraducir.Text = "Translate";
+                bttnVContraseña.Text = "See";
+                bttnVRContraseña.Text = "See";
 
                 idioma = "Ingles";
             }
@@ -224,6 +229,8 @@ namespace PROTOTIPOS1
                 lblArroba.Text = "Debe contener un @gmail.com, @hotmail.com o @outlook.com";
                 lblParametros.Text = "Debe contener al menos 8 caracteres, una mayuscula y un numero";
                 bttnTraducir.Text = "Traducir";
+                bttnVContraseña.Text = "Ver";
+                bttnVRContraseña.Text = "Ver";
 
                 idioma = "Español";
             }
@@ -231,9 +238,33 @@ namespace PROTOTIPOS1
           
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
 
+        private void bttnVContraseña_Click(object sender, EventArgs e)
+        {
+            if (ver == "Oculto")
+            {
+                textBox3.UseSystemPasswordChar = false;
+                ver = "Mostrar";
+            }
+            else
+            {
+                textBox3.UseSystemPasswordChar = true;
+                ver = "Oculto";
+            }
+        }
+
+        private void bttnVRContraseña_Click(object sender, EventArgs e)
+        {
+            if (ver == "Oculto")
+            {
+                textBox6.UseSystemPasswordChar = false;
+                ver = "Mostrar";
+            }
+            else
+            {
+                textBox6.UseSystemPasswordChar = true;
+                ver = "Oculto";
+            }
         }
     }
 }

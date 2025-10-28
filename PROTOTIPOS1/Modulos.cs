@@ -65,9 +65,9 @@ namespace PROTOTIPOS1
 
         private void bttnAdministrador_Click(object sender, EventArgs e)
         {
-            Administrador admin = new Administrador();
-            admin.Show();
-            Hide();
+            PaginaAdministrador pAdmin = new PaginaAdministrador();
+            pAdmin.Show();
+            this.Hide();
         }
 
         private void Modulos_Load(object sender, EventArgs e)

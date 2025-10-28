@@ -73,57 +73,119 @@ namespace PROTOTIPOS1
 
         private void bttnCargar_Click(object sender, EventArgs e)
         {
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el número de Pcot a buscar:", "Buscar Pcot", "");
-
-            if (!int.TryParse(input, out int idBuscado))
+            if (cmbRubros.SelectedValue == null)
             {
-                MessageBox.Show("Número inválido.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar un rubro antes de cargar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            int idRubroSeleccionado = Convert.ToInt32(cmbRubros.SelectedValue);
+
+            // Preparar DataGridView si no tiene columnas
+            if (dgvPCot.Columns.Count == 0)
+            {
+                dgvPCot.Columns.Add("Origen", "Origen");
+                dgvPCot.Columns.Add("IdOrigen", "IdOrigen");
+                dgvPCot.Columns.Add("codigo_producto", "Código");
+                dgvPCot.Columns.Add("descripcion", "Descripción");
+                dgvPCot.Columns.Add("cantidad_a_cotizar", "Cantidad");
+                dgvPCot.Columns.Add("marca", "Marca");
+
+                DataGridViewButtonColumn bttnEliminar = new DataGridViewButtonColumn
+                {
+                    Name = "Eliminar",
+                    HeaderText = "Eliminar",
+                    Text = "Eliminar",
+                    UseColumnTextForButtonValue = true
+                };
+                dgvPCot.Columns.Add(bttnEliminar);
+            }
+
+            dgvPCot.Rows.Clear();
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Open();
-
-                SqlCommand cmdMaster = new SqlCommand("SELECT * FROM Pcot_Master WHERE id_Pcot = @Id", conn);
-                cmdMaster.Parameters.AddWithValue("@Id", idBuscado);
-                SqlDataReader reader = cmdMaster.ExecuteReader();
-
-                if (reader.Read())
+                try
                 {
-                    idCotizacionActual = idBuscado;
-                    dateTimePicker1.Value = Convert.ToDateTime(reader["fecha"]);
-                    cmbRubros.SelectedValue = (int)reader["rubro"];
-                    string estado = reader["estado"].ToString();
+                    conn.Open();
 
-                    cbSolicitado.Checked = estado == "Solicitado";
-                    cbAprobado.Checked = estado == "Aprobado";
-                    cbDeenegado.Checked = estado == "Denegado";
-                    cbCotizado.Checked = estado == "Cotizado";
+                    // === SOLICITUDES DE COMPRA ===
+                    string querySC = @"
+                SELECT 
+                    D.id_SC AS IdOrigen,
+                    'SC' AS Origen,
+                    D.codigo_bien_de_uso AS codigo_producto,
+                    D.descripcion,
+                    D.cantidad_a_pedir AS cantidad_a_cotizar,
+                    D.marca
+                FROM SC_Detalle D
+                INNER JOIN SC_Master M ON D.id_SC = M.id_SC
+                WHERE M.estado = 'Aprobado' AND M.rubro = @Rubro";
+
+                    using (SqlCommand cmdSC = new SqlCommand(querySC, conn))
+                    {
+                        cmdSC.Parameters.AddWithValue("@Rubro", idRubroSeleccionado);
+                        using (SqlDataReader readerSC = cmdSC.ExecuteReader())
+                        {
+                            while (readerSC.Read())
+                            {
+                                dgvPCot.Rows.Add(
+                                    readerSC["Origen"].ToString(),
+                                    readerSC["IdOrigen"].ToString(),
+                                    readerSC["codigo_producto"].ToString(),
+                                    readerSC["descripcion"].ToString(),
+                                    readerSC["cantidad_a_cotizar"].ToString(),
+                                    readerSC["marca"].ToString()
+                                );
+                            }
+                        }
+                    }
+
+                    // === PEDIDOS DE REAPROVISIONAMIENTO ===
+                    string queryPR = @"
+                SELECT 
+                    D.id_PR AS IdOrigen,
+                    'PR' AS Origen,
+                    D.codigo_producto,
+                    D.descripcion,
+                    D.cantidad_a_pedir AS cantidad_a_cotizar,
+                    D.marca
+                FROM PR_Detalle D
+                INNER JOIN PR_Master M ON D.id_PR = M.id_PR
+                WHERE M.estado = 'Aprobado' AND M.rubro = @Rubro";
+
+                    using (SqlCommand cmdPR = new SqlCommand(queryPR, conn))
+                    {
+                        cmdPR.Parameters.AddWithValue("@Rubro", idRubroSeleccionado);
+                        using (SqlDataReader readerPR = cmdPR.ExecuteReader())
+                        {
+                            while (readerPR.Read())
+                            {
+                                dgvPCot.Rows.Add(
+                                    readerPR["Origen"].ToString(),
+                                    readerPR["IdOrigen"].ToString(),
+                                    readerPR["codigo_producto"].ToString(),
+                                    readerPR["descripcion"].ToString(),
+                                    readerPR["cantidad_a_cotizar"].ToString(),
+                                    readerPR["marca"].ToString()
+                                );
+                            }
+                        }
+                    }
+
+                    if (dgvPCot.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se encontraron solicitudes o pedidos aprobados para el rubro seleccionado.",
+                            "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datos cargados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No se encontró el pedido de cotización.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reader.Close();
-                    return;
-                }
-                reader.Close();
-
-                dgvPCot.DataSource = null;
-                dgvPCot.Columns.Clear();
-
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Pcot_Detalle WHERE id_Pcot = @Id", conn);
-                da.SelectCommand.Parameters.AddWithValue("@Id", idBuscado);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dgvPCot.DataSource = dt;
-
-                dgvPCot.ReadOnly = true;
-
-                foreach (DataGridViewColumn col in dgvPCot.Columns)
-                {
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    MessageBox.Show("Error al cargar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -192,6 +254,17 @@ namespace PROTOTIPOS1
                 {
                     int idPcot;
 
+                    string estadoActual = "Solicitado";
+
+                    if (cbAprobado.Checked)
+                        estadoActual = "Aprobado";
+                    else if (cbDeenegado.Checked)
+                        estadoActual = "Denegado";
+                    else if (cbCotizado.Checked)
+                        estadoActual = "Cotizado";
+                    else if (cbSolicitado.Checked)
+                        estadoActual = "Solicitado";
+
                     if (idCotizacionActual == 0)
                     {
                         // Insertar master
@@ -202,7 +275,7 @@ namespace PROTOTIPOS1
                         {
                             cmdMaster.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
                             cmdMaster.Parameters.AddWithValue("@Rubro", (int)cmbRubros.SelectedValue);
-                            cmdMaster.Parameters.AddWithValue("@Estado", "Solicitado");
+                            cmdMaster.Parameters.AddWithValue("@Estado", estadoActual);
                             cmdMaster.Parameters.AddWithValue("@CantSC", cantSC);
                             cmdMaster.Parameters.AddWithValue("@CantPR", cantPR);
                             idPcot = (int)cmdMaster.ExecuteScalar();
@@ -220,7 +293,7 @@ namespace PROTOTIPOS1
                         {
                             cmdMaster.Parameters.AddWithValue("@Fecha", dateTimePicker1.Value);
                             cmdMaster.Parameters.AddWithValue("@Rubro", (int)cmbRubros.SelectedValue);
-                            cmdMaster.Parameters.AddWithValue("@Estado", "Solicitado");
+                            cmdMaster.Parameters.AddWithValue("@Estado", estadoActual);
                             cmdMaster.Parameters.AddWithValue("@CantSC", cantSC);
                             cmdMaster.Parameters.AddWithValue("@CantPR", cantPR);
                             cmdMaster.Parameters.AddWithValue("@Id", idCotizacionActual);

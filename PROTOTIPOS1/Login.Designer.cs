@@ -35,6 +35,9 @@
             this.txtbCorreo = new System.Windows.Forms.TextBox();
             this.txtbContraseña = new System.Windows.Forms.TextBox();
             this.Registrarse = new System.Windows.Forms.LinkLabel();
+            this.bttnVer = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -116,12 +119,35 @@
             this.Registrarse.VisitedLinkColor = System.Drawing.Color.Indigo;
             this.Registrarse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Registrarse_LinkClicked);
             // 
+            // bttnVer
+            // 
+            this.bttnVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnVer.Location = new System.Drawing.Point(436, 138);
+            this.bttnVer.Name = "bttnVer";
+            this.bttnVer.Size = new System.Drawing.Size(63, 30);
+            this.bttnVer.TabIndex = 8;
+            this.bttnVer.Text = "Ver";
+            this.bttnVer.UseVisualStyleBackColor = true;
+            this.bttnVer.Click += new System.EventHandler(this.bttnVer_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::PROTOTIPOS1.Properties.Resources.Gemini_Generated_Image_gga20pgga20pgga2;
+            this.pictureBox2.Location = new System.Drawing.Point(21, 128);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(198, 148);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(637, 425);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.bttnVer);
             this.Controls.Add(this.Registrarse);
             this.Controls.Add(this.txtbContraseña);
             this.Controls.Add(this.txtbCorreo);
@@ -132,6 +158,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "Login";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +173,8 @@
         private System.Windows.Forms.TextBox txtbCorreo;
         private System.Windows.Forms.TextBox txtbContraseña;
         private System.Windows.Forms.LinkLabel Registrarse;
+        private System.Windows.Forms.Button bttnVer;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

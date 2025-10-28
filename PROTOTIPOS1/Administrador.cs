@@ -23,17 +23,16 @@ namespace PROTOTIPOS1
 
             System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
 
-            toolTip.SetToolTip(btnrestore, "Restaurar la Base de Datos.");
-            toolTip.SetToolTip(btnbackup, "Respaldar la Base de Datos.");
+            
             toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Modulos mod = new Modulos();
-            mod.Show();
-            Hide();
+            PaginaAdministrador pAdmin = new PaginaAdministrador();
+            pAdmin.Show();
+            this.Hide();
         }
 
         private void Administrador_Load(object sender, EventArgs e)

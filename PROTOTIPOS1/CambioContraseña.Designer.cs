@@ -40,6 +40,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.bttnVNContraseña = new System.Windows.Forms.Button();
+            this.bttnVRContraseña = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bttnBack
@@ -155,12 +157,36 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Por lo menos 8 caracteres, una mayuscula y un numero";
             // 
+            // bttnVNContraseña
+            // 
+            this.bttnVNContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnVNContraseña.Location = new System.Drawing.Point(229, 238);
+            this.bttnVNContraseña.Name = "bttnVNContraseña";
+            this.bttnVNContraseña.Size = new System.Drawing.Size(63, 30);
+            this.bttnVNContraseña.TabIndex = 12;
+            this.bttnVNContraseña.Text = "Ver";
+            this.bttnVNContraseña.UseVisualStyleBackColor = true;
+            this.bttnVNContraseña.Click += new System.EventHandler(this.bttnVNContraseña_Click);
+            // 
+            // bttnVRContraseña
+            // 
+            this.bttnVRContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnVRContraseña.Location = new System.Drawing.Point(229, 310);
+            this.bttnVRContraseña.Name = "bttnVRContraseña";
+            this.bttnVRContraseña.Size = new System.Drawing.Size(63, 30);
+            this.bttnVRContraseña.TabIndex = 13;
+            this.bttnVRContraseña.Text = "Ver";
+            this.bttnVRContraseña.UseVisualStyleBackColor = true;
+            this.bttnVRContraseña.Click += new System.EventHandler(this.bttnVRContraseña_Click);
+            // 
             // CambioContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttnVRContraseña);
+            this.Controls.Add(this.bttnVNContraseña);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
@@ -194,5 +220,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button bttnVNContraseña;
+        private System.Windows.Forms.Button bttnVRContraseña;
     }
 }
