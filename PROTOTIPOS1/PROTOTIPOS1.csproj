@@ -320,5 +320,8 @@
   <ItemGroup>
     <None Include="Resources\Gemini_Generated_Image_gga20pgga20pgga2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 28 oct 2025, 22_49_19.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

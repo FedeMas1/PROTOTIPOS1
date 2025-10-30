@@ -22,7 +22,7 @@ namespace PROTOTIPOS1
             InitializeComponent();
 
             ToolTip toolTip = new ToolTip();
-
+            
             toolTip.SetToolTip(bttnTraducir, "Cmbiar el idioma.");
             toolTip.SetToolTip(button1, "Registrar nueva cuenta.");
             toolTip.SetToolTip(bttnBack, "Vuelve al formulario anterior.");

@@ -24,9 +24,7 @@ namespace PROTOTIPOS1
         {
             id_Usuario = 0;
             email = string.Empty;
-            nivel = 0;
-
-            
+            nivel = 0;          
         }
     }
 }

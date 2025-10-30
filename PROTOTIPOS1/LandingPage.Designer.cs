@@ -37,10 +37,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::PROTOTIPOS1.Properties.Resources.Gemini_Generated_Image_gga20pgga20pgga2;
-            this.pictureBox1.Location = new System.Drawing.Point(161, 56);
+            this.pictureBox1.Image = global::PROTOTIPOS1.Properties.Resources.ChatGPT_Image_28_oct_2025__22_49_19;
+            this.pictureBox1.Location = new System.Drawing.Point(157, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(499, 244);
+            this.pictureBox1.Size = new System.Drawing.Size(522, 307);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -49,7 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label1.Location = new System.Drawing.Point(334, 303);
+            this.label1.Location = new System.Drawing.Point(334, 313);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 31);
             this.label1.TabIndex = 1;
@@ -58,10 +58,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label2.Location = new System.Drawing.Point(272, 9);
+            this.label2.Font = new System.Drawing.Font("Edwardian Script ITC", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(280, 265);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(287, 31);
+            this.label2.Size = new System.Drawing.Size(275, 38);
             this.label2.TabIndex = 2;
             this.label2.Text = "Panaderia Santa Lucia";
             // 

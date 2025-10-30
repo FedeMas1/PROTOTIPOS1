@@ -221,6 +221,7 @@
             // 
             // bttnVContraseña
             // 
+            this.bttnVContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnVContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.bttnVContraseña.Location = new System.Drawing.Point(217, 323);
             this.bttnVContraseña.Name = "bttnVContraseña";
@@ -232,6 +233,7 @@
             // 
             // bttnVRContraseña
             // 
+            this.bttnVRContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnVRContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.bttnVRContraseña.Location = new System.Drawing.Point(217, 386);
             this.bttnVRContraseña.Name = "bttnVRContraseña";

@@ -15,6 +15,7 @@ namespace PROTOTIPOS1
     {
         private static int intentosFallidos = 0;
         private static DateTime? bloqueoHasta = null;
+
         private string ver = "Oculto";
         public Login()
         {

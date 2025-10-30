@@ -125,12 +125,12 @@ namespace PROTOTIPOS1
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        idProductoActual = Convert.ToInt32(reader["cod_Producto"]);
+                        idProductoActual = Convert.ToInt32(reader["codigo_Producto"]);
                         esModificacion = true;
 
                         cmbDescripcion.Text = reader["Descripcion"].ToString();
                         cmbRubros.SelectedValue = reader["id_Rubro"];
-                        lblCProducto.Text = reader["cod_Producto"].ToString();
+                        lblCProducto.Text = reader["codigo_Producto"].ToString();
                         txtbUMVenta.Text = reader["UM_venta"].ToString();
                         txtBUMCompra.Text = reader["UM_compra"].ToString();
                         txtBCuit.Text = reader["cod_Proveedor"].ToString();
@@ -341,7 +341,7 @@ namespace PROTOTIPOS1
                 using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
                     conexion.Open();
-                    string delete = "DELETE FROM Stock WHERE cod_Producto = @id";
+                    string delete = "DELETE FROM Stock WHERE codigo_Producto = @id";
                     using (SqlCommand command = new SqlCommand(delete, conexion))
                     {
                         command.Parameters.AddWithValue("@id", idProductoActual);

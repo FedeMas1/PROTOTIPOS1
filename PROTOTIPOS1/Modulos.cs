@@ -29,7 +29,6 @@ namespace PROTOTIPOS1
         public Modulos(string nUsuario)
         {
             InitializeComponent();
-            lblNivel.Text = nUsuario;
         }
 
         private void button1_Click(object sender, EventArgs e)

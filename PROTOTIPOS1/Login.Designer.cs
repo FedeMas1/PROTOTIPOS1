@@ -121,6 +121,7 @@
             // 
             // bttnVer
             // 
+            this.bttnVer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnVer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.bttnVer.Location = new System.Drawing.Point(436, 138);
             this.bttnVer.Name = "bttnVer";
@@ -132,8 +133,8 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::PROTOTIPOS1.Properties.Resources.Gemini_Generated_Image_gga20pgga20pgga2;
-            this.pictureBox2.Location = new System.Drawing.Point(21, 128);
+            this.pictureBox2.Image = global::PROTOTIPOS1.Properties.Resources.ChatGPT_Image_28_oct_2025__22_49_19;
+            this.pictureBox2.Location = new System.Drawing.Point(21, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(198, 148);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

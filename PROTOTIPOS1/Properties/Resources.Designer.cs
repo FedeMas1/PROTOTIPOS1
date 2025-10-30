@@ -63,6 +63,16 @@ namespace PROTOTIPOS1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_28_oct_2025__22_49_19 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 28 oct 2025, 22_49_19", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gemini_Generated_Image_gga20pgga20pgga2 {
             get {
                 object obj = ResourceManager.GetObject("Gemini_Generated_Image_gga20pgga20pgga2", resourceCulture);
