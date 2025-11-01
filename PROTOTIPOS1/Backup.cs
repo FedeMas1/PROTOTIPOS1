@@ -19,6 +19,9 @@ namespace PROTOTIPOS1
         {
             InitializeComponent();
 
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
             toolTip.SetToolTip(btnrestore, "Restaurar la Base de Datos.");
             toolTip.SetToolTip(btnbackup, "Respaldar la Base de Datos.");

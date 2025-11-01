@@ -19,6 +19,10 @@ namespace PROTOTIPOS1
         public Orden_de_compra()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(button4, "Eliminar una orden de compra.");

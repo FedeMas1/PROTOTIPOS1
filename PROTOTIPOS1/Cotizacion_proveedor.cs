@@ -19,6 +19,10 @@ namespace PROTOTIPOS1
         public Cotizacion_proveedor()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
 
@@ -34,8 +38,8 @@ namespace PROTOTIPOS1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            compacion_de_proveedores comparacion = new compacion_de_proveedores();
-            comparacion.ShowDialog();
+            Orden_de_compra oc = new Orden_de_compra();
+            oc.Show();
             this.Hide();
         }
 

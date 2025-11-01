@@ -15,6 +15,10 @@ namespace PROTOTIPOS1
         public Recibo()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(button1, "Modificar un Recibo.");

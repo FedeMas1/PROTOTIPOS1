@@ -18,6 +18,10 @@ namespace PROTOTIPOS1
         public Administrador()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             dgvUsuarios.CellEndEdit += dgvUsuarios_CellEndEdit;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
 

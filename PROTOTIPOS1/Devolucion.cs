@@ -16,6 +16,10 @@ namespace PROTOTIPOS1
         public Devolucion()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
 

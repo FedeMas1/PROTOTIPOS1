@@ -14,6 +14,10 @@ namespace PROTOTIPOS1
     {
         public PPrincipal(){
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(bttnStock, "Gestiona el stock: agregar, modificar o eliminar registros de productos disponibles.");
@@ -34,6 +38,9 @@ namespace PROTOTIPOS1
         public PPrincipal(string nUsuario)
         {
             InitializeComponent();
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             lblNivel.Text = nUsuario;
         }
 

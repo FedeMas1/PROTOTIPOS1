@@ -18,6 +18,9 @@ namespace PROTOTIPOS1
         {
             InitializeComponent();
 
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(bttnAgregar, "Buscar un producto de rubros a traves de su descripcion en el textbox");

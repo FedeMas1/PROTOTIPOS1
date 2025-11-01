@@ -15,6 +15,8 @@ namespace PROTOTIPOS1
         public LandingPage()
         {
             InitializeComponent();
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
         }
 
         private void button1_Click(object sender, EventArgs e)

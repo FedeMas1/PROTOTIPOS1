@@ -20,6 +20,8 @@ namespace PROTOTIPOS1
         public Registro()
         {
             InitializeComponent();
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
 
             ToolTip toolTip = new ToolTip();
             

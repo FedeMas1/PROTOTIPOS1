@@ -20,6 +20,9 @@ namespace PROTOTIPOS1
         public Login()
         {
             InitializeComponent();
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             this.Icon = new Icon(@"C:\imagenes\Imagen_Icon.ico");
 
             ToolTip tooltip = new ToolTip();
@@ -122,7 +125,7 @@ namespace PROTOTIPOS1
 
         private void bttnVer_Click(object sender, EventArgs e)
         {
-            if(ver == "Oculto")
+            if (ver == "Oculto")
             {
                 txtbContraseña.UseSystemPasswordChar = false;
                 ver = "Mostrar";
@@ -133,5 +136,7 @@ namespace PROTOTIPOS1
                 ver = "Oculto";
             }
         }
+
+    
     }
 }

@@ -17,6 +17,8 @@ namespace PROTOTIPOS1
         public CambioContraseña()
         {
             InitializeComponent();
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
 
             ToolTip tooltip = new ToolTip();
 

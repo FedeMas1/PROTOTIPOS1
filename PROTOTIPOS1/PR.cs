@@ -18,6 +18,10 @@ namespace PROTOTIPOS1
         public PR()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(bttnEliminar, "Eliminar un bien de uso.");

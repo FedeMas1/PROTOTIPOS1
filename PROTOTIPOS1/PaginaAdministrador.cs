@@ -16,6 +16,9 @@ namespace PROTOTIPOS1
         {
             InitializeComponent();
 
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip tooltip = new ToolTip();
             tooltip.SetToolTip(button1, "Ir a control de usuarios");
             tooltip.SetToolTip(button2, "Ir a backup y restore");

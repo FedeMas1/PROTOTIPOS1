@@ -15,6 +15,9 @@ namespace PROTOTIPOS1
         public Modulos()
         {
             InitializeComponent();
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
 
             ToolTip tooltip = new ToolTip();
 

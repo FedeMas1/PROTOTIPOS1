@@ -15,6 +15,10 @@ namespace PROTOTIPOS1
         public Orden_de_Pago()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(button1, "Eliminar una Orden de Pago.");

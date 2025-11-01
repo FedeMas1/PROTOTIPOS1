@@ -68,12 +68,6 @@
     <Compile Include="CambioContraseña.Designer.cs">
       <DependentUpon>CambioContraseña.cs</DependentUpon>
     </Compile>
-    <Compile Include="compacion de proveedores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="compacion de proveedores.Designer.cs">
-      <DependentUpon>compacion de proveedores.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cotizacion_proveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +80,7 @@
     <Compile Include="Devolucion.Designer.cs">
       <DependentUpon>Devolucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Estilos.cs" />
     <Compile Include="Factura_prov.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,9 +213,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CambioContraseña.resx">
       <DependentUpon>CambioContraseña.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="compacion de proveedores.resx">
-      <DependentUpon>compacion de proveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cotizacion_proveedor.resx">
       <DependentUpon>Cotizacion_proveedor.cs</DependentUpon>

@@ -15,6 +15,10 @@ namespace PROTOTIPOS1
         public PPrincipal_Pagos()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(button1, "Gestiona órdenes de pago: agregar nuevas, modificar o eliminar registros de pago.");

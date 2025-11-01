@@ -16,6 +16,10 @@ namespace PROTOTIPOS1
         public Informe_recepcion()
         {
             InitializeComponent();
+
+            Estilos estilos = new Estilos();
+            estilos.AplicarEstilos(this);
+
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(button2, "Eliminar un informe de recepcion.");
