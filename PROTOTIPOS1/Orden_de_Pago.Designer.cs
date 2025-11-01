@@ -43,9 +43,9 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bttnEliminar = new System.Windows.Forms.Button();
+            this.bttnModificar = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -211,35 +211,35 @@
             this.checkBox6.Text = "Realizado";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // bttnEliminar
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button1.Location = new System.Drawing.Point(321, 452);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 36);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnEliminar.Location = new System.Drawing.Point(321, 452);
+            this.bttnEliminar.Name = "bttnEliminar";
+            this.bttnEliminar.Size = new System.Drawing.Size(170, 36);
+            this.bttnEliminar.TabIndex = 20;
+            this.bttnEliminar.Text = "Eliminar";
+            this.bttnEliminar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // bttnModificar
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button2.Location = new System.Drawing.Point(27, 452);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(170, 36);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Modificar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnModificar.Location = new System.Drawing.Point(27, 452);
+            this.bttnModificar.Name = "bttnModificar";
+            this.bttnModificar.Size = new System.Drawing.Size(170, 36);
+            this.bttnModificar.TabIndex = 21;
+            this.bttnModificar.Text = "Modificar";
+            this.bttnModificar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // bttnGuardar
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button3.Location = new System.Drawing.Point(588, 452);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(170, 36);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Guardar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnGuardar.Location = new System.Drawing.Point(588, 452);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(170, 36);
+            this.bttnGuardar.TabIndex = 22;
+            this.bttnGuardar.Text = "Guardar";
+            this.bttnGuardar.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -368,9 +368,9 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bttnGuardar);
+            this.Controls.Add(this.bttnModificar);
+            this.Controls.Add(this.bttnEliminar);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
@@ -410,9 +410,9 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bttnEliminar;
+        private System.Windows.Forms.Button bttnModificar;
+        private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;

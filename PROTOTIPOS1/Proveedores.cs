@@ -27,7 +27,7 @@ namespace PROTOTIPOS1
             toolTip.SetToolTip(bttnEliminar, "Eliminar un proveedor.");
             toolTip.SetToolTip(bttnModificar, "Modificar un proveedor.");
             toolTip.SetToolTip(bttnBuscar, "Buscar Proovedor.");
-            toolTip.SetToolTip(button1, "Guardar un proveedor.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar un proveedor.");
             toolTip.SetToolTip(button6, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }

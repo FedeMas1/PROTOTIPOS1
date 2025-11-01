@@ -21,9 +21,9 @@ namespace PROTOTIPOS1
 
             ToolTip toolTip = new ToolTip();
 
-            toolTip.SetToolTip(button1, "Eliminar un Pago.");
-            toolTip.SetToolTip(button2, "Modificar un Pago.");
-            toolTip.SetToolTip(button3, "Realizar un pago.");
+            toolTip.SetToolTip(bttnEliminar, "Eliminar un Pago.");
+            toolTip.SetToolTip(bttnModificar, "Modificar un Pago.");
+            toolTip.SetToolTip(bttnGuardar, "Realizar un pago.");
             toolTip.SetToolTip(button4, "Seleccionar una Orden de Pago.");
             toolTip.SetToolTip(button5, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
             toolTip.SetToolTip(bttnCSesion, "Vuelve al formulario anterior.");

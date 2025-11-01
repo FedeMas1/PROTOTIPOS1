@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
             this.checkbActivo = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,18 +65,18 @@
             this.bttnCSesion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // bttnGuardar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button1.Location = new System.Drawing.Point(738, 371);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 38);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bttnGuardar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnGuardar.Location = new System.Drawing.Point(738, 371);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(95, 38);
+            this.bttnGuardar.TabIndex = 0;
+            this.bttnGuardar.Text = "Guardar";
+            this.bttnGuardar.UseVisualStyleBackColor = false;
+            this.bttnGuardar.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkbActivo
             // 
@@ -454,7 +454,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkbActivo);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bttnGuardar);
             this.Name = "Inventario";
             this.Text = "Inventario";
             this.Load += new System.EventHandler(this.Inventario_Load);
@@ -465,7 +465,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.CheckBox checkbActivo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

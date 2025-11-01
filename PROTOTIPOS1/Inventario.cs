@@ -24,7 +24,7 @@ namespace PROTOTIPOS1
 
             toolTip.SetToolTip(bttnEliminar, "Eliminar un bien de uso.");
             toolTip.SetToolTip(bttnModificar, "Modificar un bien de uso.");
-            toolTip.SetToolTip(button1, "Guardar un bien de uso.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar un bien de uso.");
             toolTip.SetToolTip(button5, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }

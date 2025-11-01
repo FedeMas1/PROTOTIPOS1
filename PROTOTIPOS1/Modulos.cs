@@ -74,13 +74,15 @@ namespace PROTOTIPOS1
 
         private void Modulos_Load(object sender, EventArgs e)
         {
-            if(Sesion.nivel == 3)
+            if (Sesion.nivel == 3)
             {
                 bttnAdministrador.Visible = true;
+                pbAdministrador.Visible = true;
             }
             else
             {
-                bttnAdministrador.Visible = false; 
+                bttnAdministrador.Visible = false;
+                pbAdministrador.Visible = false;
             }
         }
     }

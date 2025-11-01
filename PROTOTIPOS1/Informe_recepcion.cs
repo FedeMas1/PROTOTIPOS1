@@ -22,10 +22,10 @@ namespace PROTOTIPOS1
 
             ToolTip toolTip = new ToolTip();
 
-            toolTip.SetToolTip(button2, "Eliminar un informe de recepcion.");
-            toolTip.SetToolTip(button5, "Modificar un informe de recepcion.");
-            toolTip.SetToolTip(button7, "Buscar una orden de compra.");
-            toolTip.SetToolTip(button4, "Guardar un informe de recepcion.");
+            toolTip.SetToolTip(bttnEliminar, "Eliminar un informe de recepcion.");
+            toolTip.SetToolTip(bttnModificar, "Modificar un informe de recepcion.");
+            toolTip.SetToolTip(bttnBuscar, "Buscar una orden de compra.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar un informe de recepcion.");
             toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }

@@ -43,11 +43,11 @@ namespace PROTOTIPOS1
 
                     boton.MouseEnter += (s, e) =>
                     {
-                        if (boton.Name.Equals("btnEliminar", StringComparison.OrdinalIgnoreCase))
+                        if (boton.Name.Equals("bttnEliminar", StringComparison.OrdinalIgnoreCase))
                         {
                             boton.BackColor = Color.Red;
                         }
-                        else if (boton.Name.Equals("btnGuardar", StringComparison.OrdinalIgnoreCase))
+                        else if (boton.Name.Equals("bttnGuardar", StringComparison.OrdinalIgnoreCase))
                         {
                             boton.BackColor = Color.Green;
                         }

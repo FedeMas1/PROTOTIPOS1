@@ -33,10 +33,10 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.bttnEliminar = new System.Windows.Forms.Button();
+            this.bttnModificar = new System.Windows.Forms.Button();
+            this.bttnBOC = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.bttnBIRM = new System.Windows.Forms.Button();
             this.bttnCSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -100,49 +100,49 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // bttnEliminar
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button2.Location = new System.Drawing.Point(400, 505);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 47);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bttnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnEliminar.Location = new System.Drawing.Point(400, 505);
+            this.bttnEliminar.Name = "bttnEliminar";
+            this.bttnEliminar.Size = new System.Drawing.Size(102, 47);
+            this.bttnEliminar.TabIndex = 9;
+            this.bttnEliminar.Text = "Eliminar";
+            this.bttnEliminar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // bttnModificar
             // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button3.Location = new System.Drawing.Point(119, 505);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 47);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Modificar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnModificar.Location = new System.Drawing.Point(119, 505);
+            this.bttnModificar.Name = "bttnModificar";
+            this.bttnModificar.Size = new System.Drawing.Size(102, 47);
+            this.bttnModificar.TabIndex = 10;
+            this.bttnModificar.Text = "Modificar";
+            this.bttnModificar.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // bttnBOC
             // 
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button5.Location = new System.Drawing.Point(409, 108);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 32);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Buscar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.bttnBOC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnBOC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnBOC.Location = new System.Drawing.Point(409, 108);
+            this.bttnBOC.Name = "bttnBOC";
+            this.bttnBOC.Size = new System.Drawing.Size(93, 32);
+            this.bttnBOC.TabIndex = 12;
+            this.bttnBOC.Text = "Buscar";
+            this.bttnBOC.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // bttnGuardar
             // 
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button6.Location = new System.Drawing.Point(707, 505);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(102, 47);
-            this.button6.TabIndex = 13;
-            this.button6.Text = "Guardar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnGuardar.Location = new System.Drawing.Point(707, 505);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(102, 47);
+            this.bttnGuardar.TabIndex = 13;
+            this.bttnGuardar.Text = "Guardar";
+            this.bttnGuardar.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -225,16 +225,16 @@
             this.label8.TabIndex = 22;
             this.label8.Text = "Informe de recepcion";
             // 
-            // button4
+            // bttnBIRM
             // 
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button4.Location = new System.Drawing.Point(439, 143);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(93, 32);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "Buscar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bttnBIRM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnBIRM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnBIRM.Location = new System.Drawing.Point(439, 143);
+            this.bttnBIRM.Name = "bttnBIRM";
+            this.bttnBIRM.Size = new System.Drawing.Size(93, 32);
+            this.bttnBIRM.TabIndex = 21;
+            this.bttnBIRM.Text = "Buscar";
+            this.bttnBIRM.UseVisualStyleBackColor = true;
             // 
             // bttnCSesion
             // 
@@ -257,7 +257,7 @@
             this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.bttnBIRM);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -265,10 +265,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bttnGuardar);
+            this.Controls.Add(this.bttnBOC);
+            this.Controls.Add(this.bttnModificar);
+            this.Controls.Add(this.bttnEliminar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.richTextBox1);
@@ -290,10 +290,10 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button bttnEliminar;
+        private System.Windows.Forms.Button bttnModificar;
+        private System.Windows.Forms.Button bttnBOC;
+        private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
@@ -303,7 +303,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button bttnBIRM;
         private System.Windows.Forms.Button bttnCSesion;
     }
 }

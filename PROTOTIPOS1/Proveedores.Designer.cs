@@ -56,7 +56,7 @@
             this.txtBMarcas = new System.Windows.Forms.TextBox();
             this.cbEstado = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnEliminar = new System.Windows.Forms.Button();
             this.bttnModificar = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -315,18 +315,18 @@
             this.label14.TabIndex = 29;
             this.label14.Text = "ABM de Proveedores";
             // 
-            // button1
+            // bttnGuardar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button1.Location = new System.Drawing.Point(745, 410);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 43);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bttnGuardar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnGuardar.Location = new System.Drawing.Point(745, 410);
+            this.bttnGuardar.Name = "bttnGuardar";
+            this.bttnGuardar.Size = new System.Drawing.Size(117, 43);
+            this.bttnGuardar.TabIndex = 30;
+            this.bttnGuardar.Text = "Guardar";
+            this.bttnGuardar.UseVisualStyleBackColor = false;
+            this.bttnGuardar.Click += new System.EventHandler(this.button1_Click);
             // 
             // bttnEliminar
             // 
@@ -476,7 +476,7 @@
             this.Controls.Add(this.button6);
             this.Controls.Add(this.bttnModificar);
             this.Controls.Add(this.bttnEliminar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.txtBMarcas);
@@ -543,7 +543,7 @@
         private System.Windows.Forms.TextBox txtBMarcas;
         private System.Windows.Forms.CheckBox cbEstado;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Button bttnEliminar;
         private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button button6;

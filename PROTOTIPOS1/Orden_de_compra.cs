@@ -25,9 +25,9 @@ namespace PROTOTIPOS1
 
             ToolTip toolTip = new ToolTip();
 
-            toolTip.SetToolTip(button4, "Eliminar una orden de compra.");
+            toolTip.SetToolTip(bttnEliminar, "Eliminar una orden de compra.");
             toolTip.SetToolTip(button3, "Modificar una orden de compra.");
-            toolTip.SetToolTip(button2, "Guardar una orden de compra.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar una orden de compra.");
             toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
@@ -203,9 +203,9 @@ namespace PROTOTIPOS1
 
         private void ModoNuevaOC()
         {
-            button2.Enabled = true;      
+            bttnGuardar.Enabled = true;      
             button3.Enabled = true;
-            button4.Enabled = false;     // Solo debería estar para eliminar OC completa
+            bttnEliminar.Enabled = false;     // Solo debería estar para eliminar OC completa
             bttnBuscar.Enabled = true;        // Buscar OC
             bttnBCotizacion.Enabled = true;   // Botón para buscar Cotización
 
@@ -443,8 +443,8 @@ namespace PROTOTIPOS1
 
             dgvOC.Enabled = habilitar;
 
-            button2.Enabled = habilitar; 
-            button4.Enabled = habilitar; 
+            bttnGuardar.Enabled = habilitar; 
+            bttnEliminar.Enabled = habilitar; 
         }
       
 
@@ -541,8 +541,8 @@ namespace PROTOTIPOS1
 
                     dgvOC.Enabled = true; 
 
-                    button2.Enabled = true;  // Guardar
-                    button4.Enabled = true;  // Eliminar
+                    bttnGuardar.Enabled = true;  // Guardar
+                    bttnEliminar.Enabled = true;  // Eliminar
                     button3.Enabled = false; // Modificar
                     button5.Enabled = true;  // Agregar
                     bttnBuscar.Enabled = true; 
@@ -792,8 +792,8 @@ namespace PROTOTIPOS1
                     cbCCorriente.Enabled = false;
 
                     dgvOC.Enabled = false;        
-                    button2.Enabled = false;      // Guardar
-                    button4.Enabled = false;      // Eliminar
+                    bttnGuardar.Enabled = false;      // Guardar
+                    bttnEliminar.Enabled = false;      // Eliminar
                     button3.Enabled = true;       // Modificar
                     button5.Enabled = true;       // Agregar
                     bttnBuscar.Enabled = true;       

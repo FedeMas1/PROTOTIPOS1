@@ -21,8 +21,8 @@ namespace PROTOTIPOS1
 
             ToolTip toolTip = new ToolTip();
 
-            toolTip.SetToolTip(button1, "Modificar un Recibo.");
-            toolTip.SetToolTip(button2, "Guardar un Recibo.");
+            toolTip.SetToolTip(bttnModificar, "Modificar un Recibo.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar un Recibo.");
             toolTip.SetToolTip(button3, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
             toolTip.SetToolTip(textBox1, "Ingrese el NUmero de Pago");

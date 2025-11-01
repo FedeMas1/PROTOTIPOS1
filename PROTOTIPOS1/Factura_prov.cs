@@ -23,9 +23,9 @@ namespace PROTOTIPOS1
             ToolTip toolTip = new ToolTip();
 
 
-            toolTip.SetToolTip(button2, "Buscar orden de compra.");
-            toolTip.SetToolTip(button3, "Modificar una factura.");
-            toolTip.SetToolTip(button5, "Guardar una factura.");
+            toolTip.SetToolTip(bttnBuscar, "Buscar orden de compra.");
+            toolTip.SetToolTip(bttnModificar, "Modificar una factura.");
+            toolTip.SetToolTip(bttnGuardar, "Guardar una factura.");
             toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
         }
