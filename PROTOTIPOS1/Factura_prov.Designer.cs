@@ -31,25 +31,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtOC = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.bttnBuscar = new System.Windows.Forms.Button();
             this.bttnModificar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtpingreso = new System.Windows.Forms.DateTimePicker();
+            this.lblnfact = new System.Windows.Forms.Label();
+            this.lblprov = new System.Windows.Forms.Label();
+            this.txtimporte = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtiva = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txttotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpvencimiento = new System.Windows.Forms.DateTimePicker();
             this.bttnCSesion = new System.Windows.Forms.Button();
+            this.bttnCalcular = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -76,18 +77,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label3.Location = new System.Drawing.Point(54, 151);
+            this.label3.Location = new System.Drawing.Point(54, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(164, 25);
             this.label3.TabIndex = 3;
             this.label3.Text = "Orden de compra";
             // 
-            // textBox3
+            // txtOC
             // 
-            this.textBox3.Location = new System.Drawing.Point(224, 157);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtOC.Location = new System.Drawing.Point(224, 172);
+            this.txtOC.Name = "txtOC";
+            this.txtOC.Size = new System.Drawing.Size(100, 20);
+            this.txtOC.TabIndex = 6;
             // 
             // button1
             // 
@@ -106,12 +107,13 @@
             this.bttnBuscar.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.bttnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.bttnBuscar.Location = new System.Drawing.Point(347, 151);
+            this.bttnBuscar.Location = new System.Drawing.Point(347, 166);
             this.bttnBuscar.Name = "bttnBuscar";
             this.bttnBuscar.Size = new System.Drawing.Size(109, 38);
             this.bttnBuscar.TabIndex = 9;
             this.bttnBuscar.Text = "Buscar";
             this.bttnBuscar.UseVisualStyleBackColor = false;
+            this.bttnBuscar.Click += new System.EventHandler(this.bttnBuscar_Click);
             // 
             // bttnModificar
             // 
@@ -124,6 +126,7 @@
             this.bttnModificar.TabIndex = 10;
             this.bttnModificar.Text = "Modificar";
             this.bttnModificar.UseVisualStyleBackColor = false;
+            this.bttnModificar.Click += new System.EventHandler(this.bttnModificar_Click);
             // 
             // bttnGuardar
             // 
@@ -136,6 +139,7 @@
             this.bttnGuardar.TabIndex = 12;
             this.bttnGuardar.Text = "Guardar";
             this.bttnGuardar.UseVisualStyleBackColor = false;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // label5
             // 
@@ -147,39 +151,39 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "ABM de Factura del proveedor";
             // 
-            // dateTimePicker1
+            // dtpingreso
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(588, 81);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 17;
+            this.dtpingreso.Location = new System.Drawing.Point(588, 81);
+            this.dtpingreso.Name = "dtpingreso";
+            this.dtpingreso.Size = new System.Drawing.Size(200, 20);
+            this.dtpingreso.TabIndex = 17;
             // 
-            // label7
+            // lblnfact
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label7.Location = new System.Drawing.Point(187, 85);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 25);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "XXXX";
+            this.lblnfact.AutoSize = true;
+            this.lblnfact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblnfact.Location = new System.Drawing.Point(187, 85);
+            this.lblnfact.Name = "lblnfact";
+            this.lblnfact.Size = new System.Drawing.Size(68, 25);
+            this.lblnfact.TabIndex = 19;
+            this.lblnfact.Text = "XXXX";
             // 
-            // label8
+            // lblprov
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label8.Location = new System.Drawing.Point(261, 118);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 25);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "XXXX";
+            this.lblprov.AutoSize = true;
+            this.lblprov.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblprov.Location = new System.Drawing.Point(261, 118);
+            this.lblprov.Name = "lblprov";
+            this.lblprov.Size = new System.Drawing.Size(68, 25);
+            this.lblprov.TabIndex = 20;
+            this.lblprov.Text = "XXXX";
             // 
-            // textBox1
+            // txtimporte
             // 
-            this.textBox1.Location = new System.Drawing.Point(224, 227);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 22;
+            this.txtimporte.Location = new System.Drawing.Point(224, 227);
+            this.txtimporte.Name = "txtimporte";
+            this.txtimporte.Size = new System.Drawing.Size(100, 20);
+            this.txtimporte.TabIndex = 22;
             // 
             // label4
             // 
@@ -191,12 +195,12 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Importe neto";
             // 
-            // textBox2
+            // txtiva
             // 
-            this.textBox2.Location = new System.Drawing.Point(224, 283);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 24;
+            this.txtiva.Location = new System.Drawing.Point(224, 283);
+            this.txtiva.Name = "txtiva";
+            this.txtiva.Size = new System.Drawing.Size(100, 20);
+            this.txtiva.TabIndex = 24;
             // 
             // label6
             // 
@@ -208,12 +212,12 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "I.V.A";
             // 
-            // textBox4
+            // txttotal
             // 
-            this.textBox4.Location = new System.Drawing.Point(224, 342);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 26;
+            this.txttotal.Location = new System.Drawing.Point(224, 342);
+            this.txttotal.Name = "txttotal";
+            this.txttotal.Size = new System.Drawing.Size(100, 20);
+            this.txttotal.TabIndex = 26;
             // 
             // label9
             // 
@@ -245,12 +249,12 @@
             this.label11.TabIndex = 29;
             this.label11.Text = "Fecha de vencimiento";
             // 
-            // dateTimePicker2
+            // dtpvencimiento
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(588, 118);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 28;
+            this.dtpvencimiento.Location = new System.Drawing.Point(598, 118);
+            this.dtpvencimiento.Name = "dtpvencimiento";
+            this.dtpvencimiento.Size = new System.Drawing.Size(200, 20);
+            this.dtpvencimiento.TabIndex = 28;
             // 
             // bttnCSesion
             // 
@@ -264,31 +268,43 @@
             this.bttnCSesion.UseVisualStyleBackColor = true;
             this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
             // 
+            // bttnCalcular
+            // 
+            this.bttnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.bttnCalcular.Location = new System.Drawing.Point(344, 331);
+            this.bttnCalcular.Name = "bttnCalcular";
+            this.bttnCalcular.Size = new System.Drawing.Size(112, 35);
+            this.bttnCalcular.TabIndex = 31;
+            this.bttnCalcular.Text = "Calcular";
+            this.bttnCalcular.UseVisualStyleBackColor = true;
+            this.bttnCalcular.Click += new System.EventHandler(this.bttnCalcular_Click);
+            // 
             // Factura_prov
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(858, 450);
+            this.Controls.Add(this.bttnCalcular);
             this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dtpvencimiento);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txttotal);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtiva);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtimporte);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.lblprov);
+            this.Controls.Add(this.lblnfact);
+            this.Controls.Add(this.dtpingreso);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.bttnModificar);
             this.Controls.Add(this.bttnBuscar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtOC);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -305,24 +321,25 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtOC;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bttnBuscar;
         private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtpingreso;
+        private System.Windows.Forms.Label lblnfact;
+        private System.Windows.Forms.Label lblprov;
+        private System.Windows.Forms.TextBox txtimporte;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtiva;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpvencimiento;
         private System.Windows.Forms.Button bttnCSesion;
+        private System.Windows.Forms.Button bttnCalcular;
     }
 }

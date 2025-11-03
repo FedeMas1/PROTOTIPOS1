@@ -33,6 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bttnCSesion = new System.Windows.Forms.Button();
+            this.bttnBitacora = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -92,12 +93,25 @@
             this.bttnCSesion.UseVisualStyleBackColor = true;
             this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
             // 
+            // bttnBitacora
+            // 
+            this.bttnBitacora.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnBitacora.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.bttnBitacora.Location = new System.Drawing.Point(303, 267);
+            this.bttnBitacora.Name = "bttnBitacora";
+            this.bttnBitacora.Size = new System.Drawing.Size(204, 84);
+            this.bttnBitacora.TabIndex = 8;
+            this.bttnBitacora.Text = "Bitacora";
+            this.bttnBitacora.UseVisualStyleBackColor = true;
+            this.bttnBitacora.Click += new System.EventHandler(this.bttnBitacora_Click);
+            // 
             // PaginaAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttnBitacora);
             this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -117,5 +131,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bttnCSesion;
+        private System.Windows.Forms.Button bttnBitacora;
     }
 }

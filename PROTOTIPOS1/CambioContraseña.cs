@@ -112,10 +112,15 @@ namespace PROTOTIPOS1
                     if (filas > 0)
                     {
                         MessageBox.Show("Contraseña modificada correctamente");
+
+                        Bitacora bit = new Bitacora();
+                        bit.RegistrarEvento(0, usuario, "Cambió su contraseña sin iniciar sesión");
+
                         txtBUsuario.Clear();
                         txtBMail.Clear();
                         txtBNContraseña.Clear();
                         txtBRContraseña.Clear();
+
                     }
                     else MessageBox.Show("Error al modificar la contraseña");
                 } catch (Exception ex)

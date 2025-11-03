@@ -11,12 +11,15 @@ namespace PROTOTIPOS1
     {
         public static int id_Usuario { get; set; }
         public static string email { get; set; }
+        public static string nombreUsuario { get; set; }
         public static int nivel { get; set; }
+        
 
-        public static void CargarSesion(int id_UsuarioP, string emailP, int nivelP)
+        public static void CargarSesion(int id_UsuarioP, string emailP, string nombreUsuarioP, int nivelP)
         {
             id_Usuario = id_UsuarioP;
             email = emailP;
+            nombreUsuario = nombreUsuarioP;
             nivel = nivelP;
         }
 
@@ -24,6 +27,7 @@ namespace PROTOTIPOS1
         {
             id_Usuario = 0;
             email = string.Empty;
+            nombreUsuario = string.Empty;
             nivel = 0;          
         }
     }

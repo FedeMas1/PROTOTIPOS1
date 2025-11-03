@@ -55,8 +55,10 @@ namespace PROTOTIPOS1
 
             if (resultado == DialogResult.Yes)
             {
-
+                Bitacora bit = new Bitacora();
+                bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Cerró sesión");
                 Sesion.CerrarSesion();
+               
 
                 Login login = new Login();
                 login.Show();

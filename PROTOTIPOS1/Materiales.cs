@@ -235,6 +235,9 @@ namespace PROTOTIPOS1
                         activo = @Activo
                       WHERE Descripcion = @Descripcion";
 
+
+                    Bitacora bit = new Bitacora();
+                    bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Modificó un producto de materiales");
                     MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -245,6 +248,8 @@ namespace PROTOTIPOS1
                     VALUES
                     (@Descripcion, @idRubro, @UMCompra, @Medicion, @CodProveedor, @CantidadCompra, @CantidadProduccion, @PrecioCompra, @Marca, @FechaCompra, @FechaVencimiento, @PuntoPedido, @CantidadMaxima, @Activo)";
 
+                    Bitacora bit = new Bitacora();
+                    bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Agregó un producto a materiales: {descripcion}");
                     MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
@@ -348,6 +353,8 @@ namespace PROTOTIPOS1
                         command.Parameters.AddWithValue("@id", idProductoActual);
                         command.ExecuteNonQuery();
                     }
+                    Bitacora bit = new Bitacora();
+                    bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Eliminó un producto de materiales");
                 }
                 MessageBox.Show("Producto eliminado correctamente");
                 limpiarValores();

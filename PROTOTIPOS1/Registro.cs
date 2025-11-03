@@ -167,6 +167,8 @@ namespace PROTOTIPOS1
                     if (filas > 0)
                     {
                         MessageBox.Show("Usuario registrado correctamente");
+                        Bitacora bit = new Bitacora();
+                        bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Registró un nuevo usuario: {nombre_usuario}");
                         LimpiarCampos();
                     }
                     else

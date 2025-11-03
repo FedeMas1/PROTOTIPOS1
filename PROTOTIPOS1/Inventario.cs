@@ -209,6 +209,8 @@ namespace PROTOTIPOS1
                         activo = @Activo
                       WHERE Descripcion = @Descripcion";
 
+                    Bitacora bit = new Bitacora();
+                    bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Modificó un producto de inventario");
                     MessageBox.Show("Producto actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -219,6 +221,8 @@ namespace PROTOTIPOS1
                     VALUES
                     (@Descripcion, @idRubro, @CodProveedor, @Cantidad, @PrecioCompra, @Marca, @FechaIngreso, @PuntoPedido, @CantidadMaxima, @Activo)";
 
+                    Bitacora bit = new Bitacora();
+                    bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Agregó un producto al inventario: {descripcion}");
                     MessageBox.Show("Producto agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
@@ -313,6 +317,8 @@ namespace PROTOTIPOS1
                         command.Parameters.AddWithValue("@id", idProductoActual);
                         command.ExecuteNonQuery();
                     }
+                    Bitacora bit = new Bitacora();
+                    bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Eliminó un producto del inventario");
                 }
                 MessageBox.Show("Producto eliminado correctamente");
                 limpiarValores();

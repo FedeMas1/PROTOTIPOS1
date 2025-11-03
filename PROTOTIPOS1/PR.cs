@@ -282,12 +282,16 @@ namespace PROTOTIPOS1
                 GuardarProductos(idPr);
                 idPrActual = idPr;
                 lblNPedido.Text = idPrActual.ToString();
+                Bitacora bit = new Bitacora();
+                bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Agregó un pedido de reapvisionamiento");
                 MessageBox.Show("Pedido guardado correctamente");
             }
             else
             {
                 ActualizarPedido();
                 lblNPedido.Text = idPrActual.ToString();
+                Bitacora bit = new Bitacora();
+                bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Eliminó un producto del stock: {idPrActual}");
                 MessageBox.Show("Pedido modificado correctamente");
                 
             }
@@ -382,6 +386,8 @@ namespace PROTOTIPOS1
                 cmdMaster.ExecuteNonQuery();
             }
 
+            Bitacora bit = new Bitacora();
+            bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Eliminó un pedido de reaprovisacion:{idPrActual} ");
             MessageBox.Show("Pedido de reaprovisionamiento eliminado correctamente");
             idPrActual = 0;
             lblNPedido.Text = "XXXX";

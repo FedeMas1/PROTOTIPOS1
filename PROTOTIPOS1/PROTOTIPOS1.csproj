@@ -62,6 +62,7 @@
     <Compile Include="Backup.Designer.cs">
       <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bitacora.cs" />
     <Compile Include="CambioContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +87,12 @@
     </Compile>
     <Compile Include="Factura_prov.Designer.cs">
       <DependentUpon>Factura_prov.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBitacora.Designer.cs">
+      <DependentUpon>FrmBitacora.cs</DependentUpon>
     </Compile>
     <Compile Include="Hasheo.cs" />
     <Compile Include="Informe_recepcion.cs">
@@ -222,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Factura_prov.resx">
       <DependentUpon>Factura_prov.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBitacora.resx">
+      <DependentUpon>FrmBitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Informe_recepcion.resx">
       <DependentUpon>Informe_recepcion.cs</DependentUpon>

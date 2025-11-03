@@ -62,7 +62,7 @@ namespace PROTOTIPOS1
                 try
                 {
                     conexion.Open();
-                    string consulta = @"SELECT id_Usuario, email, nivel FROM Usuarios WHERE email = @correo AND contraseña = @contraseña";
+                    string consulta = @"SELECT id_Usuario, email, nivel, nombre_Usuario FROM Usuarios WHERE email = @correo AND contraseña = @contraseña";
 
                     SqlCommand comando = new SqlCommand(consulta, conexion);
                     comando.Parameters.AddWithValue("@correo", correo);
@@ -79,8 +79,12 @@ namespace PROTOTIPOS1
                         int id_Usuario = Convert.ToInt32(reader["id_Usuario"]);
                         string email = reader["email"].ToString();
                         int nivel = Convert.ToInt32(reader["nivel"]);
+                        string nombreUsuario = reader["nombre_Usuario"].ToString();
 
-                        Sesion.CargarSesion(id_Usuario, email, nivel);
+                        Sesion.CargarSesion(id_Usuario, email, nombreUsuario, nivel);
+
+                        Bitacora bi = new Bitacora();
+                        bi.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Inicio Sesion");
 
                         Modulos mod = new Modulos();
                         mod.Show();

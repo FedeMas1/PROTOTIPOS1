@@ -63,5 +63,12 @@ namespace PROTOTIPOS1
 
             }
         }
+
+        private void bttnBitacora_Click(object sender, EventArgs e)
+        {
+            FrmBitacora bit = new FrmBitacora();
+            bit.Show();
+            this.Hide();
+        }
     }
 }

@@ -122,6 +122,8 @@ namespace PROTOTIPOS1
                     AsignarValores(cmd);
                     cmd.ExecuteNonQuery();
                 }
+                Bitacora bit = new Bitacora();
+                bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Agregó un proveedor: {txtBRazonS.Text}");
                 MessageBox.Show("Proveedor guardado correctamente");
                 LimpiarCampos();
             }
@@ -141,6 +143,9 @@ namespace PROTOTIPOS1
                     AsignarValores(cmd);
                     cmd.ExecuteNonQuery();
                 }
+
+                Bitacora bit = new Bitacora();
+                bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Modificó un proveedor");
                 MessageBox.Show("Proveedor modificado correctamente");
                 LimpiarCampos();
                 cbEstado.Checked = false;
@@ -255,6 +260,8 @@ namespace PROTOTIPOS1
                     cmd.Parameters.AddWithValue("@CUIT", txtBCUIT.Text.Trim());
                     cmd.ExecuteNonQuery();
                 }
+                Bitacora bit = new Bitacora();
+                bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Eliminó un proveedor");
                 MessageBox.Show("Proveedor eliminado correctmente");
                 LimpiarCampos();
             }

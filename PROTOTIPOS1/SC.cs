@@ -186,6 +186,8 @@ namespace PROTOTIPOS1
                         }
 
                         transaction.Commit();
+                        Bitacora bit = new Bitacora();
+                        bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Agregó una solicitud de compra{nuevoIdSc}");
                         MessageBox.Show("Solicitud de compra guardada correctamente.");
                     }
                     else
@@ -229,6 +231,8 @@ namespace PROTOTIPOS1
 
                         }
                         transaction.Commit();
+                        Bitacora bit = new Bitacora();
+                        bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Modificó un producto del stock: {idScActual}");
                         MessageBox.Show("Solicitud de compra modificada correctamente.");
                     }
 
@@ -353,6 +357,8 @@ namespace PROTOTIPOS1
                     }
 
                     transaction.Commit();
+                    Bitacora bit = new Bitacora();
+                    bit.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, $"Eliminó una Solicitud de compra {idScActual}");
                     MessageBox.Show("Solicitud eliminada correctamente");
                     LimpiarFormulario();
                 }
