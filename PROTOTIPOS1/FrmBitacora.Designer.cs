@@ -34,22 +34,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.bttnFUsuario = new System.Windows.Forms.Button();
+            this.txtbUsuario = new System.Windows.Forms.TextBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.bttnQuitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvBitacora
             // 
             this.dgvBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBitacora.Location = new System.Drawing.Point(60, 99);
+            this.dgvBitacora.Location = new System.Drawing.Point(56, 173);
             this.dgvBitacora.Name = "dgvBitacora";
             this.dgvBitacora.Size = new System.Drawing.Size(682, 210);
             this.dgvBitacora.TabIndex = 0;
             // 
             // bttnActualizar
             // 
-            this.bttnActualizar.Location = new System.Drawing.Point(60, 340);
+            this.bttnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnActualizar.Location = new System.Drawing.Point(56, 389);
             this.bttnActualizar.Name = "bttnActualizar";
-            this.bttnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.bttnActualizar.Size = new System.Drawing.Size(107, 49);
             this.bttnActualizar.TabIndex = 1;
             this.bttnActualizar.Text = "Actualizar";
             this.bttnActualizar.UseVisualStyleBackColor = true;
@@ -57,9 +62,10 @@
             // 
             // bttnLimpiar
             // 
-            this.bttnLimpiar.Location = new System.Drawing.Point(667, 340);
+            this.bttnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnLimpiar.Location = new System.Drawing.Point(632, 389);
             this.bttnLimpiar.Name = "bttnLimpiar";
-            this.bttnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bttnLimpiar.Size = new System.Drawing.Size(106, 49);
             this.bttnLimpiar.TabIndex = 3;
             this.bttnLimpiar.Text = "Limpiar";
             this.bttnLimpiar.UseVisualStyleBackColor = true;
@@ -77,9 +83,10 @@
             // 
             // button4
             // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button4.Location = new System.Drawing.Point(13, 13);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(104, 54);
             this.button4.TabIndex = 5;
             this.button4.Text = "back";
             this.button4.UseVisualStyleBackColor = true;
@@ -87,18 +94,62 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(702, 12);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button5.Location = new System.Drawing.Point(673, 12);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(86, 38);
+            this.button5.Size = new System.Drawing.Size(115, 55);
             this.button5.TabIndex = 6;
             this.button5.Text = "Cerrar sesion";
             this.button5.UseVisualStyleBackColor = true;
+            // 
+            // bttnFUsuario
+            // 
+            this.bttnFUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnFUsuario.Location = new System.Drawing.Point(579, 106);
+            this.bttnFUsuario.Name = "bttnFUsuario";
+            this.bttnFUsuario.Size = new System.Drawing.Size(132, 48);
+            this.bttnFUsuario.TabIndex = 7;
+            this.bttnFUsuario.Text = "Filtrar por Usuario";
+            this.bttnFUsuario.UseVisualStyleBackColor = true;
+            this.bttnFUsuario.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtbUsuario
+            // 
+            this.txtbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtbUsuario.Location = new System.Drawing.Point(472, 128);
+            this.txtbUsuario.Name = "txtbUsuario";
+            this.txtbUsuario.Size = new System.Drawing.Size(100, 26);
+            this.txtbUsuario.TabIndex = 8;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblUsuario.Location = new System.Drawing.Point(342, 134);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(124, 20);
+            this.lblUsuario.TabIndex = 9;
+            this.lblUsuario.Text = "Ingresar usuario";
+            // 
+            // bttnQuitar
+            // 
+            this.bttnQuitar.Location = new System.Drawing.Point(717, 130);
+            this.bttnQuitar.Name = "bttnQuitar";
+            this.bttnQuitar.Size = new System.Drawing.Size(21, 23);
+            this.bttnQuitar.TabIndex = 10;
+            this.bttnQuitar.Text = "X";
+            this.bttnQuitar.UseVisualStyleBackColor = true;
+            this.bttnQuitar.Click += new System.EventHandler(this.bttnQuitar_Click);
             // 
             // FrmBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttnQuitar);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.txtbUsuario);
+            this.Controls.Add(this.bttnFUsuario);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);
@@ -122,5 +173,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button bttnFUsuario;
+        private System.Windows.Forms.TextBox txtbUsuario;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Button bttnQuitar;
     }
 }

@@ -77,6 +77,44 @@ namespace PROTOTIPOS1
             pa.Show();
             this.Hide();
         }
+
+        private void FiltrarUsuario(string nombreUsuario)
+        {
+            string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+            string query = "SELECT id_Log, id_Usuario, nombre_Usuario, accion, fecha_Hora " +
+                "FROM Bitacora " +
+                "WHERE nombre_Usuario LIKE @nombre " +
+                "ORDER BY fecha_Hora DESC";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand comando = new SqlCommand(query, conn))
+            {
+                comando.Parameters.AddWithValue("nombre", "%" + nombreUsuario + "%");
+                conn.Open();
+                DataTable dt = new DataTable();
+                dt.Load(comando.ExecuteReader());
+                conn.Close();
+
+                dgvBitacora.DataSource = dt;
+            }
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtbUsuario.Text))
+            {
+                MessageBox.Show("No se ha ingresado ningun nombre");
+                return;
+            }
+            FiltrarUsuario(txtbUsuario.Text.Trim());
+        }
+
+        private void bttnQuitar_Click(object sender, EventArgs e)
+        {
+            txtbUsuario.Clear();
+            CargarBitacora(); // 
+        }
     }
     }
 
