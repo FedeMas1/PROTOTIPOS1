@@ -81,7 +81,7 @@ namespace PROTOTIPOS1
                     conn.Open();
 
 
-                    string queryOC = @" SELECT p.Razon_Social, oc.total_final FROM OC_Master INNER JOIN Proveedores p ON oc.id_Proveedor = p.CUIT 
+                    string queryOC = @" SELECT p.Razon_Social, oc.total_final FROM OC_Master oc INNER JOIN Proveedores p ON oc.id_Proveedor = p.CUIT 
                     WHERE oc.id_OC = @id_OC;";
 
                     SqlCommand cmdOC = new SqlCommand(queryOC, conn);
@@ -171,7 +171,7 @@ namespace PROTOTIPOS1
 
         private void bttnModificar_Click(object sender, EventArgs e)
         {
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el CUIT del proveedor que desea modificar", "Modificar proveedor", "");
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el numero de factura que desea modificar", "Modificar proveedor", "");
             if (string.IsNullOrEmpty(input))
             {
                 MessageBox.Show("No se ingresó ningun numero");
