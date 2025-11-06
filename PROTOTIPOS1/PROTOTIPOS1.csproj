@@ -125,6 +125,12 @@
     <Compile Include="Materiales.Designer.cs">
       <DependentUpon>Materiales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modificar_OP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modificar_OP.Designer.cs">
+      <DependentUpon>Modificar_OP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Materiales.resx">
       <DependentUpon>Materiales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modificar_OP.resx">
+      <DependentUpon>Modificar_OP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos.resx">
       <DependentUpon>Modulos.cs</DependentUpon>

@@ -32,29 +32,29 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblnnt = new System.Windows.Forms.Label();
+            this.txtfact = new System.Windows.Forms.TextBox();
+            this.dtpfecha = new System.Windows.Forms.DateTimePicker();
+            this.lblrazon = new System.Windows.Forms.Label();
+            this.lblimportefact = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.chknt = new System.Windows.Forms.CheckBox();
+            this.Procesando = new System.Windows.Forms.CheckBox();
+            this.Aceptado = new System.Windows.Forms.CheckBox();
+            this.Denegado = new System.Windows.Forms.CheckBox();
+            this.Realizado = new System.Windows.Forms.CheckBox();
             this.bttnEliminar = new System.Windows.Forms.Button();
             this.bttnModificar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblop = new System.Windows.Forms.Label();
+            this.txtnt = new System.Windows.Forms.TextBox();
+            this.lbltotal = new System.Windows.Forms.Label();
+            this.lblnt = new System.Windows.Forms.Label();
             this.bttnCSesion = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.txtnnt = new System.Windows.Forms.TextBox();
+            this.lblcuit = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -99,53 +99,53 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Importe de factura";
             // 
-            // label5
+            // lblnnt
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.Location = new System.Drawing.Point(21, 297);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(176, 25);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Nro nota de credito";
+            this.lblnnt.AutoSize = true;
+            this.lblnnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblnnt.Location = new System.Drawing.Point(21, 297);
+            this.lblnnt.Name = "lblnnt";
+            this.lblnnt.Size = new System.Drawing.Size(176, 25);
+            this.lblnnt.TabIndex = 4;
+            this.lblnnt.Text = "Nro nota de credito";
             // 
-            // textBox2
+            // txtfact
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox2.Location = new System.Drawing.Point(231, 103);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 26);
-            this.textBox2.TabIndex = 6;
+            this.txtfact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtfact.Location = new System.Drawing.Point(231, 103);
+            this.txtfact.Name = "txtfact";
+            this.txtfact.Size = new System.Drawing.Size(136, 26);
+            this.txtfact.TabIndex = 6;
             // 
-            // dateTimePicker1
+            // dtpfecha
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(506, 64);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(282, 26);
-            this.dateTimePicker1.TabIndex = 10;
+            this.dtpfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpfecha.Location = new System.Drawing.Point(506, 64);
+            this.dtpfecha.Name = "dtpfecha";
+            this.dtpfecha.Size = new System.Drawing.Size(282, 26);
+            this.dtpfecha.TabIndex = 10;
             // 
-            // label6
+            // lblrazon
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label6.Location = new System.Drawing.Point(437, 155);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 25);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "________";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.lblrazon.AutoSize = true;
+            this.lblrazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblrazon.Location = new System.Drawing.Point(437, 155);
+            this.lblrazon.Name = "lblrazon";
+            this.lblrazon.Size = new System.Drawing.Size(100, 25);
+            this.lblrazon.TabIndex = 11;
+            this.lblrazon.Text = "________";
+            this.lblrazon.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label7
+            // lblimportefact
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label7.Location = new System.Drawing.Point(226, 206);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 25);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "_________";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.lblimportefact.AutoSize = true;
+            this.lblimportefact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblimportefact.Location = new System.Drawing.Point(226, 206);
+            this.lblimportefact.Name = "lblimportefact";
+            this.lblimportefact.Size = new System.Drawing.Size(111, 25);
+            this.lblimportefact.TabIndex = 12;
+            this.lblimportefact.Text = "_________";
+            this.lblimportefact.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -157,59 +157,60 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "Nota de credito";
             // 
-            // checkBox1
+            // chknt
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox1.Location = new System.Drawing.Point(231, 261);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chknt.AutoSize = true;
+            this.chknt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.chknt.Location = new System.Drawing.Point(231, 261);
+            this.chknt.Name = "chknt";
+            this.chknt.Size = new System.Drawing.Size(15, 14);
+            this.chknt.TabIndex = 14;
+            this.chknt.UseVisualStyleBackColor = true;
+            this.chknt.CheckedChanged += new System.EventHandler(this.chknt_CheckedChanged);
             // 
-            // checkBox2
+            // Procesando
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox2.Location = new System.Drawing.Point(26, 400);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(113, 24);
-            this.checkBox2.TabIndex = 15;
-            this.checkBox2.Text = "Procesando";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.Procesando.AutoSize = true;
+            this.Procesando.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Procesando.Location = new System.Drawing.Point(26, 400);
+            this.Procesando.Name = "Procesando";
+            this.Procesando.Size = new System.Drawing.Size(113, 24);
+            this.Procesando.TabIndex = 15;
+            this.Procesando.Text = "Procesando";
+            this.Procesando.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // Aceptado
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox4.Location = new System.Drawing.Point(197, 400);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(97, 24);
-            this.checkBox4.TabIndex = 17;
-            this.checkBox4.Text = "Aceptado";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.Aceptado.AutoSize = true;
+            this.Aceptado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Aceptado.Location = new System.Drawing.Point(197, 400);
+            this.Aceptado.Name = "Aceptado";
+            this.Aceptado.Size = new System.Drawing.Size(97, 24);
+            this.Aceptado.TabIndex = 17;
+            this.Aceptado.Text = "Aceptado";
+            this.Aceptado.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // Denegado
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox5.Location = new System.Drawing.Point(358, 400);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(103, 24);
-            this.checkBox5.TabIndex = 18;
-            this.checkBox5.Text = "Denegado";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.Denegado.AutoSize = true;
+            this.Denegado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Denegado.Location = new System.Drawing.Point(358, 400);
+            this.Denegado.Name = "Denegado";
+            this.Denegado.Size = new System.Drawing.Size(103, 24);
+            this.Denegado.TabIndex = 18;
+            this.Denegado.Text = "Denegado";
+            this.Denegado.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // Realizado
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.checkBox6.Location = new System.Drawing.Point(540, 400);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(99, 24);
-            this.checkBox6.TabIndex = 19;
-            this.checkBox6.Text = "Realizado";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.Realizado.AutoSize = true;
+            this.Realizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Realizado.Location = new System.Drawing.Point(540, 400);
+            this.Realizado.Name = "Realizado";
+            this.Realizado.Size = new System.Drawing.Size(99, 24);
+            this.Realizado.TabIndex = 19;
+            this.Realizado.Text = "Realizado";
+            this.Realizado.UseVisualStyleBackColor = true;
             // 
             // bttnEliminar
             // 
@@ -230,6 +231,7 @@
             this.bttnModificar.TabIndex = 21;
             this.bttnModificar.Text = "Modificar";
             this.bttnModificar.UseVisualStyleBackColor = true;
+            this.bttnModificar.Click += new System.EventHandler(this.bttnModificar_Click);
             // 
             // bttnGuardar
             // 
@@ -240,6 +242,7 @@
             this.bttnGuardar.TabIndex = 22;
             this.bttnGuardar.Text = "Guardar";
             this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // label9
             // 
@@ -261,43 +264,44 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "Total";
             // 
-            // label11
+            // lblop
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label11.Location = new System.Drawing.Point(226, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 25);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "XXXX";
+            this.lblop.AutoSize = true;
+            this.lblop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblop.Location = new System.Drawing.Point(226, 65);
+            this.lblop.Name = "lblop";
+            this.lblop.Size = new System.Drawing.Size(68, 25);
+            this.lblop.TabIndex = 25;
+            this.lblop.Text = "XXXX";
             // 
-            // textBox1
+            // txtnt
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox1.Location = new System.Drawing.Point(237, 337);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 26);
-            this.textBox1.TabIndex = 26;
+            this.txtnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtnt.Location = new System.Drawing.Point(237, 337);
+            this.txtnt.Name = "txtnt";
+            this.txtnt.Size = new System.Drawing.Size(136, 26);
+            this.txtnt.TabIndex = 26;
+            this.txtnt.TextChanged += new System.EventHandler(this.txtnt_TextChanged);
             // 
-            // label12
+            // lbltotal
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label12.Location = new System.Drawing.Point(658, 360);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 25);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "________";
+            this.lbltotal.AutoSize = true;
+            this.lbltotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbltotal.Location = new System.Drawing.Point(658, 360);
+            this.lbltotal.Name = "lbltotal";
+            this.lbltotal.Size = new System.Drawing.Size(100, 25);
+            this.lbltotal.TabIndex = 27;
+            this.lbltotal.Text = "________";
             // 
-            // label13
+            // lblnt
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label13.Location = new System.Drawing.Point(21, 338);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(210, 25);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Importe nota de credito";
+            this.lblnt.AutoSize = true;
+            this.lblnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblnt.Location = new System.Drawing.Point(21, 338);
+            this.lblnt.Name = "lblnt";
+            this.lblnt.Size = new System.Drawing.Size(210, 25);
+            this.lblnt.TabIndex = 28;
+            this.lblnt.Text = "Importe nota de credito";
             // 
             // bttnCSesion
             // 
@@ -311,23 +315,23 @@
             this.bttnCSesion.UseVisualStyleBackColor = true;
             this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
             // 
-            // textBox4
+            // txtnnt
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox4.Location = new System.Drawing.Point(237, 296);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(136, 26);
-            this.textBox4.TabIndex = 31;
+            this.txtnnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtnnt.Location = new System.Drawing.Point(237, 296);
+            this.txtnnt.Name = "txtnnt";
+            this.txtnnt.Size = new System.Drawing.Size(136, 26);
+            this.txtnnt.TabIndex = 31;
             // 
-            // label14
+            // lblcuit
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label14.Location = new System.Drawing.Point(232, 164);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 25);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "________";
+            this.lblcuit.AutoSize = true;
+            this.lblcuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblcuit.Location = new System.Drawing.Point(232, 164);
+            this.lblcuit.Name = "lblcuit";
+            this.lblcuit.Size = new System.Drawing.Size(100, 25);
+            this.lblcuit.TabIndex = 32;
+            this.lblcuit.Text = "________";
             // 
             // button4
             // 
@@ -338,6 +342,7 @@
             this.button4.TabIndex = 33;
             this.button4.Text = "Buscar";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -359,35 +364,36 @@
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.lblcuit);
+            this.Controls.Add(this.txtnnt);
             this.Controls.Add(this.bttnCSesion);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblnt);
+            this.Controls.Add(this.lbltotal);
+            this.Controls.Add(this.txtnt);
+            this.Controls.Add(this.lblop);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.bttnModificar);
             this.Controls.Add(this.bttnEliminar);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.Realizado);
+            this.Controls.Add(this.Denegado);
+            this.Controls.Add(this.Aceptado);
+            this.Controls.Add(this.Procesando);
+            this.Controls.Add(this.chknt);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblimportefact);
+            this.Controls.Add(this.lblrazon);
+            this.Controls.Add(this.dtpfecha);
+            this.Controls.Add(this.txtfact);
+            this.Controls.Add(this.lblnnt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Orden_de_Pago";
             this.Text = "Orden_de_Pago";
+            this.Load += new System.EventHandler(this.Orden_de_Pago_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,29 +405,29 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblnnt;
+        private System.Windows.Forms.TextBox txtfact;
+        private System.Windows.Forms.DateTimePicker dtpfecha;
+        private System.Windows.Forms.Label lblrazon;
+        private System.Windows.Forms.Label lblimportefact;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox chknt;
+        private System.Windows.Forms.CheckBox Procesando;
+        private System.Windows.Forms.CheckBox Aceptado;
+        private System.Windows.Forms.CheckBox Denegado;
+        private System.Windows.Forms.CheckBox Realizado;
         private System.Windows.Forms.Button bttnEliminar;
         private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblop;
+        private System.Windows.Forms.TextBox txtnt;
+        private System.Windows.Forms.Label lbltotal;
+        private System.Windows.Forms.Label lblnt;
         private System.Windows.Forms.Button bttnCSesion;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtnnt;
+        private System.Windows.Forms.Label lblcuit;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
     }

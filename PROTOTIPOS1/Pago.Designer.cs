@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvOrdenes = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtpfecha = new System.Windows.Forms.DateTimePicker();
+            this.lblnpago = new System.Windows.Forms.Label();
+            this.lbltotal = new System.Windows.Forms.Label();
             this.bttnEliminar = new System.Windows.Forms.Button();
-            this.bttnModificar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.bttnCSesion = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.comboBoxBancos = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenes)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvOrdenes
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(82, 141);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(661, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvOrdenes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvOrdenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrdenes.Location = new System.Drawing.Point(82, 141);
+            this.dgvOrdenes.Name = "dgvOrdenes";
+            this.dgvOrdenes.Size = new System.Drawing.Size(661, 150);
+            this.dgvOrdenes.TabIndex = 0;
             // 
             // label1
             // 
@@ -107,64 +106,46 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Ordenes de pago:";
             // 
-            // dateTimePicker1
+            // dtpfecha
             // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(507, 62);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(281, 26);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dtpfecha.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpfecha.Location = new System.Drawing.Point(507, 62);
+            this.dtpfecha.Name = "dtpfecha";
+            this.dtpfecha.Size = new System.Drawing.Size(281, 26);
+            this.dtpfecha.TabIndex = 6;
             // 
-            // label6
+            // lblnpago
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label6.Location = new System.Drawing.Point(240, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 25);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "XXXX";
+            this.lblnpago.AutoSize = true;
+            this.lblnpago.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblnpago.Location = new System.Drawing.Point(240, 43);
+            this.lblnpago.Name = "lblnpago";
+            this.lblnpago.Size = new System.Drawing.Size(68, 25);
+            this.lblnpago.TabIndex = 7;
+            this.lblnpago.Text = "XXXX";
             // 
-            // label7
+            // lbltotal
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label7.Location = new System.Drawing.Point(253, 369);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 25);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "XXXX";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox1.Location = new System.Drawing.Point(258, 324);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 26);
-            this.textBox1.TabIndex = 9;
+            this.lbltotal.AutoSize = true;
+            this.lbltotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbltotal.Location = new System.Drawing.Point(253, 369);
+            this.lbltotal.Name = "lbltotal";
+            this.lbltotal.Size = new System.Drawing.Size(68, 25);
+            this.lbltotal.TabIndex = 8;
+            this.lbltotal.Text = "XXXX";
             // 
             // bttnEliminar
             // 
             this.bttnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.bttnEliminar.Location = new System.Drawing.Point(349, 440);
+            this.bttnEliminar.Location = new System.Drawing.Point(77, 440);
             this.bttnEliminar.Name = "bttnEliminar";
             this.bttnEliminar.Size = new System.Drawing.Size(118, 36);
             this.bttnEliminar.TabIndex = 10;
             this.bttnEliminar.Text = "Eliminar";
             this.bttnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // bttnModificar
-            // 
-            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.bttnModificar.Location = new System.Drawing.Point(82, 440);
-            this.bttnModificar.Name = "bttnModificar";
-            this.bttnModificar.Size = new System.Drawing.Size(118, 36);
-            this.bttnModificar.TabIndex = 11;
-            this.bttnModificar.Text = "Modificar";
-            this.bttnModificar.UseVisualStyleBackColor = true;
+            this.bttnEliminar.Click += new System.EventHandler(this.bttnEliminar_Click);
             // 
             // bttnGuardar
             // 
@@ -176,6 +157,7 @@
             this.bttnGuardar.TabIndex = 12;
             this.bttnGuardar.Text = "Pagar";
             this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
             // bttnCSesion
             // 
@@ -199,6 +181,7 @@
             this.button4.TabIndex = 14;
             this.button4.Text = "Seleccionar";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label8
             // 
@@ -222,32 +205,40 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // comboBoxBancos
+            // 
+            this.comboBoxBancos.FormattingEnabled = true;
+            this.comboBoxBancos.Location = new System.Drawing.Point(245, 328);
+            this.comboBoxBancos.Name = "comboBoxBancos";
+            this.comboBoxBancos.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxBancos.TabIndex = 17;
+            // 
             // Pago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 488);
+            this.Controls.Add(this.comboBoxBancos);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.bttnGuardar);
-            this.Controls.Add(this.bttnModificar);
             this.Controls.Add(this.bttnEliminar);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.lbltotal);
+            this.Controls.Add(this.lblnpago);
+            this.Controls.Add(this.dtpfecha);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvOrdenes);
             this.Name = "Pago";
             this.Text = "Pago";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Pago_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,22 +246,21 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvOrdenes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtpfecha;
+        private System.Windows.Forms.Label lblnpago;
+        private System.Windows.Forms.Label lbltotal;
         private System.Windows.Forms.Button bttnEliminar;
-        private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Button bttnCSesion;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox comboBoxBancos;
     }
 }

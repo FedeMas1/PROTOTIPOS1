@@ -33,21 +33,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblnrecibo = new System.Windows.Forms.Label();
             this.bttnModificar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpfecha = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtnpago = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblfact = new System.Windows.Forms.Label();
+            this.lblnt = new System.Windows.Forms.Label();
+            this.lblprov = new System.Windows.Forms.Label();
+            this.lbloc = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lbltotal = new System.Windows.Forms.Label();
             this.bttnCSesion = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -100,15 +101,15 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Nro de recibo";
             // 
-            // label7
+            // lblnrecibo
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label7.Location = new System.Drawing.Point(160, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 25);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "XXXX";
+            this.lblnrecibo.AutoSize = true;
+            this.lblnrecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblnrecibo.Location = new System.Drawing.Point(160, 55);
+            this.lblnrecibo.Name = "lblnrecibo";
+            this.lblnrecibo.Size = new System.Drawing.Size(68, 25);
+            this.lblnrecibo.TabIndex = 6;
+            this.lblnrecibo.Text = "XXXX";
             // 
             // bttnModificar
             // 
@@ -129,14 +130,15 @@
             this.bttnGuardar.TabIndex = 8;
             this.bttnGuardar.Text = "Guardar";
             this.bttnGuardar.UseVisualStyleBackColor = true;
+            this.bttnGuardar.Click += new System.EventHandler(this.bttnGuardar_Click);
             // 
-            // dateTimePicker1
+            // dtpfecha
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(509, 54);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(279, 26);
-            this.dateTimePicker1.TabIndex = 9;
+            this.dtpfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpfecha.Location = new System.Drawing.Point(509, 54);
+            this.dtpfecha.Name = "dtpfecha";
+            this.dtpfecha.Size = new System.Drawing.Size(279, 26);
+            this.dtpfecha.TabIndex = 9;
             // 
             // label8
             // 
@@ -148,13 +150,13 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Recibo";
             // 
-            // textBox1
+            // txtnpago
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox1.Location = new System.Drawing.Point(481, 102);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 26);
-            this.textBox1.TabIndex = 11;
+            this.txtnpago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtnpago.Location = new System.Drawing.Point(481, 102);
+            this.txtnpago.Name = "txtnpago";
+            this.txtnpago.Size = new System.Drawing.Size(133, 26);
+            this.txtnpago.TabIndex = 11;
             // 
             // button3
             // 
@@ -167,45 +169,45 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label9
+            // lblfact
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label9.Location = new System.Drawing.Point(476, 142);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 25);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "XXXX";
+            this.lblfact.AutoSize = true;
+            this.lblfact.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblfact.Location = new System.Drawing.Point(476, 142);
+            this.lblfact.Name = "lblfact";
+            this.lblfact.Size = new System.Drawing.Size(68, 25);
+            this.lblfact.TabIndex = 17;
+            this.lblfact.Text = "XXXX";
             // 
-            // label10
+            // lblnt
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label10.Location = new System.Drawing.Point(476, 285);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 25);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "XXXX";
+            this.lblnt.AutoSize = true;
+            this.lblnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblnt.Location = new System.Drawing.Point(476, 285);
+            this.lblnt.Name = "lblnt";
+            this.lblnt.Size = new System.Drawing.Size(68, 25);
+            this.lblnt.TabIndex = 18;
+            this.lblnt.Text = "XXXX";
             // 
-            // label12
+            // lblprov
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label12.Location = new System.Drawing.Point(476, 237);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 25);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "XXXX";
+            this.lblprov.AutoSize = true;
+            this.lblprov.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lblprov.Location = new System.Drawing.Point(476, 237);
+            this.lblprov.Name = "lblprov";
+            this.lblprov.Size = new System.Drawing.Size(68, 25);
+            this.lblprov.TabIndex = 20;
+            this.lblprov.Text = "XXXX";
             // 
-            // label13
+            // lbloc
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label13.Location = new System.Drawing.Point(476, 185);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 25);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "XXXX";
+            this.lbloc.AutoSize = true;
+            this.lbloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbloc.Location = new System.Drawing.Point(476, 185);
+            this.lbloc.Name = "lbloc";
+            this.lbloc.Size = new System.Drawing.Size(68, 25);
+            this.lbloc.TabIndex = 21;
+            this.lbloc.Text = "XXXX";
             // 
             // label14
             // 
@@ -227,15 +229,15 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "Importe total";
             // 
-            // label11
+            // lbltotal
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label11.Location = new System.Drawing.Point(480, 333);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 25);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "XXXX";
+            this.lbltotal.AutoSize = true;
+            this.lbltotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lbltotal.Location = new System.Drawing.Point(480, 333);
+            this.lbltotal.Name = "lbltotal";
+            this.lbltotal.Size = new System.Drawing.Size(68, 25);
+            this.lbltotal.TabIndex = 23;
+            this.lbltotal.Text = "XXXX";
             // 
             // bttnCSesion
             // 
@@ -249,27 +251,38 @@
             this.bttnCSesion.UseVisualStyleBackColor = true;
             this.bttnCSesion.Click += new System.EventHandler(this.bttnCSesion_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(662, 99);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Recibo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bttnCSesion);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lbltotal);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lbloc);
+            this.Controls.Add(this.lblprov);
+            this.Controls.Add(this.lblnt);
+            this.Controls.Add(this.lblfact);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtnpago);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpfecha);
             this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.bttnModificar);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblnrecibo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -289,20 +302,21 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblnrecibo;
         private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button bttnGuardar;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpfecha;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtnpago;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblfact;
+        private System.Windows.Forms.Label lblnt;
+        private System.Windows.Forms.Label lblprov;
+        private System.Windows.Forms.Label lbloc;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbltotal;
         private System.Windows.Forms.Button bttnCSesion;
+        private System.Windows.Forms.Button button1;
     }
 }
