@@ -25,7 +25,6 @@ namespace PROTOTIPOS1
 
             ToolTip toolTip = new ToolTip();
 
-            toolTip.SetToolTip(bttnEliminar, "Eliminar una Orden de Pago.");
             toolTip.SetToolTip(bttnModificar, "Modificar una Orden de Pago.");
             toolTip.SetToolTip(bttnGuardar, "Guardar una Orden de Pago.");
             toolTip.SetToolTip(button4, "Buscar numero de Factura.");

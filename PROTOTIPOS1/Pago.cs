@@ -36,6 +36,7 @@ namespace PROTOTIPOS1
 
         private void Pago_Load(object sender, EventArgs e)
         {
+            CargarOrdenesAceptadas();
             CargarOrdenesAprobadas();
             CargarBancos();
         }
@@ -120,7 +121,7 @@ namespace PROTOTIPOS1
 
                         dgvOrdenes.DataSource = dt;
 
-                        // Opcional: ajustar columnas
+                        //ajustar columnas
                         dgvOrdenes.Columns["nro_op"].HeaderText = "N° OP";
                         dgvOrdenes.Columns["nro_factura"].HeaderText = "N° Factura";
                         dgvOrdenes.Columns["nro_nt"].HeaderText = "N° NT";

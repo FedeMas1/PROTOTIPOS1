@@ -43,7 +43,6 @@
             this.Aceptado = new System.Windows.Forms.CheckBox();
             this.Denegado = new System.Windows.Forms.CheckBox();
             this.Realizado = new System.Windows.Forms.CheckBox();
-            this.bttnEliminar = new System.Windows.Forms.Button();
             this.bttnModificar = new System.Windows.Forms.Button();
             this.bttnGuardar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -212,16 +211,6 @@
             this.Realizado.Text = "Realizado";
             this.Realizado.UseVisualStyleBackColor = true;
             // 
-            // bttnEliminar
-            // 
-            this.bttnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.bttnEliminar.Location = new System.Drawing.Point(321, 452);
-            this.bttnEliminar.Name = "bttnEliminar";
-            this.bttnEliminar.Size = new System.Drawing.Size(170, 36);
-            this.bttnEliminar.TabIndex = 20;
-            this.bttnEliminar.Text = "Eliminar";
-            this.bttnEliminar.UseVisualStyleBackColor = true;
-            // 
             // bttnModificar
             // 
             this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
@@ -375,7 +364,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.bttnModificar);
-            this.Controls.Add(this.bttnEliminar);
             this.Controls.Add(this.Realizado);
             this.Controls.Add(this.Denegado);
             this.Controls.Add(this.Aceptado);
@@ -416,7 +404,6 @@
         private System.Windows.Forms.CheckBox Aceptado;
         private System.Windows.Forms.CheckBox Denegado;
         private System.Windows.Forms.CheckBox Realizado;
-        private System.Windows.Forms.Button bttnEliminar;
         private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button bttnGuardar;
         private System.Windows.Forms.Label label9;

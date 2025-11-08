@@ -120,6 +120,7 @@
             this.bttnModificar.TabIndex = 7;
             this.bttnModificar.Text = "Modificar";
             this.bttnModificar.UseVisualStyleBackColor = true;
+            this.bttnModificar.Click += new System.EventHandler(this.bttnModificar_Click);
             // 
             // bttnGuardar
             // 

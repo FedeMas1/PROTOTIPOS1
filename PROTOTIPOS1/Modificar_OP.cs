@@ -101,9 +101,14 @@ namespace PROTOTIPOS1
 
             int nroOp = Convert.ToInt32(row.Cells["nro_op"].Value);
             string nroNT = row.Cells["nro_nt"].Value?.ToString();
-            decimal importeNT = Convert.ToDecimal(row.Cells["importe_nt"].Value);
             string estado = row.Cells["estado"].Value?.ToString();
-            decimal importeFactura = Convert.ToDecimal(row.Cells["importe_factura"].Value);
+            decimal importeNT = row.Cells["importe_nt"].Value == null || row.Cells["importe_nt"].Value == DBNull.Value
+                    ? 0
+                    : Convert.ToDecimal(row.Cells["importe_nt"].Value);
+
+            decimal importeFactura = row.Cells["importe_factura"].Value == null || row.Cells["importe_factura"].Value == DBNull.Value
+                                     ? 0
+                                     : Convert.ToDecimal(row.Cells["importe_factura"].Value);
 
             // Recalculamos el total
             decimal total = importeFactura - importeNT;
@@ -125,7 +130,7 @@ namespace PROTOTIPOS1
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@nroNT", string.IsNullOrEmpty(nroNT) ? (object)DBNull.Value : nroNT);
-                        cmd.Parameters.Add("@importeNT", SqlDbType.Decimal).Value = importeNT;
+                        cmd.Parameters.Add("@importeNT", SqlDbType.Decimal).Value = importeNT == 0 ? (object)DBNull.Value : importeNT;
                         cmd.Parameters.Add("@total", SqlDbType.Decimal).Value = total;
                         cmd.Parameters.AddWithValue("@estado", estado);
                         cmd.Parameters.AddWithValue("@nro_op", nroOp);

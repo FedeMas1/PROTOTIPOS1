@@ -13,6 +13,7 @@ namespace PROTOTIPOS1
 {
     public partial class Recibo : Form
     {
+        private int? idReciboEnEdicion = null;
         string cadenaConexion = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
         public Recibo()
         {
@@ -21,7 +22,6 @@ namespace PROTOTIPOS1
             Estilos estilos = new Estilos();
             estilos.AplicarEstilos(this);
 
-            MostrarProximoNumeroRecibo();
 
             ToolTip toolTip = new ToolTip();
 
@@ -132,29 +132,6 @@ namespace PROTOTIPOS1
             }
         }
 
-        private void MostrarProximoNumeroRecibo()
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(cadenaConexion))
-                {
-                    conn.Open();
-
-
-                    string query = "SELECT ISNULL(MAX(nro_recibo), 0) + 1 FROM Recibooo";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        int proximoNumero = Convert.ToInt32(cmd.ExecuteScalar());
-                        lblnrecibo.Text = proximoNumero.ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener el número de orden de pago: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void bttnGuardar_Click(object sender, EventArgs e)
         {
@@ -188,76 +165,100 @@ namespace PROTOTIPOS1
             if (result == DialogResult.No)
                 return;
 
-            int factura = Convert.ToInt32(lblfact.Text);
-            int ordenCompra = Convert.ToInt32(lbloc.Text);
-            int proveedor = Convert.ToInt32(lblprov.Text);
-            decimal notaCredito = Convert.ToDecimal(lblnt.Text);
-            decimal importeTotal = Convert.ToDecimal(lbltotal.Text);
+            int factura = int.Parse(lblfact.Text);
+            int orden = int.Parse(lbloc.Text);
+            int proveedor = int.Parse(lblprov.Text);
+            decimal notaCredito = decimal.Parse(lblnt.Text);
+            decimal importeTotal = decimal.Parse(lbltotal.Text);
             DateTime fecha = dtpfecha.Value;
 
-            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+            using (SqlConnection con = new SqlConnection(cadenaConexion))
+            using (SqlCommand cmd = new SqlCommand())
             {
-                conn.Open();
+                cmd.Connection = con;
 
-                // 🔹 Primero verificamos si ya existe un recibo con ese nro_pago
-                string checkQuery = "SELECT COUNT(*) FROM Recibooo WHERE nro_pago = @nro_pago";
-                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                // Si idReciboEnEdicion es null → INSERT, si tiene valor → UPDATE
+                if (idReciboEnEdicion == null)
                 {
-                    checkCmd.Parameters.AddWithValue("@nro_pago", nroPago);
-                    int existe = (int)checkCmd.ExecuteScalar();
+                    cmd.CommandText = @"INSERT INTO Recibo 
+                                (factura, orden_de_compra, proveedor, nota_credito, importe_total, fecha, nro_pago)
+                                VALUES (@factura, @orden, @proveedor, @notaCredito, @importeTotal, @fecha, @nroPago)";
+                }
+                else
+                {
+                    cmd.CommandText = @"UPDATE Recibo SET
+                                factura = @factura,
+                                orden_de_compra = @orden,
+                                proveedor = @proveedor,
+                                nota_credito = @notaCredito,
+                                importe_total = @importeTotal,
+                                fecha = @fecha,
+                                nro_pago = @nroPago
+                                WHERE nro_recibo = @id";
 
-                    if (existe > 0)
-                    {
-                        MessageBox.Show("Ya existe un recibo con ese número de pago.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                    cmd.Parameters.AddWithValue("@id", idReciboEnEdicion.Value);
                 }
 
+                cmd.Parameters.AddWithValue("@factura", factura);
+                cmd.Parameters.AddWithValue("@orden", orden);
+                cmd.Parameters.AddWithValue("@proveedor", proveedor);
+                cmd.Parameters.AddWithValue("@notaCredito", notaCredito);
+                cmd.Parameters.AddWithValue("@importeTotal", importeTotal);
+                cmd.Parameters.AddWithValue("@fecha", fecha);
+                cmd.Parameters.AddWithValue("@nroPago", nroPago);
 
-                string insertQuery = @"
-                INSERT INTO Recibooo (factura, orden_de_compra, proveedor, nota_credito, importe_total, fecha, nro_pago)
-                VALUES (@factura, @orden_de_compra, @proveedor, @nota_credito, @importe_total, @fecha, @nro_pago);
-                ";
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
 
-                using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+            if (idReciboEnEdicion == null)
+                MessageBox.Show("Recibo guardado correctamente.");
+            else
+                MessageBox.Show("Recibo modificado correctamente.");
+
+            // Resetear para que el próximo GUARDAR vuelva a insertar
+            idReciboEnEdicion = null;
+        }
+
+        private void bttnModificar_Click(object sender, EventArgs e)
+        {
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el número de recibo a modificar:", "Modificar Recibo");
+
+            if (!int.TryParse(input, out int nroRecibo))
+            {
+                MessageBox.Show("Número inválido.");
+                return;
+            }
+
+            string query = "SELECT * FROM Recibo WHERE nro_recibo = @nro";
+
+            using (SqlConnection con = new SqlConnection(cadenaConexion))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@nro", nroRecibo);
+
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
                 {
-                    cmd.Parameters.AddWithValue("@factura", factura);
-                    cmd.Parameters.AddWithValue("@orden_de_compra", ordenCompra);
-                    cmd.Parameters.AddWithValue("@proveedor", proveedor);
-                    cmd.Parameters.AddWithValue("@nota_credito", notaCredito);
-                    cmd.Parameters.AddWithValue("@importe_total", importeTotal);
-                    cmd.Parameters.AddWithValue("@fecha", fecha);
-                    cmd.Parameters.AddWithValue("@nro_pago", nroPago);
+                    // Guarda el ID para usarlo en el UPDATE
+                    idReciboEnEdicion = nroRecibo;
 
-                    try
-                    {
-                        int filasAfectadas = cmd.ExecuteNonQuery();
+                    // Cargar datos en los controles
+                    lblfact.Text = dr["factura"].ToString();
+                    lbloc.Text = dr["orden_de_compra"].ToString();
+                    lblprov.Text = dr["proveedor"].ToString();
+                    lblnt.Text = dr["nota_credito"].ToString();
+                    lbltotal.Text = dr["importe_total"].ToString();
+                    dtpfecha.Value = Convert.ToDateTime(dr["fecha"]);
+                    txtnpago.Text = dr["nro_pago"].ToString();
 
-                        if (filasAfectadas > 0)
-                        {
-                            MessageBox.Show("Recibo guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                            txtnpago.Clear();
-                            lblfact.Text = "";
-                            lbloc.Text = "";
-                            lblprov.Text = "";
-                            lblnt.Text = "";
-                            lbltotal.Text = "";
-                            dtpfecha.Value = DateTime.Now;
-
-
-                            txtnpago.Focus();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo guardar el recibo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al guardar el recibo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("Recibo cargado. Modifique los valores y luego presione GUARDAR.");
+                }
+                else
+                {
+                    MessageBox.Show("No existe un recibo con ese número.");
                 }
             }
         }
