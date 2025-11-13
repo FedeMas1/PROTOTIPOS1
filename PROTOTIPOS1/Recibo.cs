@@ -262,5 +262,13 @@ namespace PROTOTIPOS1
                 }
             }
         }
+
+        private void Recibo_Load(object sender, EventArgs e)
+        {
+            if (Sesion.nivel == 1)
+            {
+                bttnGuardar.Enabled = false;
+            }
+        }
     }
 }

@@ -53,6 +53,11 @@ namespace PROTOTIPOS1
         private void Cotizacion_proveedor_Load(object sender, EventArgs e)
         {
             AgregarBotonEliminar();
+
+            if (Sesion.nivel == 1)
+            {
+                bttnGuardar.Enabled = false;
+            }
         }
 
         private void bttnBCUIT_Click(object sender, EventArgs e)

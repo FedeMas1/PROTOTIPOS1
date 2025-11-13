@@ -69,6 +69,12 @@ namespace PROTOTIPOS1
 
             dgvProductos.AllowUserToAddRows = false;
             dgvProductos.CellContentClick += dataGridView1_CellContentClick;
+
+            if (Sesion.nivel == 1)
+            {
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
         }
 
         private void Limpiar()

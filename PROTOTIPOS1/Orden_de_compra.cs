@@ -26,7 +26,7 @@ namespace PROTOTIPOS1
             ToolTip toolTip = new ToolTip();
 
             toolTip.SetToolTip(bttnEliminar, "Eliminar una orden de compra.");
-            toolTip.SetToolTip(button3, "Modificar una orden de compra.");
+            toolTip.SetToolTip(bttnModificar, "Modificar una orden de compra.");
             toolTip.SetToolTip(bttnGuardar, "Guardar una orden de compra.");
             toolTip.SetToolTip(button1, "Vuelve al formulario anterior.");
             toolTip.SetToolTip(bttnCSesion, "Cierra tu sesión actual y vuelve a la pantalla de inicio.");
@@ -204,7 +204,7 @@ namespace PROTOTIPOS1
         private void ModoNuevaOC()
         {
             bttnGuardar.Enabled = true;      
-            button3.Enabled = true;
+            bttnModificar.Enabled = true;
             bttnEliminar.Enabled = false;     // Solo debería estar para eliminar OC completa
             bttnBuscar.Enabled = true;        // Buscar OC
             bttnBCotizacion.Enabled = true;   // Botón para buscar Cotización
@@ -247,6 +247,14 @@ namespace PROTOTIPOS1
             LimpiarCampos();
             ModoNuevaOC();
             dgvOC.CellValueChanged += dgvOC_CellValueChanged;
+
+            if (Sesion.nivel == 1)
+            {
+                bttnModificar.Enabled = false;
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
+
         }
 
 
@@ -543,7 +551,7 @@ namespace PROTOTIPOS1
 
                     bttnGuardar.Enabled = true;  // Guardar
                     bttnEliminar.Enabled = true;  // Eliminar
-                    button3.Enabled = false; // Modificar
+                    bttnModificar.Enabled = false; // Modificar
                     button5.Enabled = true;  // Agregar
                     bttnBuscar.Enabled = true; 
 
@@ -794,7 +802,7 @@ namespace PROTOTIPOS1
                     dgvOC.Enabled = false;        
                     bttnGuardar.Enabled = false;      // Guardar
                     bttnEliminar.Enabled = false;      // Eliminar
-                    button3.Enabled = true;       // Modificar
+                    bttnModificar.Enabled = true;       // Modificar
                     button5.Enabled = true;       // Agregar
                     bttnBuscar.Enabled = true;       
 

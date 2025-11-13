@@ -45,6 +45,13 @@ namespace PROTOTIPOS1
             dgvIRM.Columns.Add("Fecha_Vencimiento", "Fecha Vencimiento");
             dgvIRM.Columns.Add("U_Buen_Estado", "U. Buen Estado");
             dgvIRM.Columns.Add("U_Mal_Estado", "U. Mal Estado");
+
+            if (Sesion.nivel == 1)
+            {
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
+
         }
 
 

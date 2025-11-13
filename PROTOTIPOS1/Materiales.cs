@@ -76,6 +76,14 @@ namespace PROTOTIPOS1
                 cmbRubros.DataSource = dt;
                 cmbRubros.SelectedIndex = -1;
             }
+
+            if (Sesion.nivel == 1)
+            {
+                bttnModificar.Enabled = false;
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
+
         }
 
         public void limpiarValores()

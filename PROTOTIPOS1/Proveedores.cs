@@ -42,6 +42,13 @@ namespace PROTOTIPOS1
         private void Proveedores_Load(object sender, EventArgs e)
         {
             cbEstado.Checked = true;
+
+            if (Sesion.nivel == 1)
+            {
+                bttnModificar.Enabled = false;
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
         }
 
 

@@ -36,10 +36,6 @@
             this.txtop = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvop = new System.Windows.Forms.DataGridView();
-            this.Realizado = new System.Windows.Forms.CheckBox();
-            this.Denegado = new System.Windows.Forms.CheckBox();
-            this.Aceptado = new System.Windows.Forms.CheckBox();
-            this.Procesando = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvop)).BeginInit();
             this.SuspendLayout();
@@ -120,50 +116,6 @@
             this.dgvop.TabIndex = 7;
             this.dgvop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Realizado
-            // 
-            this.Realizado.AutoSize = true;
-            this.Realizado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Realizado.Location = new System.Drawing.Point(605, 354);
-            this.Realizado.Name = "Realizado";
-            this.Realizado.Size = new System.Drawing.Size(99, 24);
-            this.Realizado.TabIndex = 23;
-            this.Realizado.Text = "Realizado";
-            this.Realizado.UseVisualStyleBackColor = true;
-            // 
-            // Denegado
-            // 
-            this.Denegado.AutoSize = true;
-            this.Denegado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Denegado.Location = new System.Drawing.Point(418, 354);
-            this.Denegado.Name = "Denegado";
-            this.Denegado.Size = new System.Drawing.Size(103, 24);
-            this.Denegado.TabIndex = 22;
-            this.Denegado.Text = "Denegado";
-            this.Denegado.UseVisualStyleBackColor = true;
-            // 
-            // Aceptado
-            // 
-            this.Aceptado.AutoSize = true;
-            this.Aceptado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Aceptado.Location = new System.Drawing.Point(264, 354);
-            this.Aceptado.Name = "Aceptado";
-            this.Aceptado.Size = new System.Drawing.Size(97, 24);
-            this.Aceptado.TabIndex = 21;
-            this.Aceptado.Text = "Aceptado";
-            this.Aceptado.UseVisualStyleBackColor = true;
-            // 
-            // Procesando
-            // 
-            this.Procesando.AutoSize = true;
-            this.Procesando.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Procesando.Location = new System.Drawing.Point(107, 354);
-            this.Procesando.Name = "Procesando";
-            this.Procesando.Size = new System.Drawing.Size(113, 24);
-            this.Procesando.TabIndex = 20;
-            this.Procesando.Text = "Procesando";
-            this.Procesando.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -180,10 +132,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Realizado);
-            this.Controls.Add(this.Denegado);
-            this.Controls.Add(this.Aceptado);
-            this.Controls.Add(this.Procesando);
             this.Controls.Add(this.dgvop);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtop);
@@ -210,10 +158,6 @@
         private System.Windows.Forms.TextBox txtop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvop;
-        private System.Windows.Forms.CheckBox Realizado;
-        private System.Windows.Forms.CheckBox Denegado;
-        private System.Windows.Forms.CheckBox Aceptado;
-        private System.Windows.Forms.CheckBox Procesando;
         private System.Windows.Forms.Label label2;
     }
 }

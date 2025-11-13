@@ -51,7 +51,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.bttnGuardar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bttnModificar = new System.Windows.Forms.Button();
             this.bttnEliminar = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -303,18 +303,18 @@
             this.bttnGuardar.UseVisualStyleBackColor = false;
             this.bttnGuardar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // bttnModificar
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button3.Location = new System.Drawing.Point(420, 602);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(99, 37);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "Modificar ";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.bttnModificar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bttnModificar.Location = new System.Drawing.Point(420, 602);
+            this.bttnModificar.Name = "bttnModificar";
+            this.bttnModificar.Size = new System.Drawing.Size(99, 37);
+            this.bttnModificar.TabIndex = 32;
+            this.bttnModificar.Text = "Modificar ";
+            this.bttnModificar.UseVisualStyleBackColor = false;
+            this.bttnModificar.Click += new System.EventHandler(this.button3_Click);
             // 
             // bttnEliminar
             // 
@@ -492,7 +492,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.bttnEliminar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bttnModificar);
             this.Controls.Add(this.bttnGuardar);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
@@ -550,7 +550,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button bttnGuardar;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bttnModificar;
         private System.Windows.Forms.Button bttnEliminar;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button button5;

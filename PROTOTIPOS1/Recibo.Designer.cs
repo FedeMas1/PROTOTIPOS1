@@ -291,6 +291,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Recibo";
             this.Text = "Recibo";
+            this.Load += new System.EventHandler(this.Recibo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

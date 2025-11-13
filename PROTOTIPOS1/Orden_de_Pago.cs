@@ -161,6 +161,12 @@ namespace PROTOTIPOS1
             lblnt.Visible = false;
             txtnnt.Visible = false;
             txtnt.Visible = false;
+
+            if (Sesion.nivel == 1)
+            {
+                bttnGuardar.Enabled = false;
+            }
+
         }
 
 

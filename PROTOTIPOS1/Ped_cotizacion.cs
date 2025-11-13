@@ -57,6 +57,14 @@ namespace PROTOTIPOS1
             }
 
             cbSolicitado.Checked = true;
+
+            if (Sesion.nivel == 1)
+            {
+                bttnModificar.Enabled = false;
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
+
         }
 
         private void CargarRubros()

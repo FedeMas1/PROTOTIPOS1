@@ -35,6 +35,11 @@ namespace PROTOTIPOS1
         private void Devolucion_Load(object sender, EventArgs e)
         {
             SetupDgv();
+            if (Sesion.nivel == 1)
+            {
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
         }
 
         private void SetupDgv()

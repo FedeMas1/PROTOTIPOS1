@@ -39,6 +39,12 @@ namespace PROTOTIPOS1
             CargarOrdenesAceptadas();
             CargarOrdenesAprobadas();
             CargarBancos();
+
+            if (Sesion.nivel == 1)
+            {
+                bttnEliminar.Enabled = false;
+                bttnGuardar.Enabled = false;
+            }
         }
 
         private void CargarOrdenesAceptadas()

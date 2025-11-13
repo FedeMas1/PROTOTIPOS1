@@ -34,7 +34,10 @@ namespace PROTOTIPOS1
 
         private void Factura_prov_Load(object sender, EventArgs e)
         {
-            
+            if (Sesion.nivel == 1)
+            {
+                bttnGuardar.Enabled = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
