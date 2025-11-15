@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -35,26 +36,31 @@ namespace PROTOTIPOS1
         private void Ped_cotizacion_Load(object sender, EventArgs e)
         {
             CargarRubros();
+
+            dgvTemporal.Rows.Clear();
+            dgvTemporal.Columns.Clear();
+            dgvPCot.Rows.Clear();
+            dgvPCot.Columns.Clear();
+
             dateTimePicker1.Value = DateTime.Now;
 
-            if (dgvPCot.Columns["Eliminar"] == null)
-            {
-                dgvPCot.Columns.Add("Origen", "Origen");
-                dgvPCot.Columns.Add("IdOrigen", "IdOrigen");
-                dgvPCot.Columns.Add("codigo_producto", "Código");
-                dgvPCot.Columns.Add("descripcion", "Descripción");
-                dgvPCot.Columns.Add("cantidad_a_cotizar", "Cantidad");
-                dgvPCot.Columns.Add("marca", "Marca");
+            // ----- Crear columnas REALES del dgvPCot -----
+            dgvPCot.Columns.Add("Origen", "Origen");
+            dgvPCot.Columns.Add("IdOrigen", "ID");
+            dgvPCot.Columns.Add("codigo_producto", "Código");
+            dgvPCot.Columns.Add("descripcion", "Descripción");
+            dgvPCot.Columns.Add("cantidad_a_cotizar", "Cantidad");
+            dgvPCot.Columns.Add("marca", "Marca");
 
-                DataGridViewButtonColumn bttnEliminar = new DataGridViewButtonColumn
-                {
-                    Name = "Eliminar",
-                    HeaderText = "Eliminar",
-                    Text = "Eliminar",
-                    UseColumnTextForButtonValue = true
-                };
-                dgvPCot.Columns.Add(bttnEliminar);
-            }
+            DataGridViewButtonColumn colEliminar = new DataGridViewButtonColumn();
+            colEliminar.Name = "Eliminar";
+            colEliminar.HeaderText = "Eliminar";
+            colEliminar.Text = "X";
+            colEliminar.UseColumnTextForButtonValue = true;
+            dgvPCot.Columns.Add(colEliminar);
+
+
+
 
             cbSolicitado.Checked = true;
 
@@ -66,6 +72,7 @@ namespace PROTOTIPOS1
             }
 
         }
+
 
         private void CargarRubros()
         {
@@ -87,117 +94,145 @@ namespace PROTOTIPOS1
         {
             if (cmbRubros.SelectedValue == null)
             {
-                MessageBox.Show("Debe seleccionar un rubro antes de cargar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un rubro.");
                 return;
             }
 
-            int idRubroSeleccionado = Convert.ToInt32(cmbRubros.SelectedValue);
+            int idRubro = Convert.ToInt32(cmbRubros.SelectedValue);
 
-            // Preparar DataGridView si no tiene columnas
-            if (dgvPCot.Columns.Count == 0)
+            dgvTemporal.Columns.Clear();
+            dgvTemporal.Rows.Clear();
+
+            dgvTemporal.Columns.Add("Origen", "Origen");
+            dgvTemporal.Columns.Add("IdOrigen", "ID");
+
+            DataGridViewCheckBoxColumn colSel = new DataGridViewCheckBoxColumn();
+            colSel.Name = "Seleccionar";
+            colSel.HeaderText = "Seleccionar";
+            dgvTemporal.Columns.Add(colSel);
+
+            string sql =
+                "SELECT 'SC' AS Origen, id_Sc AS ID " +
+                "FROM Sc_Master WHERE estado = 'Aprobado' AND rubro = @rubro " +
+                "UNION ALL " +
+                "SELECT 'PR' AS Origen, id_PR AS ID " +
+                "FROM PR_Master WHERE estado = 'Aprobado' AND rubro = @rubro;";
+
+            using (SqlConnection cn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
             {
-                dgvPCot.Columns.Add("Origen", "Origen");
-                dgvPCot.Columns.Add("IdOrigen", "IdOrigen");
-                dgvPCot.Columns.Add("codigo_producto", "Código");
-                dgvPCot.Columns.Add("descripcion", "Descripción");
-                dgvPCot.Columns.Add("cantidad_a_cotizar", "Cantidad");
-                dgvPCot.Columns.Add("marca", "Marca");
+                cmd.Parameters.AddWithValue("@rubro", idRubro);
 
-                DataGridViewButtonColumn bttnEliminar = new DataGridViewButtonColumn
+                cn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    Name = "Eliminar",
-                    HeaderText = "Eliminar",
-                    Text = "Eliminar",
-                    UseColumnTextForButtonValue = true
-                };
-                dgvPCot.Columns.Add(bttnEliminar);
-            }
-
-            dgvPCot.Rows.Clear();
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-
-                    // === SOLICITUDES DE COMPRA ===
-                    string querySC = @"
-                SELECT 
-                    D.id_SC AS IdOrigen,
-                    'SC' AS Origen,
-                    D.codigo_bien_de_uso AS codigo_producto,
-                    D.descripcion,
-                    D.cantidad_a_pedir AS cantidad_a_cotizar,
-                    D.marca
-                FROM SC_Detalle D
-                INNER JOIN SC_Master M ON D.id_SC = M.id_SC
-                WHERE M.estado = 'Aprobado' AND M.rubro = @Rubro";
-
-                    using (SqlCommand cmdSC = new SqlCommand(querySC, conn))
+                    while (reader.Read())
                     {
-                        cmdSC.Parameters.AddWithValue("@Rubro", idRubroSeleccionado);
-                        using (SqlDataReader readerSC = cmdSC.ExecuteReader())
-                        {
-                            while (readerSC.Read())
-                            {
-                                dgvPCot.Rows.Add(
-                                    readerSC["Origen"].ToString(),
-                                    readerSC["IdOrigen"].ToString(),
-                                    readerSC["codigo_producto"].ToString(),
-                                    readerSC["descripcion"].ToString(),
-                                    readerSC["cantidad_a_cotizar"].ToString(),
-                                    readerSC["marca"].ToString()
-                                );
-                            }
-                        }
-                    }
-
-                    // === PEDIDOS DE REAPROVISIONAMIENTO ===
-                    string queryPR = @"
-                SELECT 
-                    D.id_PR AS IdOrigen,
-                    'PR' AS Origen,
-                    D.codigo_producto,
-                    D.descripcion,
-                    D.cantidad_a_pedir AS cantidad_a_cotizar,
-                    D.marca
-                FROM PR_Detalle D
-                INNER JOIN PR_Master M ON D.id_PR = M.id_PR
-                WHERE M.estado = 'Aprobado' AND M.rubro = @Rubro";
-
-                    using (SqlCommand cmdPR = new SqlCommand(queryPR, conn))
-                    {
-                        cmdPR.Parameters.AddWithValue("@Rubro", idRubroSeleccionado);
-                        using (SqlDataReader readerPR = cmdPR.ExecuteReader())
-                        {
-                            while (readerPR.Read())
-                            {
-                                dgvPCot.Rows.Add(
-                                    readerPR["Origen"].ToString(),
-                                    readerPR["IdOrigen"].ToString(),
-                                    readerPR["codigo_producto"].ToString(),
-                                    readerPR["descripcion"].ToString(),
-                                    readerPR["cantidad_a_cotizar"].ToString(),
-                                    readerPR["marca"].ToString()
-                                );
-                            }
-                        }
-                    }
-
-                    if (dgvPCot.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No se encontraron solicitudes o pedidos aprobados para el rubro seleccionado.",
-                            "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Datos cargados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dgvTemporal.Rows.Add(
+                            reader["Origen"].ToString(),
+                            reader["ID"].ToString()
+                        );
                     }
                 }
-                catch (Exception ex)
+            }
+        }
+
+        private void CargarDetalleSC(int idSC)
+        {
+            string sql = "SELECT codigo_bien_de_uso, descripcion, cantidad_a_pedir, marca " +
+                 "FROM SC_Detalle WHERE id_sc = @id";
+
+            using (SqlConnection cn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.AddWithValue("@id", idSC);
+                cn.Open();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
                 {
-                    MessageBox.Show("Error al cargar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    while (dr.Read())
+                    {
+                        string codigo = dr["codigo_bien_de_uso"]?.ToString() ?? "";
+                        string descripcion = dr["descripcion"]?.ToString() ?? "";
+                        string cantidad = dr["cantidad_a_pedir"]?.ToString() ?? "";
+                        string marca = dr["marca"]?.ToString() ?? "";
+
+                        // Evitar duplicados: mismo Origen + IdOrigen + Codigo
+                        bool existe = false;
+                        foreach (DataGridViewRow fila in dgvPCot.Rows)
+                        {
+                            if (fila.IsNewRow) continue;
+                            if (fila.Cells["Origen"].Value?.ToString() == "SC" &&
+                                fila.Cells["IdOrigen"].Value?.ToString() == idSC.ToString() &&
+                                fila.Cells["codigo_producto"].Value?.ToString() == codigo)
+                            {
+                                existe = true;
+                                break;
+                            }
+                        }
+
+                        if (!existe)
+                        {
+                            dgvPCot.Rows.Add(
+                                "SC",
+                                idSC,
+                                codigo,
+                                descripcion,
+                                cantidad,
+                                marca
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CargarDetallePR(int idPR)
+        {
+            string sql = "SELECT codigo_producto, descripcion, cantidad_a_pedir, marca " +
+                 "FROM PR_Detalle WHERE id_pr = @id";
+
+            using (SqlConnection cn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.AddWithValue("@id", idPR);
+                cn.Open();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        string codigo = dr["codigo_producto"]?.ToString() ?? "";
+                        string descripcion = dr["descripcion"]?.ToString() ?? "";
+                        string cantidad = dr["cantidad_a_pedir"]?.ToString() ?? "";
+                        string marca = dr["marca"]?.ToString() ?? "";
+
+                        // Evitar duplicados: mismo Origen + IdOrigen + Codigo
+                        bool existe = false;
+                        foreach (DataGridViewRow fila in dgvPCot.Rows)
+                        {
+                            if (fila.IsNewRow) continue;
+                            if (fila.Cells["Origen"].Value?.ToString() == "PR" &&
+                                fila.Cells["IdOrigen"].Value?.ToString() == idPR.ToString() &&
+                                fila.Cells["codigo_producto"].Value?.ToString() == codigo)
+                            {
+                                existe = true;
+                                break;
+                            }
+                        }
+
+                        if (!existe)
+                        {
+                            dgvPCot.Rows.Add(
+                                "PR",
+                                idPR,
+                                codigo,
+                                descripcion,
+                                cantidad,
+                                marca
+                            );
+                        }
+                    }
                 }
             }
         }
@@ -207,23 +242,39 @@ namespace PROTOTIPOS1
             if (e.RowIndex < 0) return;
             if (dgvTemporal.Columns[e.ColumnIndex].Name != "Seleccionar") return;
 
-            DataGridViewRow fila = dgvTemporal.Rows[e.RowIndex];
+            // Forzar commit del cambio en el checkbox para leer el valor real
+            dgvTemporal.EndEdit();
 
-            // Verificar duplicados
-            foreach (DataGridViewRow r in dgvPCot.Rows)
+            var checkCell = dgvTemporal.Rows[e.RowIndex].Cells["Seleccionar"] as DataGridViewCheckBoxCell;
+            bool marcado = Convert.ToBoolean(checkCell.Value ?? false);
+
+            string origen = dgvTemporal.Rows[e.RowIndex].Cells["Origen"].Value?.ToString();
+            int id = Convert.ToInt32(dgvTemporal.Rows[e.RowIndex].Cells["IdOrigen"].Value);
+
+            if (marcado)
             {
-                if (r.Cells["codigo_producto"].Value != null &&
-                    r.Cells["codigo_producto"].Value.ToString() == fila.Cells["Codigo"].Value.ToString())
-                    return;
+                // Agregar (append) sin borrar lo existente
+                if (origen == "SC")
+                    CargarDetalleSC(id);
+                else if (origen == "PR")
+                    CargarDetallePR(id);
             }
-
-            dgvPCot.Rows.Add(fila.Cells["Origen"].Value,
-                             fila.Cells["IdOrigen"].Value,
-                             fila.Cells["Codigo"].Value,
-                             fila.Cells["Descripcion"].Value,
-                             fila.Cells["Cantidad"].Value,
-                             fila.Cells["Marca"].Value);
-        }
+            else
+            {
+                // Quitar todas las filas en dgvPCot que pertenezcan a ese origen+id
+                for (int i = dgvPCot.Rows.Count - 1; i >= 0; i--)
+                {
+                    var fila = dgvPCot.Rows[i];
+                    if (fila.IsNewRow) continue;
+                    string o = fila.Cells["Origen"].Value?.ToString();
+                    string idOrigen = fila.Cells["IdOrigen"].Value?.ToString();
+                    if (o == origen && idOrigen == id.ToString())
+                    {
+                        dgvPCot.Rows.RemoveAt(i);
+                    }
+                }
+            }
+        }  
 
         private void dgvPCot_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -628,7 +679,5 @@ namespace PROTOTIPOS1
                 cbDeenegado.Checked = false;
             }
         }
-
-       
     }
 }
