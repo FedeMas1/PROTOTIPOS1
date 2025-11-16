@@ -87,5 +87,24 @@ namespace PROTOTIPOS1
                 pbAdministrador.Visible = false;
             }
         }
+
+        private void LLManual_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                string rutaPDF = @"C:\Manual\Manual de usuario.pdf";
+
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                {
+                    FileName = rutaPDF,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir el manual. Error: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

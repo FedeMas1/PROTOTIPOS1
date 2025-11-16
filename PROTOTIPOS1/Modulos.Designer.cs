@@ -42,6 +42,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pbAdministrador = new System.Windows.Forms.PictureBox();
+            this.LLManual = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -199,12 +200,28 @@
             this.pbAdministrador.TabIndex = 14;
             this.pbAdministrador.TabStop = false;
             // 
+            // LLManual
+            // 
+            this.LLManual.ActiveLinkColor = System.Drawing.Color.Blue;
+            this.LLManual.AutoSize = true;
+            this.LLManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.LLManual.LinkColor = System.Drawing.Color.Black;
+            this.LLManual.Location = new System.Drawing.Point(313, 195);
+            this.LLManual.Name = "LLManual";
+            this.LLManual.Size = new System.Drawing.Size(176, 25);
+            this.LLManual.TabIndex = 15;
+            this.LLManual.TabStop = true;
+            this.LLManual.Text = "Manual de Usuario";
+            this.LLManual.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.LLManual.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLManual_LinkClicked);
+            // 
             // Modulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LLManual);
             this.Controls.Add(this.pbAdministrador);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -248,5 +265,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pbAdministrador;
+        private System.Windows.Forms.LinkLabel LLManual;
     }
 }
