@@ -13,6 +13,8 @@ namespace PROTOTIPOS1
 {
     public partial class FrmBitacora : Form
     {
+        private bool filtroUsuarioActivo = false;
+        private bool filtroFechaActiva = false;
         public FrmBitacora()
         {
             InitializeComponent();
@@ -78,21 +80,37 @@ namespace PROTOTIPOS1
             this.Hide();
         }
 
-        private void FiltrarUsuario(string nombreUsuario)
+        private void AplicarFiltros()
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
-            string query = "SELECT id_Log, id_Usuario, nombre_Usuario, accion, fecha_Hora " +
-                "FROM Bitacora " +
-                "WHERE nombre_Usuario LIKE @nombre " +
-                "ORDER BY fecha_Hora DESC";
+
+            string query = "SELECT id_Log, id_Usuario, nombre_Usuario, accion, fecha_Hora FROM Bitacora WHERE 1=1";
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            
+            if(filtroUsuarioActivo && !string.IsNullOrWhiteSpace(txtbUsuario.Text))
+            {
+                query += "AND nombre_Usuario = @usuario";
+                parametros.Add(new SqlParameter("@usuario", txtbUsuario.Text.Trim()));    
+            }
+
+            if (filtroFechaActiva)
+            {
+                DateTime fecha = dtp.Value.Date;
+
+                query += " AND CAST(fecha_Hora AS DATE) = @fecha";
+                parametros.Add(new SqlParameter("@fecha", fecha));
+            }
+
+            query += " ORDER BY fecha_Hora DESC";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand comando = new SqlCommand(query, conn))
+            using(SqlCommand command = new SqlCommand(query, conn))
             {
-                comando.Parameters.AddWithValue("nombre", "%" + nombreUsuario + "%");
+                command.Parameters.AddRange(parametros.ToArray());
                 conn.Open();
                 DataTable dt = new DataTable();
-                dt.Load(comando.ExecuteReader());
+                dt.Load(command.ExecuteReader());
                 conn.Close();
 
                 dgvBitacora.DataSource = dt;
@@ -107,14 +125,30 @@ namespace PROTOTIPOS1
                 MessageBox.Show("No se ha ingresado ningun nombre");
                 return;
             }
-            FiltrarUsuario(txtbUsuario.Text.Trim());
+            else
+            {
+               filtroUsuarioActivo = true;
+               AplicarFiltros();
+            }
         }
 
         private void bttnQuitar_Click(object sender, EventArgs e)
         {
-            txtbUsuario.Clear();
-            CargarBitacora(); // 
+            txtbUsuario.Text = string.Empty;
+            dtp.Value = DateTime.Now;
+            CargarBitacora();
         }
+
+       
+
+
+        private void bttnFFecha_Click(object sender, EventArgs e)
+        {
+            filtroFechaActiva = true;
+            AplicarFiltros();
+        }
+
+       
     }
     }
 

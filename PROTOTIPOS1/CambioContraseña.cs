@@ -94,21 +94,47 @@ namespace PROTOTIPOS1
                 try
                 {
                     conexion.Open();
-                    string consulta = @"SELECT COUNT(*) FROM Usuarios WHERE nombre_Usuario = @usuario AND email = @mail";
+                    string consulta = @"SELECT id_Usuario, nombre, apellido, nivel 
+                    FROM Usuarios 
+                    WHERE nombre_Usuario = @usuario AND email = @mail";
                     SqlCommand verificar = new SqlCommand(consulta, conexion);
                     verificar.Parameters.AddWithValue("@usuario", usuario);
                     verificar.Parameters.AddWithValue("@mail", mail);
 
-                    int existe = (int)verificar.ExecuteScalar();
-                    if (existe == 0) MessageBox.Show("Usuario o mail incorrectos");
 
-                    string actualizar = @"UPDATE Usuarios SET contraseña = @nContraseña WHERE nombre_Usuario = @usuario AND email = @mail";
+                    SqlDataReader reader = verificar.ExecuteReader();
+
+                    if (!reader.Read())
+                    {
+                        MessageBox.Show("Usuario o mail incorrectos");
+                        return;
+                    }
+
+                    decimal idUsuario = Convert.ToDecimal(reader["id_Usuario"]);
+                    string nombre = reader["nombre"].ToString();
+                    string apellido = reader["apellido"].ToString();
+                    decimal nivel = Convert.ToDecimal(reader["nivel"]);
+
+                    reader.Close();
+
+                    string cadenaDVH = usuario + contraseñaHasheada + mail + nombre + apellido + nivel.ToString();
+                    string nuevoDVH = Hasheo.generarHash(cadenaDVH);
+
+                    string actualizar = @"UPDATE Usuarios 
+                    SET contraseña = @nContraseña, dvh = @dvh 
+                    WHERE id_Usuario = @id";
+
+
                     SqlCommand comando = new SqlCommand(actualizar, conexion);
                     comando.Parameters.AddWithValue("@nContraseña", contraseñaHasheada);
-                    comando.Parameters.AddWithValue("@usuario", usuario);
-                    comando.Parameters.AddWithValue("@mail", mail);
+                    comando.Parameters.AddWithValue("@dvh", nuevoDVH);
+                    comando.Parameters.AddWithValue("@id", idUsuario);
 
                     int filas = comando.ExecuteNonQuery();
+
+                    var gestor = new GestorDV(cadena_Conexion);
+                    gestor.ActualizarDVV();
+
                     if (filas > 0)
                     {
                         MessageBox.Show("Contraseña modificada correctamente");

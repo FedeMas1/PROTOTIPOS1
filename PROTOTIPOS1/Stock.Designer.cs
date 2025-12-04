@@ -537,7 +537,7 @@
             // 
             this.bttnCSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnCSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.bttnCSesion.Location = new System.Drawing.Point(753, 12);
+            this.bttnCSesion.Location = new System.Drawing.Point(846, 18);
             this.bttnCSesion.Name = "bttnCSesion";
             this.bttnCSesion.Size = new System.Drawing.Size(94, 39);
             this.bttnCSesion.TabIndex = 56;

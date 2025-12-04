@@ -113,6 +113,7 @@
             // 
             // bttnModificar
             // 
+            this.bttnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.bttnModificar.Location = new System.Drawing.Point(85, 372);
             this.bttnModificar.Name = "bttnModificar";
@@ -124,6 +125,7 @@
             // 
             // bttnGuardar
             // 
+            this.bttnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.bttnGuardar.Location = new System.Drawing.Point(593, 372);
             this.bttnGuardar.Name = "bttnGuardar";
@@ -254,6 +256,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(662, 99);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);

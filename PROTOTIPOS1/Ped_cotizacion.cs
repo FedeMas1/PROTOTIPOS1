@@ -397,6 +397,7 @@ namespace PROTOTIPOS1
 
                     transaccion.Commit();
                     MessageBox.Show("Pedido de cotización guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 catch (Exception ex)
                 {

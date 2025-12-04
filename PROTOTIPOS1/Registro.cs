@@ -135,6 +135,7 @@ namespace PROTOTIPOS1
             if (mailVerificado == true)
             {
                 string cadena_Conexion = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+                var gestor = new GestorDV(cadena_Conexion);
 
             using (SqlConnection conexion = new SqlConnection(cadena_Conexion))
             {
@@ -151,20 +152,32 @@ namespace PROTOTIPOS1
                         MessageBox.Show("Ya existe un usuario con ese nombre o correo");
                         return;
                     }
-                    SqlCommand insertar = new SqlCommand(@"INSERT INTO Usuarios (nombre_Usuario, contraseña, email, nombre, apellido, nivel) 
-                    VALUES (@nombre_Usuario, @contraseña, @mail, @nombre, @apellido, @nivel)", conexion);
 
-                    insertar.Parameters.AddWithValue("@nombre_usuario", nombre_usuario);
-                    insertar.Parameters.AddWithValue("@contraseña", contraseñaHasheada);
-                    insertar.Parameters.AddWithValue("@mail", mail);
-                    insertar.Parameters.AddWithValue("@nombre", nombre);
-                    insertar.Parameters.AddWithValue("@apellido", apellido);
-                    insertar.Parameters.AddWithValue("@nivel", 1);
+                        string cadenaDVH = nombre_usuario + contraseñaHasheada + mail + nombre + apellido + "1";
+                        string dvh = Hasheo.generarHash(cadenaDVH);
+
+                        SqlCommand insertar = new SqlCommand(@"
+                        INSERT INTO Usuarios (nombre_Usuario, contraseña, email, nombre, apellido, nivel, dvh) 
+                        VALUES (@nombre_Usuario, @contraseña, @mail, @nombre, @apellido, @nivel, @dvh);
+                        SELECT SCOPE_IDENTITY();", conexion);
+
+                        
+
+                        insertar.Parameters.AddWithValue("@nombre_usuario", nombre_usuario);
+                        insertar.Parameters.AddWithValue("@contraseña", contraseñaHasheada);
+                        insertar.Parameters.AddWithValue("@mail", mail);
+                        insertar.Parameters.AddWithValue("@nombre", nombre);
+                        insertar.Parameters.AddWithValue("@apellido", apellido);
+                        insertar.Parameters.AddWithValue("@nivel", 1);
+                        insertar.Parameters.AddWithValue("@dvh", dvh);
 
 
-                    int filas = insertar.ExecuteNonQuery();
 
-                    if (filas > 0)
+                        int idGenerado = Convert.ToInt32(insertar.ExecuteScalar());
+
+                        gestor.ActualizarDVV();
+
+                        if (idGenerado > 0)
                     {
                         MessageBox.Show("Usuario registrado correctamente");
                         Bitacora bit = new Bitacora();

@@ -94,6 +94,7 @@
     <Compile Include="FrmBitacora.Designer.cs">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestorDV.cs" />
     <Compile Include="Hasheo.cs" />
     <Compile Include="Informe_recepcion.cs">
       <SubType>Form</SubType>

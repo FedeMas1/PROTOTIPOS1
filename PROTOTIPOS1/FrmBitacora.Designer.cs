@@ -38,6 +38,9 @@
             this.txtbUsuario = new System.Windows.Forms.TextBox();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.bttnQuitar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtp = new System.Windows.Forms.DateTimePicker();
+            this.bttnFFecha = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBitacora)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,7 +91,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(104, 54);
             this.button4.TabIndex = 5;
-            this.button4.Text = "back";
+            this.button4.Text = "Back";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -104,10 +107,10 @@
             // 
             // bttnFUsuario
             // 
-            this.bttnFUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.bttnFUsuario.Location = new System.Drawing.Point(579, 106);
+            this.bttnFUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnFUsuario.Location = new System.Drawing.Point(536, 71);
             this.bttnFUsuario.Name = "bttnFUsuario";
-            this.bttnFUsuario.Size = new System.Drawing.Size(132, 48);
+            this.bttnFUsuario.Size = new System.Drawing.Size(132, 26);
             this.bttnFUsuario.TabIndex = 7;
             this.bttnFUsuario.Text = "Filtrar por Usuario";
             this.bttnFUsuario.UseVisualStyleBackColor = true;
@@ -116,16 +119,16 @@
             // txtbUsuario
             // 
             this.txtbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtbUsuario.Location = new System.Drawing.Point(472, 128);
+            this.txtbUsuario.Location = new System.Drawing.Point(358, 77);
             this.txtbUsuario.Name = "txtbUsuario";
-            this.txtbUsuario.Size = new System.Drawing.Size(100, 26);
+            this.txtbUsuario.Size = new System.Drawing.Size(144, 26);
             this.txtbUsuario.TabIndex = 8;
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblUsuario.Location = new System.Drawing.Point(342, 134);
+            this.lblUsuario.Location = new System.Drawing.Point(213, 77);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(124, 20);
             this.lblUsuario.TabIndex = 9;
@@ -133,19 +136,51 @@
             // 
             // bttnQuitar
             // 
-            this.bttnQuitar.Location = new System.Drawing.Point(717, 130);
+            this.bttnQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnQuitar.Location = new System.Drawing.Point(536, 145);
             this.bttnQuitar.Name = "bttnQuitar";
-            this.bttnQuitar.Size = new System.Drawing.Size(21, 23);
+            this.bttnQuitar.Size = new System.Drawing.Size(132, 25);
             this.bttnQuitar.TabIndex = 10;
-            this.bttnQuitar.Text = "X";
+            this.bttnQuitar.Text = "Quitar filtros";
             this.bttnQuitar.UseVisualStyleBackColor = true;
             this.bttnQuitar.Click += new System.EventHandler(this.bttnQuitar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(213, 114);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 20);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Ingresar fecha";
+            // 
+            // dtp
+            // 
+            this.dtp.Location = new System.Drawing.Point(331, 115);
+            this.dtp.Name = "dtp";
+            this.dtp.Size = new System.Drawing.Size(200, 20);
+            this.dtp.TabIndex = 12;
+            // 
+            // bttnFFecha
+            // 
+            this.bttnFFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.bttnFFecha.Location = new System.Drawing.Point(536, 112);
+            this.bttnFFecha.Name = "bttnFFecha";
+            this.bttnFFecha.Size = new System.Drawing.Size(132, 27);
+            this.bttnFFecha.TabIndex = 14;
+            this.bttnFFecha.Text = "Filtrar por fecha";
+            this.bttnFFecha.UseVisualStyleBackColor = true;
+            this.bttnFFecha.Click += new System.EventHandler(this.bttnFFecha_Click);
             // 
             // FrmBitacora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttnFFecha);
+            this.Controls.Add(this.dtp);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.bttnQuitar);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.txtbUsuario);
@@ -177,5 +212,8 @@
         private System.Windows.Forms.TextBox txtbUsuario;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button bttnQuitar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtp;
+        private System.Windows.Forms.Button bttnFFecha;
     }
 }

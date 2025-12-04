@@ -56,32 +56,79 @@ namespace PROTOTIPOS1
             string contraseñaHasheada = Hasheo.generarHash(contraseña);
 
             string cadena_Conexion = @"Data Source=localhost\SQLEXPRESS10;Initial Catalog=Panaderia;Integrated Security=True;TrustServerCertificate=True;";
+            var gestor = new GestorDV(cadena_Conexion);
+
+            // ✅ SOLO VERIFICA DVV — NO GENERA NADA
+            if (!gestor.ExisteDVV())
+            {
+                MessageBox.Show("No existe DVV inicial. El sistema no fue inicializado.");
+                return;
+            }
+
+            if (!gestor.VerificarDVV(out string dvvActual, out string dvvGuardado))
+            {
+                MessageBox.Show("ERROR DE INTEGRIDAD DEL SISTEMA (DVV). Contacte al administrador.");
+                return;
+            }
 
             using (SqlConnection conexion = new SqlConnection(cadena_Conexion))
             {
                 try
                 {
                     conexion.Open();
-                    string consulta = @"SELECT id_Usuario, email, nivel, nombre_Usuario FROM Usuarios WHERE email = @correo AND contraseña = @contraseña";
+
+                    // ✅ PRIMERO BUSCAMOS SOLO POR EMAIL
+                    string consulta = @"SELECT id_Usuario, contraseña, nivel, nombre_Usuario, email
+                                FROM Usuarios WHERE email = @correo";
 
                     SqlCommand comando = new SqlCommand(consulta, conexion);
                     comando.Parameters.AddWithValue("@correo", correo);
-                    comando.Parameters.AddWithValue("@contraseña", contraseñaHasheada);
 
                     SqlDataReader reader = comando.ExecuteReader();
 
                     if (reader.Read())
                     {
-                        // Resetear intentos al ingresar correctamente
+                        int id_Usuario = Convert.ToInt32(reader["id_Usuario"]);
+                        string contraseñaBD = reader["contraseña"].ToString();
+
+                        reader.Close();
+
+                        // ✅ PRIMERO DVH
+                        if (!gestor.VerificarDVH(id_Usuario, out _, out _))
+                        {
+                            MessageBox.Show("ERROR DE INTEGRIDAD EN EL USUARIO (DVH). Acceso bloqueado.");
+                            return;
+                        }
+
+                        // ✅ DESPUÉS CONTRASEÑA
+                        if (contraseñaBD != contraseñaHasheada)
+                        {
+                            intentosFallidos++;
+                            MessageBox.Show("Usuario o contraseña incorrectos.");
+                            return;
+                        }
+
+                        // ✅ LOGIN CORRECTO
                         intentosFallidos = 0;
                         bloqueoHasta = null;
 
-                        int id_Usuario = Convert.ToInt32(reader["id_Usuario"]);
-                        string email = reader["email"].ToString();
-                        int nivel = Convert.ToInt32(reader["nivel"]);
-                        string nombreUsuario = reader["nombre_Usuario"].ToString();
+                        using (SqlCommand cmdDatos = new SqlCommand(
+                            @"SELECT id_Usuario, email, nivel, nombre_Usuario 
+                      FROM Usuarios WHERE id_Usuario = @id", conexion))
+                        {
+                            cmdDatos.Parameters.AddWithValue("@id", id_Usuario);
 
-                        Sesion.CargarSesion(id_Usuario, email, nombreUsuario, nivel);
+                            using (SqlDataReader r2 = cmdDatos.ExecuteReader())
+                            {
+                                r2.Read();
+
+                                string emailBD = r2["email"].ToString();
+                                int nivel = Convert.ToInt32(r2["nivel"]);
+                                string nombreUsuario = r2["nombre_Usuario"].ToString();
+
+                                Sesion.CargarSesion(id_Usuario, emailBD, nombreUsuario, nivel);
+                            }
+                        }
 
                         Bitacora bi = new Bitacora();
                         bi.RegistrarEvento(Sesion.id_Usuario, Sesion.nombreUsuario, "Inicio Sesion");
@@ -93,16 +140,7 @@ namespace PROTOTIPOS1
                     else
                     {
                         intentosFallidos++;
-
-                        if (intentosFallidos >= 3)
-                        {
-                            bloqueoHasta = DateTime.Now.AddMinutes(3);
-                            MessageBox.Show("Usuario o contraseña incorrectos. Ha alcanzado el máximo de intentos, intente nuevamente en 3 minutos.");
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Usuario o contraseña incorrectos. Intento {intentosFallidos} de 3.");
-                        }
+                        MessageBox.Show("Usuario o contraseña incorrectos.");
                     }
                 }
                 catch (Exception ex)
@@ -141,6 +179,5 @@ namespace PROTOTIPOS1
             }
         }
 
-    
     }
 }
